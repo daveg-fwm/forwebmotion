@@ -1,11 +1,33 @@
 import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
 import React from 'react';
-import HeaderPanel from './styles/HeaderPanel';
+import { HeaderPanel, NavButton } from './styles/HeaderPanel';
+import { FWMIcon } from './svg/InlineSVG';
+
+const toggleNav = event => {
+  event.preventDefault();
+  console.log(event);
+};
 
 const Header = () => (
   <HeaderPanel>
-    <nav>{/* <Link to="/">sadfsadf</Link> */}</nav>
+    <div>
+      <div className="top-nav">
+        <Link className="a-svg" to="/">
+          <FWMIcon />
+        </Link>
+        <NavButton onClick={toggleNav}>
+          <span />
+          <span />
+          <span />
+        </NavButton>
+      </div>
+      <nav>
+        <Link to="/red-sofa-cafe/">Red Sofa Cafe</Link>
+        <Link to="/iot-global-awards/">IoT Global Awards</Link>
+        <Link to="/wkm-payment-gateway/">WKM Payment Gateway</Link>
+        <Link to="/about/">About forwebmotion</Link>
+      </nav>
+    </div>
   </HeaderPanel>
 );
 

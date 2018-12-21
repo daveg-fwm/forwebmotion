@@ -94,6 +94,30 @@ const GlobalStyles = () => (
       summary {
         display: block;
       }
+
+      input:focus,
+      select:focus,
+      textarea:focus,
+      button:focus,
+      [contenteditable='true']:focus {
+        outline: 0;
+      }
+
+      a {
+        outline: 0;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      svg {
+        pointer-events: none;
+      }
+
+      .a-svg {
+        display: inline-block;
+      }
     `}
   />
 );

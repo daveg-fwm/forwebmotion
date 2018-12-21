@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import GlobalStyles from './styles/GlobalStyles';
 import Header from './header';
 import MainPanel from './styles/MainPanel';
+import Footer from './Footer';
 
 const Layout = ({ children }) => (
   <>
@@ -10,6 +11,7 @@ const Layout = ({ children }) => (
     <GlobalStyles />
     <Header />
     <MainPanel>{children}</MainPanel>
+    <Footer />
   </>
 );
 

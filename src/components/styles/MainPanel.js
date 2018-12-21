@@ -2,11 +2,12 @@ import styled from '@emotion/styled';
 
 const MainPanel = styled.main`
   width: 100%;
-  max-width: 1920px;
-  padding: 40px 40px 0;
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 40px;
   display: grid;
-  grid-gap: 10vh;
-  grid-template-columns: 73%;
+  grid-gap: 10vh 40px;
+  grid-template-columns: calc(100% - 340px);
   justify-content: end;
 
   div {
