@@ -11,11 +11,13 @@ const RedSofaCafe = ({ data }) => {
   return (
     <Layout>
       <SEO title="Red Sofa Cafe" />
+      {/* pass data to Project component */}
       <Project data={Data} />
     </Layout>
   );
 };
 
+// fetch data for Red Sofa Cafe project from src/data/projects.json
 export const query = graphql`
   query {
     allDataJson {
@@ -37,7 +39,7 @@ export const query = graphql`
 `;
 
 RedSofaCafe.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.object.isRequired,
 };
 
 export default RedSofaCafe;

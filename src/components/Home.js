@@ -7,5 +7,4 @@ const Home = () => (
     <p>The logo will go here and then a paragraph and a button or 2.</p>
   </div>
 );
-
 export default Home;

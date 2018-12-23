@@ -4,7 +4,7 @@
     "color": "#fedf2f",
     "year": "2015",
     "type": "Static PHP",
-    "link": "/red-sofa-cafe/",
+    "link": "/red-sofa-cafe",
     "bannerImg": "RSCBanner",
     "logo": "RSCLogo",
     "preview":
@@ -15,7 +15,7 @@
     "color": "#bb9847",
     "year": "2017",
     "type": "Wordpress",
-    "link": "/iot-global-awards/",
+    "link": "/iot-global-awards",
     "bannerImg": "IOTGABanner",
     "logo": "IOTGALogo",
     "preview":
@@ -26,7 +26,7 @@
     "color": "#41a940",
     "year": "2018",
     "type": "Zend Framework 3",
-    "link": "/wkm-payment-gateway/",
+    "link": "/wkm-payment-gateway",
     "bannerImg": "WKMPGBanner",
     "logo": "WKMLogo",
     "preview":

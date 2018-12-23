@@ -3,6 +3,24 @@ module.exports = {
     title: 'forwebmotion',
     description: "A Web Developer's portfolio - Cape Town, South Africa.",
     author: '@forwebmotion',
+    menuLinks: [
+      {
+        name: 'Red Sofa Cafe',
+        link: '/red-sofa-cafe',
+      },
+      {
+        name: 'IoT Global Awards',
+        link: '/iot-global-awards',
+      },
+      {
+        name: 'WKM Payment Gateway',
+        link: '/wkm-payment-gateway',
+      },
+      {
+        name: 'About forwebmotion',
+        link: '/about',
+      },
+    ],
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -41,7 +59,7 @@ module.exports = {
         // Accepts all options defined by `babel-plugin-emotion` plugin.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // this (optional) plugin enables Progressive Web App  Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
   ],

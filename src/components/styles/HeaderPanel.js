@@ -41,10 +41,16 @@ const HeaderPanel = styled.header`
     left: 0;
     padding: 0 25px;
     background-color: inherit;
+    transform: translateY(-100%);
+  }
+
+  ul {
     display: grid;
     grid-template-rows: repeat(4, 50px);
     align-items: center;
-    transform: translateY(-100%);
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .fwm-icon {

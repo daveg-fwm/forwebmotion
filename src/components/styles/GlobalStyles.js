@@ -111,10 +111,12 @@ const GlobalStyles = () => (
         cursor: pointer;
       }
 
+      /* set pointer-events to none so title doesn't show on hover */
       svg {
         pointer-events: none;
       }
 
+      /* all anchor tags that wrap svgs need to take up the full width and height due to no pointer events on svgs */
       .a-svg {
         display: inline-block;
       }

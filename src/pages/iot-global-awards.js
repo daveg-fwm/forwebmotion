@@ -11,11 +11,13 @@ const IotGlobalAwards = ({ data }) => {
   return (
     <Layout>
       <SEO title="IoT Global Awards" />
+      {/* pass data to Project component */}
       <Project data={Data} />
     </Layout>
   );
 };
 
+// fetch data for IoT Global Awards project from src/data/projects.json
 export const query = graphql`
   query {
     allDataJson {
@@ -37,7 +39,7 @@ export const query = graphql`
 `;
 
 IotGlobalAwards.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.object.isRequired,
 };
 
 export default IotGlobalAwards;

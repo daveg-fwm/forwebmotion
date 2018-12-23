@@ -14,12 +14,14 @@ const IndexPage = ({ data }) => {
       <SEO title="Home" />
       <Home />
       {Object.keys(Data).map(key => (
+        // pass data to Project component
         <Project key={key} data={Data[key]} />
       ))}
     </Layout>
   );
 };
 
+// fetch all data for project previews from src/data/projects.json
 export const query = graphql`
   query {
     allDataJson {

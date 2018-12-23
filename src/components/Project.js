@@ -9,13 +9,13 @@ const Project = ({ data }) => (
 
 Project.propTypes = {
   data: PropTypes.shape({
-    name: PropTypes.string,
-    color: PropTypes.string,
-    year: PropTypes.string,
-    type: PropTypes.string,
-    link: PropTypes.string,
-    bannerImg: PropTypes.string,
-    preview: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    year: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+    bannerImg: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
   }),
 };
 

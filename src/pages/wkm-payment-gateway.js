@@ -11,11 +11,13 @@ const WkmPaymentGateway = ({ data }) => {
   return (
     <Layout>
       <SEO title="WKM Payment Gateway" />
+      {/* pass data to Project component */}
       <Project data={Data} />
     </Layout>
   );
 };
 
+// fetch data for WKM Payment Gateway project from src/data/projects.json
 export const query = graphql`
   query {
     allDataJson {
@@ -37,7 +39,7 @@ export const query = graphql`
 `;
 
 WkmPaymentGateway.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.object.isRequired,
 };
 
 export default WkmPaymentGateway;
