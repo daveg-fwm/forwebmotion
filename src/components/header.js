@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import anime from 'animejs';
 import { HeaderPanel, NavButton } from './styles/HeaderPanel';
-import { FWMIcon } from './svg/InlineSVG';
-import AnimateRaf from './AnimateRaf';
+import FWMIcon from './svg/FWMIcon';
 
 class Header extends React.Component {
   static propTypes = {
@@ -17,22 +17,38 @@ class Header extends React.Component {
 
   state = {
     showMenu: false,
-    active: false,
   };
+
+  // create a ref for the element to be animated
+  navRef = React.createRef();
+
+  componentDidUpdate() {
+    const { showMenu } = this.state;
+
+    this.animeRef = anime({
+      targets: this.navRef.current,
+      translateY: () => {
+        if (showMenu) {
+          return ['-100%', '0%'];
+        }
+        // menu is closed
+        return ['0%', '-100%'];
+      },
+      easing: 'easeOutCubic',
+      duration: 500,
+    });
+  }
 
   toggleNav = () => {
     this.setState(state => ({
-      // menu button toggles showMenu state to open/close nav menu and sets animated element to active
+      // menu button toggles showMenu state to open/close nav menu
       showMenu: !state.showMenu,
-      active: true,
     }));
   };
 
   render() {
     const { menuLinks } = this.props;
-    const { showMenu, active } = this.state;
-    // give AnimateRaf the enter class to open menu and exit class to close menu
-    const menuClass = showMenu ? 'enter' : 'exit';
+    const { showMenu } = this.state;
 
     return (
       <HeaderPanel>
@@ -47,28 +63,7 @@ class Header extends React.Component {
               <span />
             </NavButton>
           </div>
-          <AnimateRaf
-            El="nav"
-            // prevent animation until NavButton is clicked by assigning inactive class
-            elClass={active ? menuClass : 'inactive'}
-            // always leave out parentheses if a property is used!!!
-            enter={{
-              animation: 'transform',
-              animProperty: 'translateY',
-              start: -100,
-              stop: 0,
-              unit: '%',
-              timing: 3,
-            }}
-            exit={{
-              animation: 'transform',
-              animProperty: 'translateY',
-              start: 0,
-              stop: -100,
-              unit: '%',
-              timing: 3,
-            }}
-          >
+          <nav className={showMenu ? 'enter' : 'exit'} ref={this.navRef}>
             <ul>
               {/* menuLinks contains page link data - received from Layout component */}
               {menuLinks.map(item => (
@@ -77,7 +72,7 @@ class Header extends React.Component {
                 </li>
               ))}
             </ul>
-          </AnimateRaf>
+          </nav>
         </div>
       </HeaderPanel>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FWMLogo } from './svg/InlineSVG';
+import FWMLogo from './svg/FWMLogo';
 
 const Home = () => (
   <div>
