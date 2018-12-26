@@ -10,7 +10,7 @@ const About = ({ data }) => {
   return (
     <Layout>
       <SEO title="About forwebmotion" />
-      <div>About me and this site</div>
+      <div className="panel">About me and this site</div>
     </Layout>
   );
 };

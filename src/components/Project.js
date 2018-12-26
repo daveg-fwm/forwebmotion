@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Project = ({ data }) => (
-  <div>
+  <div className="panel">
     <p>{data.name}</p>
   </div>
 );
@@ -16,7 +16,7 @@ Project.propTypes = {
     link: PropTypes.string.isRequired,
     bannerImg: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default Project;

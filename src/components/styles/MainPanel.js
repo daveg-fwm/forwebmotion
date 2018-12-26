@@ -10,7 +10,7 @@ const MainPanel = styled.main`
   grid-template-columns: calc(100% - 340px);
   justify-content: end;
 
-  div {
+  div.panel {
     padding: 85px 30px;
     background-color: #fff;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);

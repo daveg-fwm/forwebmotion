@@ -77,6 +77,7 @@ const GlobalStyles = () => (
         line-height: 1.5;
         font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-weight: 300;
+        color: #121415;
         background-color: #f9f9f9;
       }
 
@@ -103,8 +104,11 @@ const GlobalStyles = () => (
         outline: 0;
       }
 
-      a {
+      a:not(.a-svg) {
         outline: 0;
+        color: #40afe9;
+        font-weight: 400;
+        text-decoration: none;
       }
 
       button {

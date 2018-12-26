@@ -33,6 +33,11 @@ const HeaderPanel = styled.header`
     z-index: 1;
   }
 
+  .fwm-icon {
+    width: 64.48px;
+    height: 25px;
+  }
+
   nav {
     position: absolute;
     width: 100%;
@@ -46,16 +51,23 @@ const HeaderPanel = styled.header`
 
   ul {
     display: grid;
-    grid-template-rows: repeat(4, 50px);
-    align-items: center;
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  .fwm-icon {
-    width: 64.48px;
-    height: 25px;
+  li {
+    display: grid;
+    align-items: center;
+
+    a {
+      padding: 15px 0;
+      text-decoration: underline;
+
+      &.active {
+        text-decoration: line-through;
+      }
+    }
   }
 `;
 

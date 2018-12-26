@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import anime from 'animejs';
 import { HeaderPanel, NavButton } from './styles/HeaderPanel';
-import FWMIcon from './svg/FWMIcon';
+import { FWMIcon } from './svg/InlineSVG';
 
 class Header extends React.Component {
   static propTypes = {
@@ -19,13 +19,14 @@ class Header extends React.Component {
     showMenu: false,
   };
 
-  // create a ref for the element to be animated
+  // create a ref for the nav element to be animated
   navRef = React.createRef();
 
   componentDidUpdate() {
     const { showMenu } = this.state;
 
-    this.animeRef = anime({
+    // animate nav menu open/close
+    anime({
       targets: this.navRef.current,
       translateY: () => {
         if (showMenu) {
@@ -68,7 +69,9 @@ class Header extends React.Component {
               {/* menuLinks contains page link data - received from Layout component */}
               {menuLinks.map(item => (
                 <li key={item.name}>
-                  <Link to={item.link}>{item.name}</Link>
+                  <Link to={item.link} activeClassName="active">
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
