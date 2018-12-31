@@ -22,6 +22,11 @@ import WordPressIcon from './WordPressIcon';
 import ZendIcon from './ZendIcon';
 import VSCodeIcon from './VSCodeIcon';
 import AzureDevOpsIcon from './AzureDevOpsIcon';
+import RSCLogo from './RSCLogo';
+import IOTGALogo from './IOTGALogo';
+import WKMLogo from './WKMLogo';
+import SagePayIcon from './SagePayIcon';
+import LinkedInIcon from './LinkedInIcon';
 
 export {
   FWMIcon,
@@ -47,4 +52,9 @@ export {
   ZendIcon,
   VSCodeIcon,
   AzureDevOpsIcon,
+  RSCLogo,
+  IOTGALogo,
+  WKMLogo,
+  SagePayIcon,
+  LinkedInIcon,
 };

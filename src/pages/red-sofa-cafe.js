@@ -6,31 +6,62 @@ import SEO from '../components/seo';
 import Project from '../components/Project';
 
 const RedSofaCafe = ({ data }) => {
-  const Data = data.allDataJson.edges[0].node.rsc;
+  const ProjectData = data.allDataJson.edges[0].node.projects.rsc;
+  const HeaderData = data.allDataJson.edges[1].node.header.rsc;
 
   return (
-    <Layout>
+    /*
+      Pass rsc header data to layout component which passes the data down to the header component
+      Pass footer class to layout component which passes the class down to the footer component
+    */
+    <Layout headerData={HeaderData} footerClass={{ class: 'relative' }}>
       <SEO title="Red Sofa Cafe" />
-      {/* pass data to Project component */}
-      <Project data={Data} />
+      {/* Pass rsc preview data to Project component */}
+      <Project data={ProjectData} />
     </Layout>
   );
 };
 
-// fetch data for Red Sofa Cafe project from src/data/projects.json
+/*
+  Fetch main panel data for Red Sofa Cafe project from src/data/projects.json
+  Fetch header data for Red Sofa Cafe project from src/data/header.json
+*/
 export const query = graphql`
   query {
     allDataJson {
       edges {
         node {
-          rsc {
-            name
-            color
-            year
-            type
-            link
-            bannerImg
-            preview
+          projects {
+            rsc {
+              name
+              class
+              year
+              type
+              link
+              bannerImg
+              preview
+            }
+          }
+          header {
+            rsc {
+              class
+              logo
+              appIcon
+              techStack {
+                frontEnd {
+                  title
+                  html
+                  css
+                  js
+                  jquery
+                }
+                backEnd {
+                  title
+                  php
+                  mysql
+                }
+              }
+            }
           }
         }
       }

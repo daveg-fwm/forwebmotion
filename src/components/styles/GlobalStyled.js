@@ -1,6 +1,6 @@
 import { Global, css } from '@emotion/core';
 
-const GlobalStyles = () => (
+const GlobalStyled = () => (
   <Global
     styles={css`
       /* open-sans-300 - latin */
@@ -62,6 +62,8 @@ const GlobalStyles = () => (
       html {
         box-sizing: border-box;
         font-size: 10px;
+        -ms-text-size-adjust: 100%;
+        text-size-adjust: 100%;
       }
 
       *,
@@ -73,7 +75,7 @@ const GlobalStyles = () => (
       body {
         padding: 0;
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 2.4rem;
         line-height: 1.5;
         font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-weight: 300;
@@ -104,28 +106,72 @@ const GlobalStyles = () => (
         outline: 0;
       }
 
-      a:not(.a-svg) {
+      @keyframes active-click {
+        0% {
+          font-weight: inherit;
+        }
+        100% {
+          font-weight: 700;
+        }
+      }
+
+      a {
         outline: 0;
         color: #40afe9;
-        font-weight: 400;
-        text-decoration: none;
+        transition: font-weight 0.2s;
+
+        &:link,
+        &:visited {
+          font-weight: inherit;
+        }
+
+        &:hover {
+          font-weight: 700;
+        }
+
+        &:active {
+          animation: active-click 0.2s 1;
+        }
       }
 
       button {
         cursor: pointer;
       }
 
-      /* set pointer-events to none so title doesn't show on hover */
+      /* Set pointer-events to none so title doesn't show on hover */
       svg {
         pointer-events: none;
       }
 
-      /* all anchor tags that wrap svgs need to take up the full width and height due to no pointer events on svgs */
+      /* All anchor tags that wrap svgs need to take up the full width and height due to no pointer events on svgs */
       .a-svg {
-        display: inline-block;
+        display: block;
+      }
+
+      p {
+        margin: 0 0 20px;
+
+        a {
+          text-decoration: none;
+        }
+      }
+
+      .a-svg-txt {
+        position: relative;
+        top: -2px;
+        margin-left: 10px;
+      }
+
+      .right-arrow-link {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .right-arrow-link .a-svg-txt {
+        margin-left: 25px;
       }
     `}
   />
 );
 
-export default GlobalStyles;
+export default GlobalStyled;

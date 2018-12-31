@@ -1,47 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
-import GlobalStyles from './styles/GlobalStyles';
+import GlobalStyled from './styles/GlobalStyled';
 import Header from './header';
-import MainPanel from './styles/MainPanel';
+import MainPanelStyled from './styles/MainPanelStyled';
 import Footer from './Footer';
 
-class Layout extends React.Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-  };
-
-  render() {
-    const { children } = this.props;
-
-    return (
-      // fetch page link data from gatsby-config.js (centralized navigation)
-      <StaticQuery
-        query={graphql`
-          query SiteTitleQuery {
-            site {
-              siteMetadata {
-                menuLinks {
-                  name
-                  link
-                }
-              }
+const Layout = ({ children, headerData, footerClass }) => (
+  // Fetch page link data from gatsby-config.js (centralized navigation)
+  <StaticQuery
+    query={graphql`
+      query SiteTitleQuery {
+        site {
+          siteMetadata {
+            menuLinks {
+              name
+              link
             }
           }
-        `}
-        render={data => (
-          <>
-            {/* Styles used on every page */}
-            <GlobalStyles />
-            {/* send page link data to Header component */}
-            <Header menuLinks={data.site.siteMetadata.menuLinks} />
-            <MainPanel>{children}</MainPanel>
-            <Footer />
-          </>
-        )}
-      />
-    );
-  }
-}
+        }
+      }
+    `}
+    render={data => (
+      <>
+        {/* Styles used on every page */}
+        <GlobalStyled />
+
+        {/*
+          Send page link and header content data to Header component.
+          Header content data is received from pages.
+        */}
+        <Header
+          menuLinks={data.site.siteMetadata.menuLinks}
+          data={headerData}
+        />
+
+        <MainPanelStyled>{children}</MainPanelStyled>
+        <Footer footerClass={footerClass} />
+      </>
+    )}
+  />
+);
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  headerData: PropTypes.object.isRequired,
+  footerClass: PropTypes.object.isRequired,
+};
 
 export default Layout;

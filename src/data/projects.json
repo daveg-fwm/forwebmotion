@@ -1,35 +1,34 @@
 {
-  "rsc": {
-    "name": "Red Sofa Cafe",
-    "color": "#fedf2f",
-    "year": "2015",
-    "type": "Static PHP",
-    "link": "/red-sofa-cafe",
-    "bannerImg": "RSCBanner",
-    "logo": "RSCLogo",
-    "preview":
-      "The first site I ever launched really gave me the opportunity to experiment and develop my skills. I didn’t use a framework or cms, just good ol’ HTML5, CSS3, jQuery, PHP and MySQL."
-  },
-  "iotga": {
-    "name": "IoT Global Awards",
-    "color": "#bb9847",
-    "year": "2017",
-    "type": "Wordpress",
-    "link": "/iot-global-awards",
-    "bannerImg": "IOTGABanner",
-    "logo": "IOTGALogo",
-    "preview":
-      "The first site I ever launched really gave me the opportunity to experiment and develop my skills. I didn’t use a framework or cms, just good ol’ HTML5, CSS3, jQuery, PHP and MySQL."
-  },
-  "wkmpg": {
-    "name": "WKM Payment Gateway",
-    "color": "#41a940",
-    "year": "2018",
-    "type": "Zend Framework 3",
-    "link": "/wkm-payment-gateway",
-    "bannerImg": "WKMPGBanner",
-    "logo": "WKMLogo",
-    "preview":
-      "The first site I ever launched really gave me the opportunity to experiment and develop my skills. I didn’t use a framework or cms, just good ol’ HTML5, CSS3, jQuery, PHP and MySQL."
+  "projects": {
+    "rsc": {
+      "name": "Red Sofa Cafe",
+      "class": "rsc-project",
+      "year": "2015",
+      "type": "Static PHP",
+      "link": "/red-sofa-cafe",
+      "bannerImg": "RSCBanner",
+      "preview":
+        "The first site I ever launched really gave me the opportunity to experiment and develop my skills. I didn’t use a framework or cms, just good ol’ HTML5, CSS3, jQuery, PHP and MySQL."
+    },
+    "iotga": {
+      "name": "IoT Global Awards",
+      "class": "iotga-project",
+      "year": "2017",
+      "type": "Wordpress",
+      "link": "/iot-global-awards",
+      "bannerImg": "IOTGABanner",
+      "preview":
+        "The first site I ever launched really gave me the opportunity to experiment and develop my skills. I didn’t use a framework or cms, just good ol’ HTML5, CSS3, jQuery, PHP and MySQL."
+    },
+    "wkmpg": {
+      "name": "WKM Payment Gateway",
+      "class": "wkmpg-project",
+      "year": "2018",
+      "type": "Zend Framework 3",
+      "link": "/wkm-payment-gateway",
+      "bannerImg": "WKMPGBanner",
+      "preview":
+        "The first site I ever launched really gave me the opportunity to experiment and develop my skills. I didn’t use a framework or cms, just good ol’ HTML5, CSS3, jQuery, PHP and MySQL."
+    }
   }
 }

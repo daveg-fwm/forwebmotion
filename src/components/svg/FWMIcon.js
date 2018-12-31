@@ -1,6 +1,5 @@
 import SVGInline from 'react-svg-inline';
 
-// forwebmotion icon
 const FWMIcon = () => (
   <SVGInline
     className="fwm-icon"

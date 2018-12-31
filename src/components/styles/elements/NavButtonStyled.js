@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const NavButton = styled.button`
+const NavButtonStyled = styled.button`
   width: 50px;
   height: 40px;
   padding: 10px;
@@ -20,4 +20,4 @@ const NavButton = styled.button`
   }
 `;
 
-export default NavButton;
+export default NavButtonStyled;

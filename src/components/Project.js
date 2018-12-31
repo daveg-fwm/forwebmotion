@@ -10,7 +10,7 @@ const Project = ({ data }) => (
 Project.propTypes = {
   data: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
+    class: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,

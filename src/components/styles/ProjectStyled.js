@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const ProjectInner = styled.div`
+const ProjectStyled = styled.div`
   overflow: hidden;
 
   a {
@@ -23,4 +23,4 @@ const ProjectInner = styled.div`
   }
 `;
 
-export default ProjectInner;
+export default ProjectStyled;

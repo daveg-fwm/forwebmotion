@@ -1,6 +1,5 @@
 import SVGInline from 'react-svg-inline';
 
-// forwebmotion logo
 const FWMLogo = () => (
   <SVGInline
     className="fwm-logo"
