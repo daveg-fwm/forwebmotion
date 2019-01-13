@@ -6,21 +6,21 @@ import HeaderContentStyled from './HeaderContentStyled';
 const HeaderPanelStyled = styled.header`
   width: 100%;
   max-width: 1366px;
+  height: 85px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  padding: 0 40px;
   margin: 0 auto;
   font-size: 1.6rem;
   font-weight: 400;
   z-index: 2;
 
   .header-panel-inner {
-    width: calc(100% + 30px);
+    width: 100%;
+    height: inherit;
     min-height: 85px;
     position: relative;
-    left: -15px;
   }
 
   .top-nav {
@@ -96,13 +96,14 @@ const HeaderPanelStyled = styled.header`
   }
 
   @media screen and (min-width: 1200px) and (min-height: 620px) {
+    height: auto;
+    padding: 0 40px;
     top: 20px;
     z-index: 1;
 
     .header-panel-inner {
       width: 300px;
       min-height: 360px;
-      left: 0;
       background-color: #fff;
       box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
       overflow: hidden;

@@ -6,8 +6,8 @@ import SEO from '../components/seo';
 import Project from '../components/Project';
 
 const RedSofaCafe = ({ data }) => {
-  const ProjectData = data.allDataJson.edges[0].node.projects.rsc;
-  const HeaderData = data.allDataJson.edges[1].node.header.rsc;
+  const HeaderData = data.allDataJson.edges[0].node.header.rsc;
+  const ProjectData = data.allDataJson.edges[0].node.main.rsc;
 
   return (
     /*
@@ -22,24 +22,18 @@ const RedSofaCafe = ({ data }) => {
   );
 };
 
-/*
-  Fetch main panel data for Red Sofa Cafe project from src/data/projects.json
-  Fetch header data for Red Sofa Cafe project from src/data/header.json
-*/
+// Fetch main panel and header data for Red Sofa Cafe project from src/data/projects.json
 export const query = graphql`
   query {
     allDataJson {
       edges {
         node {
-          projects {
+          main {
             rsc {
-              name
               class
               year
               type
-              link
               bannerImg
-              preview
             }
           }
           header {

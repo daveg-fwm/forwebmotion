@@ -6,8 +6,8 @@ import SEO from '../components/seo';
 import Project from '../components/Project';
 
 const WkmPaymentGateway = ({ data }) => {
-  const ProjectData = data.allDataJson.edges[0].node.projects.wkmpg;
-  const HeaderData = data.allDataJson.edges[1].node.header.wkmpg;
+  const HeaderData = data.allDataJson.edges[0].node.header.wkmpg;
+  const ProjectData = data.allDataJson.edges[0].node.main.wkmpg;
 
   return (
     /*
@@ -22,24 +22,18 @@ const WkmPaymentGateway = ({ data }) => {
   );
 };
 
-/*
-  Fetch main panel data for WKM Payment Gateway project from src/data/projects.json
-  Fetch header data for WKM Payment Gateway project from src/data/header.json
-*/
+// Fetch main panel and header data for WKM Payment Gateway project from src/data/projects.json
 export const query = graphql`
   query {
     allDataJson {
       edges {
         node {
-          projects {
+          main {
             wkmpg {
-              name
               class
               year
               type
-              link
               bannerImg
-              preview
             }
           }
           header {

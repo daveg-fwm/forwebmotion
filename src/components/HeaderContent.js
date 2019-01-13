@@ -26,6 +26,15 @@ import {
 } from './svg/InlineSVG';
 
 class HeaderContent extends React.Component {
+  static propTypes = {
+    data: PropTypes.shape({
+      class: PropTypes.string,
+      logo: PropTypes.string,
+      appIcon: PropTypes.string,
+      techStack: PropTypes.object,
+    }).isRequired,
+  };
+
   components = {
     RSCLogo,
     IOTGALogo,
@@ -56,8 +65,8 @@ class HeaderContent extends React.Component {
     // Create component to display app icon dynamically
     const AppIcon = this.components[data.appIcon];
 
-    // Header content on homepage is static and structured differently to other pages
-    if (data.page === 'index') {
+    // Header content on homepage is static and structured differently to other pages - only index.js sends page data
+    if ('page' in data) {
       return (
         <div className="header-content">
           <p>
@@ -116,14 +125,5 @@ class HeaderContent extends React.Component {
     );
   }
 }
-
-HeaderContent.propTypes = {
-  data: PropTypes.shape({
-    class: PropTypes.string,
-    logo: PropTypes.string,
-    appIcon: PropTypes.string,
-    techStack: PropTypes.object,
-  }).isRequired,
-};
 
 export default HeaderContent;

@@ -1,5 +1,5 @@
 {
-  "projects": {
+  "main": {
     "rsc": {
       "name": "Red Sofa Cafe",
       "class": "rsc-project",
@@ -14,7 +14,7 @@
       "name": "IoT Global Awards",
       "class": "iotga-project",
       "year": "2017",
-      "type": "Wordpress",
+      "type": "WordPress",
       "link": "/iot-global-awards",
       "bannerImg": "IOTGABanner",
       "preview":
@@ -29,6 +29,86 @@
       "bannerImg": "WKMPGBanner",
       "preview":
         "The first site I ever launched really gave me the opportunity to experiment and develop my skills. I didn’t use a framework or cms, just good ol’ HTML5, CSS3, jQuery, PHP and MySQL."
+    }
+  },
+  "header": {
+    "rsc": {
+      "class": "rsc-header",
+      "logo": "RSCLogo",
+      "appIcon": "static",
+      "techStack": {
+        "frontEnd": {
+          "title": "Front-end",
+          "html": "HTMLIcon",
+          "css": "CSSIcon",
+          "js": "JSIcon",
+          "jquery": "JQueryIcon"
+        },
+        "backEnd": {
+          "title": "Back-end",
+          "php": "PHPIcon",
+          "mysql": "MySQLIcon"
+        }
+      }
+    },
+    "iotga": {
+      "class": "iotga-header",
+      "logo": "IOTGALogo",
+      "appIcon": "WordPressIcon",
+      "techStack": {
+        "frontEnd": {
+          "title": "Front-end",
+          "html": "HTMLIcon",
+          "css": "CSSIcon",
+          "js": "JSIcon",
+          "jquery": "JQueryIcon"
+        },
+        "backEnd": {
+          "title": "Back-end",
+          "php": "PHPIcon",
+          "mysql": "MySQLIcon"
+        },
+        "server": {
+          "title": "Server",
+          "ubuntu": "UbuntuIcon",
+          "apache": "ApacheIcon",
+          "nginx": "NginxIcon"
+        },
+        "appsDevOps": {
+          "title": "Apps and DevOps",
+          "gulp": "GulpIcon",
+          "azureDevOps": "AzureDevOpsIcon",
+          "github": "GitHubIcon",
+          "sourceTree": "SourceTreeIcon"
+        }
+      }
+    },
+    "wkmpg": {
+      "class": "wkmpg-header",
+      "logo": "WKMLogo",
+      "appIcon": "ZendIcon",
+      "techStack": {
+        "frontEnd": {
+          "title": "Front-end",
+          "html": "HTMLIcon",
+          "css": "CSSIcon",
+          "js": "JSIcon",
+          "jquery": "JQueryIcon"
+        },
+        "backEnd": {
+          "title": "Back-end",
+          "php": "PHPIcon",
+          "mysql": "MySQLIcon",
+          "doctrine": "DoctrineIcon",
+          "sagePay": "SagePayIcon"
+        },
+        "server": {
+          "title": "Server",
+          "ubuntu": "UbuntuIcon",
+          "apache": "ApacheIcon",
+          "nginx": "NginxIcon"
+        }
+      }
     }
   }
 }

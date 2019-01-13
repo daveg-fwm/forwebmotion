@@ -7,7 +7,7 @@ const FooterPanelStyled = styled.footer`
   top: 0;
   left: 0;
   right: 0;
-  padding: 0 40px;
+  padding: 0 10px;
   margin: 0 auto;
   font-size: 1.6rem;
   font-weight: 400;
@@ -35,6 +35,8 @@ const FooterPanelStyled = styled.footer`
   }
 
   @media screen and (min-width: 1200px) and (min-height: 620px) {
+    padding: 0 40px;
+
     &.fixed {
       position: fixed;
       top: 420px;

@@ -19,7 +19,7 @@ const WKMPGBanner = () => (
       query {
         placeholderImage: file(relativePath: { eq: "wkmpg-banner.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 700) {
+            fluid(maxWidth: 1000) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -31,6 +31,7 @@ const WKMPGBanner = () => (
         fluid={data.placeholderImage.childImageSharp.fluid}
         alt="WKM Payment Gateway project"
         className="banner"
+        backgroundColor="#fff"
       />
     )}
   />

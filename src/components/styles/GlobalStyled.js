@@ -61,7 +61,7 @@ const GlobalStyled = () => (
 
       html {
         box-sizing: border-box;
-        font-size: 10px;
+        font-size: 8px;
         -ms-text-size-adjust: 100%;
         text-size-adjust: 100%;
       }
@@ -169,6 +169,12 @@ const GlobalStyled = () => (
 
       .right-arrow-link .a-svg-txt {
         margin-left: 25px;
+      }
+
+      @media screen and (min-width: 400px) {
+        html {
+          font-size: 10px;
+        }
       }
     `}
   />

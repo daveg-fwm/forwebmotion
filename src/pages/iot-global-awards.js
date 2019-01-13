@@ -6,8 +6,8 @@ import SEO from '../components/seo';
 import Project from '../components/Project';
 
 const IotGlobalAwards = ({ data }) => {
-  const ProjectData = data.allDataJson.edges[0].node.projects.iotga;
-  const HeaderData = data.allDataJson.edges[1].node.header.iotga;
+  const HeaderData = data.allDataJson.edges[0].node.header.iotga;
+  const ProjectData = data.allDataJson.edges[0].node.main.iotga;
 
   return (
     /*
@@ -22,24 +22,18 @@ const IotGlobalAwards = ({ data }) => {
   );
 };
 
-/*
-  Fetch main panel data for IoT Global Awards project from src/data/projects.json
-  Fetch header data for IoT Global Awards project from src/data/header.json
-*/
+// Fetch main panel and header data for IoT Global Awards project from src/data/projects.json
 export const query = graphql`
   query {
     allDataJson {
       edges {
         node {
-          projects {
+          main {
             iotga {
-              name
               class
               year
               type
-              link
               bannerImg
-              preview
             }
           }
           header {

@@ -7,7 +7,7 @@ import Project from '../components/Project';
 import Home from '../components/Home';
 
 const IndexPage = ({ data }) => {
-  const ProjectsData = data.allDataJson.edges[0].node.projects;
+  const ProjectsData = data.allDataJson.edges[0].node.main;
 
   return (
     /*
@@ -31,7 +31,7 @@ export const query = graphql`
     allDataJson {
       edges {
         node {
-          projects {
+          main {
             rsc {
               name
               class

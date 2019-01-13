@@ -19,7 +19,7 @@ const IOTGABanner = () => (
       query {
         placeholderImage: file(relativePath: { eq: "iotga-banner.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 700) {
+            fluid(maxWidth: 1000) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -31,6 +31,7 @@ const IOTGABanner = () => (
         fluid={data.placeholderImage.childImageSharp.fluid}
         alt="IoT Global Awards project"
         className="banner"
+        backgroundColor="#fff"
       />
     )}
   />

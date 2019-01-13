@@ -22,18 +22,6 @@ const ArrowStyled = styled.span`
     width: 2px;
     height: 20px;
     background-color: #40afe9;
-
-    &.rsc-arrow {
-      background-color: #fedf2f;
-    }
-
-    &.iotga-arrow {
-      background-color: #bb9847;
-    }
-
-    &.wkmpg-arrow {
-      background-color: #41a940;
-    }
   }
 `;
 

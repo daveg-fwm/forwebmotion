@@ -19,7 +19,7 @@ const RSCBanner = () => (
       query {
         placeholderImage: file(relativePath: { eq: "rsc-banner.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 700) {
+            fluid(maxWidth: 1000) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -31,6 +31,7 @@ const RSCBanner = () => (
         fluid={data.placeholderImage.childImageSharp.fluid}
         alt="Red Sofa Cafe project"
         className="banner"
+        backgroundColor="#fff"
       />
     )}
   />

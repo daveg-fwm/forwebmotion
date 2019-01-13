@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import anime from 'animejs';
 import { HeaderPanelStyled, NavButtonStyled } from './styles/HeaderPanelStyled';
 import { FWMIcon } from './svg/InlineSVG';
 import HeaderContent from './HeaderContent';
@@ -14,38 +13,14 @@ class Header extends React.Component {
         link: PropTypes.string.isRequired,
       })
     ).isRequired,
-    data: PropTypes.object,
+    data: PropTypes.object.isRequired,
   };
 
   state = {
     showMenu: false,
   };
 
-  // Create a ref for the nav element to be animated
-  // navRef = React.createRef();
-
-  // componentDidUpdate() {
-  //   const { showMenu } = this.state;
-
-  //   // Animate nav menu open/close
-  //   anime({
-  //     targets: this.navRef.current,
-  //     translateY: () => {
-  //       if (showMenu) {
-  //         return ['-100%', '0%'];
-  //       }
-  //       // Menu is closed
-  //       return ['0%', '-100%'];
-  //     },
-  //     easing: 'easeOutCubic',
-  //     duration: 500,
-  //   });
-  // }
-  // className={showMenu ? 'enter' : 'exit'} ref={this.navRef}
   toggleNav = () => {
-    // Prevent flash of final animation stage if user clicks menu button before current animation completes
-    // anime.remove(this.navRef.current);
-
     this.setState(state => ({
       // Menu button toggles showMenu state to open/close nav menu
       showMenu: !state.showMenu,
