@@ -3,11 +3,13 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import Project from '../components/Project';
+import ProjectPreview from '../components/ProjectPreview';
+import ProjectMain from '../components/ProjectMain';
 
 const RedSofaCafe = ({ data }) => {
   const HeaderData = data.allDataJson.edges[0].node.header.rsc;
-  const ProjectData = data.allDataJson.edges[0].node.main.rsc;
+  const PreviewData = data.allDataJson.edges[0].node.preview.rsc;
+  const MainData = data.allDataJson.edges[0].node.main.rsc;
 
   return (
     /*
@@ -16,26 +18,22 @@ const RedSofaCafe = ({ data }) => {
     */
     <Layout headerData={HeaderData} footerClass={{ class: 'relative' }}>
       <SEO title="Red Sofa Cafe" />
-      {/* Pass rsc preview data to Project component */}
-      <Project data={ProjectData} />
+      <div className="panel">
+        {/* Pass rsc preview data to ProjectPreview component */}
+        <ProjectPreview data={PreviewData} />
+        {/* Pass rsc main data to ProjectMain component */}
+        <ProjectMain data={MainData} />
+      </div>
     </Layout>
   );
 };
 
-// Fetch main panel and header data for Red Sofa Cafe project from src/data/projects.json
+// Fetch header, preview and main data for Red Sofa Cafe project from src/data/projects.json
 export const query = graphql`
   query {
     allDataJson {
       edges {
         node {
-          main {
-            rsc {
-              class
-              year
-              type
-              bannerImg
-            }
-          }
           header {
             rsc {
               class
@@ -55,6 +53,20 @@ export const query = graphql`
                   mysql
                 }
               }
+            }
+          }
+          preview {
+            rsc {
+              class
+              year
+              type
+              bannerImg
+            }
+          }
+          main {
+            rsc {
+              type
+              content
             }
           }
         }

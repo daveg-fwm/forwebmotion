@@ -40,7 +40,13 @@ module.exports = {
     },
     'gatsby-transformer-json',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        useMozJpeg: true,
+        stripMetadata: true,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

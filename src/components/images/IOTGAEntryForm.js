@@ -13,11 +13,11 @@ import Img from 'gatsby-image';
  * - `StaticQuery`: https://gatsby.app/staticquery
  */
 
-const IOTGABanner = () => (
+const IOTGAEntryForm = () => (
   <StaticQuery
     query={graphql`
       query {
-        placeholderImage: file(relativePath: { eq: "iotga-banner.jpg" }) {
+        placeholderImage: file(relativePath: { eq: "iotga-entry-form.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 1000, quality: 70) {
               ...GatsbyImageSharpFluid
@@ -29,12 +29,12 @@ const IOTGABanner = () => (
     render={data => (
       <Img
         fluid={data.placeholderImage.childImageSharp.fluid}
-        alt="IoT Global Awards project"
-        className="banner"
+        alt="IoT Global Awards entry form"
+        className="tall"
         backgroundColor="#fff"
       />
     )}
   />
 );
 
-export default IOTGABanner;
+export default IOTGAEntryForm;

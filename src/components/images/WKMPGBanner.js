@@ -19,7 +19,7 @@ const WKMPGBanner = () => (
       query {
         placeholderImage: file(relativePath: { eq: "wkmpg-banner.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 1000) {
+            fluid(maxWidth: 1000, quality: 70) {
               ...GatsbyImageSharpFluid
             }
           }

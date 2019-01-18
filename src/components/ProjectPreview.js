@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { ProjectStyled, ArrowStyled } from './styles/ProjectStyled';
+import {
+  ProjectPreviewStyled,
+  ArrowStyled,
+} from './styles/ProjectPreviewStyled';
 import { RSCBanner, IOTGABanner, WKMPGBanner } from './images/images';
 
-class Project extends React.Component {
+class ProjectPreview extends React.Component {
   static propTypes = {
     data: PropTypes.shape({
       name: PropTypes.string,
@@ -13,7 +16,7 @@ class Project extends React.Component {
       type: PropTypes.string.isRequired,
       link: PropTypes.string,
       bannerImg: PropTypes.string.isRequired,
-      preview: PropTypes.string,
+      intro: PropTypes.string,
     }).isRequired,
   };
 
@@ -28,11 +31,11 @@ class Project extends React.Component {
     // Create component to display banner image dynamically
     const Banner = this.components[data.bannerImg];
 
-    // Preview paragraphs and link container to page are only needed on index.js
-    if ('preview' in data) {
+    // Intro paragraphs and link container to page are only needed on index.js
+    if ('intro' in data) {
       return (
-        <ProjectStyled id={data.class} className="panel">
-          <p className="preview">{data.preview}</p>
+        <ProjectPreviewStyled>
+          <p className="intro">{data.intro}</p>
           <Link to={data.link} className={`project ${data.class}`}>
             <div className="project-arrow">
               <ArrowStyled className="arrow">
@@ -47,13 +50,13 @@ class Project extends React.Component {
             </div>
             <Banner />
           </Link>
-        </ProjectStyled>
+        </ProjectPreviewStyled>
       );
     }
 
     // Link to project preview on index.js used for close button
     return (
-      <ProjectStyled className="panel">
+      <ProjectPreviewStyled>
         <div className={`project ${data.class}`}>
           <Link to={`/#${data.class}`}>x</Link>
           <div className="project-bg">
@@ -62,9 +65,9 @@ class Project extends React.Component {
           </div>
           <Banner />
         </div>
-      </ProjectStyled>
+      </ProjectPreviewStyled>
     );
   }
 }
 
-export default Project;
+export default ProjectPreview;

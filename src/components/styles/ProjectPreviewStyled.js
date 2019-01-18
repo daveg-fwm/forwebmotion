@@ -1,10 +1,8 @@
 import styled from '@emotion/styled';
 import ArrowStyled from './elements/ArrowStyled';
 
-const ProjectStyled = styled.div`
-  overflow: hidden;
-
-  .preview {
+const ProjectPreviewStyled = styled.div`
+  .intro {
     margin-bottom: 40px;
   }
 
@@ -148,4 +146,4 @@ const ProjectStyled = styled.div`
   }
 `;
 
-export { ProjectStyled, ArrowStyled };
+export { ProjectPreviewStyled, ArrowStyled };

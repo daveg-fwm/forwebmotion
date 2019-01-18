@@ -38,7 +38,11 @@ class Header extends React.Component {
             <Link className="a-svg" to="/">
               <FWMIcon />
             </Link>
-            <NavButtonStyled type="button" onClick={this.toggleNav}>
+            <NavButtonStyled
+              type="button"
+              className={showMenu ? 'open' : 'close'}
+              onClick={this.toggleNav}
+            >
               <span />
               <span />
               <span />

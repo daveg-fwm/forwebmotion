@@ -3,11 +3,11 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import Project from '../components/Project';
+import ProjectPreview from '../components/ProjectPreview';
 import Home from '../components/Home';
 
 const IndexPage = ({ data }) => {
-  const ProjectsData = data.allDataJson.edges[0].node.main;
+  const PreviewData = data.allDataJson.edges[0].node.preview;
 
   return (
     /*
@@ -17,9 +17,11 @@ const IndexPage = ({ data }) => {
     <Layout headerData={{ page: 'index' }} footerClass={{ class: 'fixed' }}>
       <SEO title="Home" />
       <Home />
-      {Object.keys(ProjectsData).map(key => (
-        // Pass projects' preview data to Project component
-        <Project key={key} data={ProjectsData[key]} />
+      {Object.keys(PreviewData).map(key => (
+        <div key={key} id={PreviewData[key].class} className="panel">
+          {/* Pass projects' preview data to ProjectPreview component */}
+          <ProjectPreview data={PreviewData[key]} />
+        </div>
       ))}
     </Layout>
   );
@@ -31,7 +33,7 @@ export const query = graphql`
     allDataJson {
       edges {
         node {
-          main {
+          preview {
             rsc {
               name
               class
@@ -39,7 +41,7 @@ export const query = graphql`
               type
               link
               bannerImg
-              preview
+              intro
             }
             iotga {
               name
@@ -48,7 +50,7 @@ export const query = graphql`
               type
               link
               bannerImg
-              preview
+              intro
             }
             wkmpg {
               name
@@ -57,7 +59,7 @@ export const query = graphql`
               type
               link
               bannerImg
-              preview
+              intro
             }
           }
         }

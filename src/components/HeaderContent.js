@@ -102,22 +102,22 @@ class HeaderContent extends React.Component {
           {data.appIcon !== 'static' ? <AppIcon /> : null}
         </div>
 
-        {// Cycle through tech stack object to get stack layer eg: frontEnd
-        Object.keys(data.techStack).map(type => (
-          <section key={type}>
+        {// Cycle through tech stack object to get stack layers eg: frontEnd, backEnd
+        Object.keys(data.techStack).map(layer => (
+          <section key={layer}>
             {// Cycle through stack layer object to display layer title and icons
-            Object.keys(data.techStack[type]).map(item => {
+            Object.keys(data.techStack[layer]).map(item => {
               if (item === 'title') {
                 return (
-                  <h2 key={data.techStack[type][item]}>
-                    {data.techStack[type][item]}
+                  <h2 key={data.techStack[layer][item]}>
+                    {data.techStack[layer][item]}
                   </h2>
                 );
               }
 
               // Create component to display icon dynamically
-              const Icon = this.components[data.techStack[type][item]];
-              return <Icon key={data.techStack[type][item]} />;
+              const Icon = this.components[data.techStack[layer][item]];
+              return <Icon key={data.techStack[layer][item]} />;
             })}
           </section>
         ))}
