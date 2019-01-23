@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import TransitionLink from 'gatsby-plugin-transition-link';
 import { HeaderPanelStyled, NavButtonStyled } from './styles/HeaderPanelStyled';
 import { FWMIcon } from './svg/InlineSVG';
 import HeaderContent from './HeaderContent';
@@ -18,6 +19,25 @@ class Header extends React.Component {
 
   state = {
     showMenu: false,
+    windowWidth: window.innerWidth,
+    windowHeight: window.innerHeight,
+  };
+
+  componentDidMount = () => {
+    window.addEventListener('resize', this.updateSize);
+  };
+
+  // Prevent memory leaks
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.updateSize);
+  };
+
+  // Animation values vary depending on window size
+  updateSize = () => {
+    this.setState({
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight,
+    });
   };
 
   toggleNav = () => {
@@ -27,15 +47,20 @@ class Header extends React.Component {
     }));
   };
 
+  closeNav = () => {
+    // Nav links and logo set showMenu state to false to close nav menu
+    this.setState({ showMenu: false });
+  };
+
   render() {
     const { menuLinks, data } = this.props;
-    const { showMenu } = this.state;
+    const { showMenu, windowWidth, windowHeight } = this.state;
 
     return (
       <HeaderPanelStyled>
         <div className="header-panel-inner">
           <div className="top-nav">
-            <Link className="a-svg" to="/">
+            <Link className="a-svg" to="/" onClick={this.closeNav}>
               <FWMIcon />
             </Link>
             <NavButtonStyled
@@ -57,16 +82,30 @@ class Header extends React.Component {
             {/*
               Send data from layout to populate content for this component - no data for index page as content structure for header is different to other pages so edit directly in component
             */}
-            <HeaderContent data={data} />
+            <HeaderContent
+              data={data}
+              windowWidth={windowWidth}
+              windowHeight={windowHeight}
+            />
 
             <nav>
               <ul>
                 {/* menuLinks contains page link data - received from Layout component */}
                 {menuLinks.map(item => (
                   <li key={item.name}>
-                    <Link to={item.link} activeClassName="active">
+                    <TransitionLink
+                      activeClassName="active"
+                      to={item.link}
+                      exit={{
+                        length: 1,
+                      }}
+                      entry={{
+                        delay: 0.6,
+                      }}
+                      onClick={this.closeNav}
+                    >
                       {item.name}
-                    </Link>
+                    </TransitionLink>
                   </li>
                 ))}
               </ul>

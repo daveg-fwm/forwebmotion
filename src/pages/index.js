@@ -14,7 +14,8 @@ const IndexPage = ({ data }) => {
       Send page data so HeaderComponent knows to use static content - data is passed to layout component which passes the data down to the header component
       Pass footer class to layout component which passes the class down to the footer component
     */
-    <Layout headerData={{ page: 'index' }} footerClass={{ class: 'fixed' }}>
+    // <Layout headerData={{ page: 'index' }} footerClass={{ class: 'fixed' }}>
+    <>
       <SEO title="Home" />
       <Home />
       {Object.keys(PreviewData).map(key => (
@@ -23,7 +24,8 @@ const IndexPage = ({ data }) => {
           <ProjectPreview data={PreviewData[key]} />
         </div>
       ))}
-    </Layout>
+    </>
+    // </Layout>
   );
 };
 

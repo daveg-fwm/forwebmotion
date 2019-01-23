@@ -1,13 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
+import posed, { PoseGroup } from 'react-pose';
 import GlobalStyled from './styles/GlobalStyled';
 import Header from './header';
 import MainPanelStyled from './styles/MainPanelStyled';
 import Footer from './Footer';
 
-const Layout = ({ children, headerData, footerClass }) => (
-  // Fetch page link data from gatsby-config.js (centralized navigation)
+const MainPanelPosed = posed(MainPanelStyled)({
+  // enter: {
+  //   opacity: 1,
+  //   transition: { duration: 500 },
+  //   delay: 550,
+  //   afterChildren: true,
+  // },
+  // exit: {
+  //   opacity: 0,
+  //   transition: { duration: 500 },
+  //   delay: 550,
+  //   afterChildren: true,
+  // },
+});
+
+const Layout = ({ children, ...props }) => (
+  /*
+    Fetch page link data from gatsby-config.js (centralized navigation)
+    Fetch header data from src/data/projects.json
+  */
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -19,33 +38,142 @@ const Layout = ({ children, headerData, footerClass }) => (
             }
           }
         }
+        allDataJson {
+          edges {
+            node {
+              header {
+                rsc {
+                  class
+                  logo
+                  appIcon
+                  techStack {
+                    frontEnd {
+                      title
+                      html
+                      css
+                      js
+                      jquery
+                    }
+                    backEnd {
+                      title
+                      php
+                      mysql
+                    }
+                  }
+                }
+                iotga {
+                  class
+                  logo
+                  appIcon
+                  techStack {
+                    frontEnd {
+                      title
+                      html
+                      css
+                      js
+                      jquery
+                    }
+                    backEnd {
+                      title
+                      php
+                      mysql
+                    }
+                    server {
+                      title
+                      ubuntu
+                      apache
+                      nginx
+                    }
+                    appsDevOps {
+                      title
+                      gulp
+                      azureDevOps
+                      github
+                      sourceTree
+                    }
+                  }
+                }
+                wkmpg {
+                  class
+                  logo
+                  appIcon
+                  techStack {
+                    frontEnd {
+                      title
+                      html
+                      css
+                      js
+                      jquery
+                    }
+                    backEnd {
+                      title
+                      php
+                      mysql
+                      doctrine
+                      sagePay
+                    }
+                    server {
+                      title
+                      ubuntu
+                      apache
+                      nginx
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     `}
-    render={data => (
-      <>
-        {/* Styles used on every page */}
-        <GlobalStyled />
+    render={data => {
+      /*
+        headerData gets passed to the Header component which passes down to HeaderContent component.
+        footerClass gets passed down to the Footer component.
+      */
+      let headerData = {};
+      let footerClass = { class: 'relative' };
 
-        {/*
-          Send page link and header content data to Header component.
-          Header content data is received from pages.
-        */}
-        <Header
-          menuLinks={data.site.siteMetadata.menuLinks}
-          data={headerData}
-        />
+      if (props.location.pathname === '/') {
+        headerData = { class: 'index' };
+        footerClass = { class: 'fixed' };
+      } else if (props.location.pathname === '/red-sofa-cafe') {
+        headerData = data.allDataJson.edges[0].node.header.rsc;
+      } else if (props.location.pathname === '/iot-global-awards') {
+        headerData = data.allDataJson.edges[0].node.header.iotga;
+      } else if (props.location.pathname === '/wkm-payment-gateway') {
+        headerData = data.allDataJson.edges[0].node.header.wkmpg;
+      }
 
-        <MainPanelStyled>{children}</MainPanelStyled>
-        <Footer footerClass={footerClass} />
-      </>
-    )}
+      return (
+        <>
+          {/* Styles used on every page */}
+          <GlobalStyled />
+
+          {/* Send page link and header content data to Header component. */}
+          <Header
+            menuLinks={data.site.siteMetadata.menuLinks}
+            data={headerData}
+          />
+
+          <PoseGroup>
+            <MainPanelPosed key={props.location.pathname}>
+              {children}
+            </MainPanelPosed>
+          </PoseGroup>
+
+          <Footer footerClass={footerClass} />
+        </>
+      );
+    }}
   />
 );
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  headerData: PropTypes.object.isRequired,
-  footerClass: PropTypes.object.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }).isRequired,
 };
 
 export default Layout;

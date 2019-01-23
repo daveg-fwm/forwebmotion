@@ -31,17 +31,21 @@ class ProjectMain extends React.Component {
     return (
       <ProjectMainStyled>
         {data.map((item, i) => {
+          // paragraphs
           if (item.type === 'text') {
             return <p key={item.type + i}>{item.content}</p>;
           }
+
+          // images
           if (item.type === 'image') {
             // Create component to display image dynamically
             const Img = this.components[item.content];
             return <Img key={item.type + i} />;
           }
 
+          // videos
           return (
-            <video key={item.type + i} autoPlay="true" loop muted>
+            <video key={item.type + i} autoPlay loop muted>
               <source src={`/static/video/${item.content}`} type="video/mp4" />
             </video>
           );
