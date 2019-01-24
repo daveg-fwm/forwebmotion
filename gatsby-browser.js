@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import Layout from './src/components/layout';
+import Transition from './src/components/Transition';
 
 /*
   Page transition and transitionDelay:
@@ -16,7 +16,7 @@ const transitionDelay = 0;
 
 // Layout doesn't unmount on page change
 export const wrapPageElement = ({ element, props }) => (
-  <Layout {...props}>{element}</Layout>
+  <Transition {...props}>{element}</Transition>
 );
 
 export const shouldUpdateScroll = ({

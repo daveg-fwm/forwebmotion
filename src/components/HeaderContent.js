@@ -78,7 +78,6 @@ class HeaderContent extends React.Component {
       transition: {
         duration: 500,
       },
-      delay: 100,
     };
 
     let exit = {

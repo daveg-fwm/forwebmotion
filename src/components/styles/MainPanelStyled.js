@@ -6,20 +6,13 @@ const MainPanelStyled = styled.main`
   margin: 0 auto;
   padding: 125px 10px 40px;
   display: grid;
+  grid-gap: 10vh 40px;
   grid-template-columns: 100%;
   justify-content: end;
 
-  div {
-    z-index: 1 !important;
-  }
-
-  .tl-wrapper {
-    display: grid;
-    grid-gap: 10vh 40px;
-  }
-
   div.panel {
     position: relative;
+    z-index: 1;
     padding: 50px 20px;
     background-color: #fff;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);

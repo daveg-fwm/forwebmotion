@@ -65,12 +65,7 @@ module.exports = {
         // Accepts all options defined by `babel-plugin-emotion` plugin.
       },
     },
-    {
-      resolve: 'gatsby-plugin-transition-link',
-      options: {
-        layout: require.resolve(`./src/components/layout.js`),
-      },
-    },
+    'gatsby-v2-plugin-page-transitions',
     // this (optional) plugin enables Progressive Web App  Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',

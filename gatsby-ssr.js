@@ -5,9 +5,9 @@
  */
 
 import React from 'react';
-import Layout from './src/components/layout';
+import Transition from './src/components/Transition';
 
 // layout doesn't unmount on page change
 export const wrapPageElement = ({ element, props }) => (
-  <Layout {...props}>{element}</Layout>
+  <Transition {...props}>{element}</Transition>
 );

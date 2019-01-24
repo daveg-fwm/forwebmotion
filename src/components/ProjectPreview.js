@@ -33,19 +33,19 @@ class ProjectPreview extends React.Component {
     const Banner = this.components[data.bannerImg];
 
     const ProjectPreviewPosed = posed(ProjectPreviewStyled)({
-      // enter: {
-      //   opacity: 1,
-      //   transition: {
-      //     duration: 500,
-      //   },
-      //   // beforeChildren: true,
-      // },
-      // exit: {
-      //   opacity: 0,
-      //   transition: {
-      //     duration: 500,
-      //   },
-      // },
+      enter: {
+        opacity: 1,
+        transition: {
+          duration: 500,
+        },
+        // beforeChildren: true,
+      },
+      exit: {
+        opacity: 0,
+        transition: {
+          duration: 500,
+        },
+      },
     });
 
     // Intro paragraphs and link container to page are only needed on index.js

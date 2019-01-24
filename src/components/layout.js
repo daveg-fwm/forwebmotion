@@ -8,18 +8,15 @@ import MainPanelStyled from './styles/MainPanelStyled';
 import Footer from './Footer';
 
 const MainPanelPosed = posed(MainPanelStyled)({
-  // enter: {
-  //   opacity: 1,
-  //   transition: { duration: 500 },
-  //   delay: 550,
-  //   afterChildren: true,
-  // },
-  // exit: {
-  //   opacity: 0,
-  //   transition: { duration: 500 },
-  //   delay: 550,
-  //   afterChildren: true,
-  // },
+  enter: {
+    opacity: 1,
+    transition: { duration: 500 },
+    beforeChildren: true,
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 500 },
+  },
 });
 
 const Layout = ({ children, ...props }) => (
@@ -156,11 +153,9 @@ const Layout = ({ children, ...props }) => (
             data={headerData}
           />
 
-          <PoseGroup>
-            <MainPanelPosed key={props.location.pathname}>
-              {children}
-            </MainPanelPosed>
-          </PoseGroup>
+          <MainPanelPosed key={props.location.pathname}>
+            {children}
+          </MainPanelPosed>
 
           <Footer footerClass={footerClass} />
         </>

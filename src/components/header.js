@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import TransitionLink from 'gatsby-plugin-transition-link';
 import { HeaderPanelStyled, NavButtonStyled } from './styles/HeaderPanelStyled';
 import { FWMIcon } from './svg/InlineSVG';
 import HeaderContent from './HeaderContent';
@@ -93,19 +92,13 @@ class Header extends React.Component {
                 {/* menuLinks contains page link data - received from Layout component */}
                 {menuLinks.map(item => (
                   <li key={item.name}>
-                    <TransitionLink
+                    <Link
                       activeClassName="active"
                       to={item.link}
-                      exit={{
-                        length: 1,
-                      }}
-                      entry={{
-                        delay: 0.6,
-                      }}
                       onClick={this.closeNav}
                     >
                       {item.name}
-                    </TransitionLink>
+                    </Link>
                   </li>
                 ))}
               </ul>
