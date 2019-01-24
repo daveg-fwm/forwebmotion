@@ -155,7 +155,7 @@ const HeaderContentStyled = styled.div`
   .ubuntu-icon,
   .gulp-icon,
   .azuredevops-icon,
-  .github-icon,
+  section .github-icon,
   .sourcetree-icon,
   .doctrine-icon {
     width: 30px;

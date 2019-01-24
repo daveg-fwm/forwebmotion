@@ -15,7 +15,6 @@ const ProjectPreviewStyled = styled.div`
     font-size: 1.6rem;
     font-weight: 600;
     position: relative;
-    overflow: hidden;
   }
 
   .project-arrow {
@@ -107,7 +106,7 @@ const ProjectPreviewStyled = styled.div`
     max-width: 550px;
     max-height: 300px;
     position: absolute !important;
-    bottom: 6px;
+    bottom: 0;
     right: 10px;
     background-color: #fff;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);

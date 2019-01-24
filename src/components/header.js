@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
+import anime from 'animejs';
 import { HeaderPanelStyled, NavButtonStyled } from './styles/HeaderPanelStyled';
 import { FWMIcon } from './svg/InlineSVG';
 import HeaderContent from './HeaderContent';
@@ -22,7 +23,21 @@ class Header extends React.Component {
     windowHeight: window.innerHeight,
   };
 
+  // Create a ref for the header-panel-inner div
+  headerRef = React.createRef();
+
   componentDidMount = () => {
+    // Point to HeaderContent component
+    const headerContentRef = this.headerRef.current.children[1].children[0];
+
+    // Show HeaderContent component
+    anime({
+      targets: headerContentRef,
+      translateY: () => ['-100%', '0%'],
+      easing: 'easeOutCubic',
+      duration: 500,
+    });
+
     window.addEventListener('resize', this.updateSize);
   };
 
@@ -46,9 +61,21 @@ class Header extends React.Component {
     }));
   };
 
-  closeNav = () => {
-    // Nav links and logo set showMenu state to false to close nav menu
+  hideContent = () => {
+    // Point to HeaderContent component
+    const headerContentRef = this.headerRef.current.children[1].children[0];
+
+    // Close nav menu
     this.setState({ showMenu: false });
+
+    // Hide HeaderContent component
+    anime({
+      targets: headerContentRef,
+      translateY: () => ['0%', '-100%'],
+      easing: 'easeOutCubic',
+      duration: 500,
+      delay: 500,
+    });
   };
 
   render() {
@@ -57,9 +84,9 @@ class Header extends React.Component {
 
     return (
       <HeaderPanelStyled>
-        <div className="header-panel-inner">
+        <div className="header-panel-inner" ref={this.headerRef}>
           <div className="top-nav">
-            <Link className="a-svg" to="/" onClick={this.closeNav}>
+            <Link className="a-svg" to="/">
               <FWMIcon />
             </Link>
             <NavButtonStyled
@@ -92,13 +119,23 @@ class Header extends React.Component {
                 {/* menuLinks contains page link data - received from Layout component */}
                 {menuLinks.map(item => (
                   <li key={item.name}>
-                    <Link
-                      activeClassName="active"
-                      to={item.link}
-                      onClick={this.closeNav}
+                    <a
+                      onClick={() => {
+                        this.hideContent();
+                        setTimeout(() => navigate(`${item.link}`), 1000);
+                      }}
+                      onKeyUp={() => {
+                        this.hideContent();
+                        setTimeout(() => navigate(`${item.link}`), 1000);
+                      }}
+                      role="link"
+                      tabIndex="0"
+                      className={
+                        window.location.pathname === item.link ? 'active' : null
+                      }
                     >
                       {item.name}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
