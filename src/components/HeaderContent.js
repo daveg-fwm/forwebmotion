@@ -33,8 +33,7 @@ class HeaderContent extends React.Component {
       appIcon: PropTypes.string,
       techStack: PropTypes.object,
     }).isRequired,
-    windowWidth: PropTypes.number.isRequired,
-    windowHeight: PropTypes.number.isRequired,
+    headerContentRef: PropTypes.object.isRequired,
   };
 
   components = {
@@ -61,48 +60,16 @@ class HeaderContent extends React.Component {
   };
 
   render() {
-    const { data, windowWidth, windowHeight } = this.props;
+    const { data, headerContentRef } = this.props;
     // Create component to display logo dynamically
     const Logo = this.components[data.logo];
     // Create component to display app icon dynamically
     const AppIcon = this.components[data.appIcon];
 
-    // Content pages use a styled component while the index page uses a div
-    // const posedElement =
-    //   'page' in data ? posed.div : posed(HeaderContentStyled);
-
-    // // Animate header content - y: '0vh' = transform: translateY('0vh')
-    // let enter = {
-    //   opacity: 1,
-    //   transition: {
-    //     duration: 500,
-    //   },
-    // };
-
-    // let exit = {
-    //   opacity: 0,
-    //   transition: {
-    //     duration: 500,
-    //   },
-    //   delay: 500,
-    // };
-
-    // // Remove animation when header content is hidden (nav menu button reveals navigation and header content)
-    // if (windowWidth < 1200 || windowHeight < 620) {
-    //   enter = {};
-    //   exit = {};
-    // }
-
-    // // Animate the header content
-    // const HeaderContentPosed = posedElement({
-    //   enter,
-    //   exit,
-    // });
-
     // Header content on homepage is static and structured differently to other pages
     if ('page' in data) {
       return (
-        <HeaderContentStyled className="header-content">
+        <HeaderContentStyled className="header-content" ref={headerContentRef}>
           <p>
             Currently my focus is on JavaScript. I've recently completed courses
             on ES6 and React. This site was built with React and represents my
@@ -130,7 +97,7 @@ class HeaderContent extends React.Component {
 
     // Header content is populated using data received from layout component
     return (
-      <HeaderContentStyled className="header-content">
+      <HeaderContentStyled className="header-content" ref={headerContentRef}>
         <div className={`project-header ${data.class}`}>
           <Logo />
           {data.appIcon !== 'static' ? <AppIcon /> : null}

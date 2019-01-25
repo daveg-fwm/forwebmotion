@@ -13,6 +13,10 @@ class Layout extends React.Component {
     footerClass: PropTypes.object.isRequired,
   };
 
+  componentDidMount = () => {
+    // console.log(document.getElementById('rsc-project').offsetTop);
+  };
+
   render() {
     const { children, headerData, footerClass } = this.props;
 

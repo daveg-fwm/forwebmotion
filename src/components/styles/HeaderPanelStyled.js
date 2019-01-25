@@ -58,7 +58,7 @@ const HeaderPanelStyled = styled.header`
     height: calc(100% - 85px);
     background-color: #fff;
     margin-top: 10px;
-    transition: transform 0.3s cubic-bezier(0.19, 0.52, 0.95, 0.89);
+    transform: translateY(-100%);
   }
 
   ul {

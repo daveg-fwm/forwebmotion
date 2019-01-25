@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import anime from 'animejs';
 import { HeaderPanelStyled, NavButtonStyled } from './styles/HeaderPanelStyled';
 import { FWMIcon } from './svg/InlineSVG';
@@ -21,18 +21,19 @@ class Header extends React.Component {
     showMenu: false,
     windowWidth: window.innerWidth,
     windowHeight: window.innerHeight,
+    // Create a ref for the HeaderContent component - value passed up to this Header component via props
+    headerContentRef: React.createRef(),
   };
 
-  // Create a ref for the header-panel-inner div
-  headerRef = React.createRef();
+  // Create a ref for the nav element
+  navRef = React.createRef();
 
   componentDidMount = () => {
-    // Point to HeaderContent component
-    const headerContentRef = this.headerRef.current.children[1].children[0];
+    const { headerContentRef } = this.state;
 
-    // Show HeaderContent component
+    // Animate HeaderContent component in
     anime({
-      targets: headerContentRef,
+      targets: headerContentRef.current,
       translateY: () => ['-100%', '0%'],
       easing: 'easeOutCubic',
       duration: 500,
@@ -54,85 +55,99 @@ class Header extends React.Component {
     });
   };
 
+  // Toggle showMenu state to open/close nav menu
   toggleNav = () => {
-    this.setState(state => ({
-      // Menu button toggles showMenu state to open/close nav menu
-      showMenu: !state.showMenu,
-    }));
+    const { showMenu } = this.state;
+
+    this.setState({ showMenu: !showMenu });
+
+    // Animate nav menu open/close
+    anime({
+      targets: this.navRef.current,
+      translateY: () => {
+        if (!showMenu) {
+          return ['-100%', '0%'];
+        }
+        // Menu is closed
+        return ['0%', '-100%'];
+      },
+      easing: 'easeOutCubic',
+      duration: 500,
+    });
   };
 
   hideContent = () => {
-    // Point to HeaderContent component
-    const headerContentRef = this.headerRef.current.children[1].children[0];
+    const { showMenu, headerContentRef } = this.state;
+    const delay = showMenu ? 500 : 0;
 
-    // Close nav menu
-    this.setState({ showMenu: false });
+    // Close nav menu if it's open
+    if (showMenu) this.toggleNav();
 
     // Hide HeaderContent component
     anime({
-      targets: headerContentRef,
+      targets: headerContentRef.current,
       translateY: () => ['0%', '-100%'],
       easing: 'easeOutCubic',
       duration: 500,
-      delay: 500,
+      delay,
     });
   };
 
   render() {
     const { menuLinks, data } = this.props;
-    const { showMenu, windowWidth, windowHeight } = this.state;
+    const { headerContentRef } = this.state;
 
     return (
       <HeaderPanelStyled>
         <div className="header-panel-inner" ref={this.headerRef}>
           <div className="top-nav">
-            <Link className="a-svg" to="/">
-              <FWMIcon />
-            </Link>
-            <NavButtonStyled
-              type="button"
-              className={showMenu ? 'open' : 'close'}
-              onClick={this.toggleNav}
+            <a
+              href="/"
+              className="a-svg"
+              onClick={e => {
+                e.preventDefault();
+
+                // Only call functions if link does not match current page
+                if (window.location.pathname !== '/') {
+                  this.hideContent();
+                  setTimeout(() => navigate('/'), 1000);
+                }
+              }}
             >
+              <FWMIcon />
+            </a>
+            <NavButtonStyled type="button" onClick={this.toggleNav}>
               <span />
               <span />
               <span />
             </NavButtonStyled>
           </div>
 
-          <div
-            className={`header-content-container ${
-              showMenu ? 'enter' : 'exit'
-            }`}
-          >
+          <div className="header-content-container">
             {/*
               Send data from layout to populate content for this component - no data for index page as content structure for header is different to other pages so edit directly in component
             */}
-            <HeaderContent
-              data={data}
-              windowWidth={windowWidth}
-              windowHeight={windowHeight}
-            />
+            <HeaderContent data={data} headerContentRef={headerContentRef} />
 
-            <nav>
+            <nav ref={this.navRef}>
               <ul>
                 {/* menuLinks contains page link data - received from Layout component */}
                 {menuLinks.map(item => (
                   <li key={item.name}>
                     <a
-                      onClick={() => {
-                        this.hideContent();
-                        setTimeout(() => navigate(`${item.link}`), 1000);
-                      }}
-                      onKeyUp={() => {
-                        this.hideContent();
-                        setTimeout(() => navigate(`${item.link}`), 1000);
-                      }}
-                      role="link"
-                      tabIndex="0"
+                      href={item.link}
                       className={
                         window.location.pathname === item.link ? 'active' : null
                       }
+                      onClick={e => {
+                        e.preventDefault();
+
+                        // Only call functions if link does not match current page
+                        if (window.location.pathname !== item.link) {
+                          this.hideContent();
+                          setTimeout(() => navigate(`${item.link}`), 1000);
+                        }
+                      }}
                     >
                       {item.name}
                     </a>
