@@ -3,8 +3,7 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import ProjectPreview from '../components/ProjectPreview';
-import ProjectMain from '../components/ProjectMain';
+import Project from '../components/Project';
 
 const IotGlobalAwards = ({ data }) => {
   const HeaderData = data.allDataJson.edges[0].node.header.iotga;
@@ -18,12 +17,8 @@ const IotGlobalAwards = ({ data }) => {
     */
     <Layout headerData={HeaderData} footerClass={{ class: 'relative' }}>
       <SEO title="IoT Global Awards" />
-      <div className="panel">
-        {/* Pass iotga preview data to ProjectPreview component */}
-        <ProjectPreview data={PreviewData} />
-        {/* Pass iotga main data to ProjectMain component */}
-        <ProjectMain data={MainData} />
-      </div>
+      {/* Pass iotga preview and main data to Project component */}
+      <Project PreviewData={PreviewData} MainData={MainData} />
     </Layout>
   );
 };

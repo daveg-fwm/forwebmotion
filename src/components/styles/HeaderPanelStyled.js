@@ -38,19 +38,10 @@ const HeaderPanelStyled = styled.header`
   }
 
   .header-content-container {
-    padding: 85px 25px 30px;
+    padding: 0px 25px 30px;
     background-color: #fff;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-  }
-
-  .exit {
     transform: translateY(-100%);
-    transition: transform 0.3s cubic-bezier(0.19, 0.52, 0.95, 0.89);
-  }
-
-  .enter {
-    transform: translateY(-85px);
-    transition: transform 0.3s cubic-bezier(0.19, 0.52, 0.95, 0.89);
   }
 
   nav {
@@ -58,7 +49,6 @@ const HeaderPanelStyled = styled.header`
     height: calc(100% - 85px);
     background-color: #fff;
     margin-top: 10px;
-    transform: translateY(-100%);
   }
 
   ul {
@@ -110,21 +100,8 @@ const HeaderPanelStyled = styled.header`
     }
 
     .header-content-container {
-      padding: 0px 25px 30px;
       box-shadow: none;
-    }
-
-    .exit,
-    .enter {
       transform: none;
-    }
-
-    .exit nav {
-      transform: translateY(-100%);
-    }
-
-    .enter nav {
-      transform: translateY(0%);
     }
 
     nav {
@@ -133,6 +110,7 @@ const HeaderPanelStyled = styled.header`
       left: 0;
       padding: 0 25px;
       margin-top: 0;
+      transform: translateY(-100%);
     }
   }
 

@@ -3,8 +3,7 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import ProjectPreview from '../components/ProjectPreview';
-import ProjectMain from '../components/ProjectMain';
+import Project from '../components/Project';
 
 const RedSofaCafe = ({ data }) => {
   const HeaderData = data.allDataJson.edges[0].node.header.rsc;
@@ -18,12 +17,8 @@ const RedSofaCafe = ({ data }) => {
     */
     <Layout headerData={HeaderData} footerClass={{ class: 'relative' }}>
       <SEO title="Red Sofa Cafe" />
-      <div className="panel">
-        {/* Pass rsc preview data to ProjectPreview component */}
-        <ProjectPreview data={PreviewData} />
-        {/* Pass rsc main data to ProjectMain component */}
-        <ProjectMain data={MainData} />
-      </div>
+      {/* Pass rsc preview and main data to Project component */}
+      <Project PreviewData={PreviewData} MainData={MainData} />
     </Layout>
   );
 };

@@ -16,10 +16,14 @@ class Layout extends React.Component {
 
   state = {
     showMenu: false,
-    // Create a ref for the nav element - value passed up from Header component via props
-    navRef: React.createRef(),
+    windowWidth: window.innerWidth,
+    windowHeight: window.innerHeight,
+    // Create a ref for div.head-content-container - value passed up from Header component via props
+    headerContentContainerRef: React.createRef(),
     // Create a ref for the HeaderContent component - value passed up from HeaderContent component via props
     headerContentRef: React.createRef(),
+    // Create a ref for the nav element - value passed up from Header component via props
+    navRef: React.createRef(),
   };
 
   componentDidMount = () => {
@@ -32,17 +36,58 @@ class Layout extends React.Component {
       easing: 'easeOutCubic',
       duration: 500,
     });
+
+    window.addEventListener('resize', this.updateSize);
+  };
+
+  // Prevent memory leaks
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.updateSize);
+  };
+
+  // Save browser dimensions to state
+  updateSize = () => {
+    const {
+      windowWidth,
+      windowHeight,
+      headerContentContainerRef,
+      navRef,
+    } = this.state;
+
+    this.setState({
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight,
+    });
+
+    // Remove styles for refs when position of Header component changes
+    if (windowWidth < 1200 || windowHeight < 620) {
+      navRef.current.removeAttribute('style');
+    } else {
+      headerContentContainerRef.current.removeAttribute('style');
+    }
   };
 
   // Toggle showMenu state to open/close nav menu
   toggleNav = () => {
-    const { showMenu, navRef } = this.state;
+    const {
+      showMenu,
+      windowWidth,
+      windowHeight,
+      headerContentContainerRef,
+      navRef,
+    } = this.state;
+
+    // Ref elements change when Header component is positioned top center or left
+    const ref =
+      windowWidth < 1200 || windowHeight < 620
+        ? headerContentContainerRef
+        : navRef;
 
     this.setState({ showMenu: !showMenu });
 
     // Animate nav menu open/close
     anime({
-      targets: navRef.current,
+      targets: ref.current,
       translateY: () => {
         if (!showMenu) {
           return ['-100%', '0%'];
@@ -74,7 +119,12 @@ class Layout extends React.Component {
 
   render() {
     const { children, headerData, footerClass } = this.props;
-    const { navRef, headerContentRef } = this.state;
+    const { headerContentContainerRef, headerContentRef, navRef } = this.state;
+
+    // Send custom props to children
+    const childrenWithProps = React.Children.map(children, child =>
+      React.cloneElement(child, { hideHeaderContent: this.hideHeaderContent })
+    );
 
     return (
       // Fetch page link data from gatsby-config.js (centralized navigation)
@@ -103,13 +153,14 @@ class Layout extends React.Component {
             <Header
               menuLinks={data.site.siteMetadata.menuLinks}
               data={headerData}
-              navRef={navRef}
+              headerContentContainerRef={headerContentContainerRef}
               headerContentRef={headerContentRef}
+              navRef={navRef}
               toggleNav={this.toggleNav}
               hideHeaderContent={this.hideHeaderContent}
             />
 
-            <MainPanelStyled>{children}</MainPanelStyled>
+            <MainPanelStyled>{childrenWithProps}</MainPanelStyled>
             <Footer footerClass={footerClass} />
           </>
         )}

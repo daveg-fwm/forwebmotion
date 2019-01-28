@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import { RSCBanner, IOTGABanner, WKMPGBanner } from './images/images';
 import {
   ProjectPreviewStyled,
   ArrowStyled,
 } from './styles/ProjectPreviewStyled';
-import { RSCBanner, IOTGABanner, WKMPGBanner } from './images/images';
 
 class ProjectPreview extends React.Component {
   static propTypes = {

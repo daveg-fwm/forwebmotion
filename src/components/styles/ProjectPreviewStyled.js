@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import ArrowStyled from './elements/ArrowStyled';
 
 const ProjectPreviewStyled = styled.div`
   .intro {
@@ -146,4 +145,4 @@ const ProjectPreviewStyled = styled.div`
   }
 `;
 
-export { ProjectPreviewStyled, ArrowStyled };
+export default ProjectPreviewStyled;

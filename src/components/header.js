@@ -14,8 +14,9 @@ class Header extends React.Component {
       })
     ).isRequired,
     data: PropTypes.object.isRequired,
-    navRef: PropTypes.object.isRequired,
+    headerContentContainerRef: PropTypes.object.isRequired,
     headerContentRef: PropTypes.object.isRequired,
+    navRef: PropTypes.object.isRequired,
     toggleNav: PropTypes.func.isRequired,
     hideHeaderContent: PropTypes.func.isRequired,
   };
@@ -24,8 +25,9 @@ class Header extends React.Component {
     const {
       menuLinks,
       data,
-      navRef,
+      headerContentContainerRef,
       headerContentRef,
+      navRef,
       toggleNav,
       hideHeaderContent,
     } = this.props;
@@ -56,7 +58,10 @@ class Header extends React.Component {
             </NavButtonStyled>
           </div>
 
-          <div className="header-content-container">
+          <div
+            className="header-content-container"
+            ref={headerContentContainerRef}
+          >
             {/*
               Send data from layout to populate content for this component - no data for index page as content structure for header is different to other pages so edit directly in component
             */}
@@ -78,7 +83,7 @@ class Header extends React.Component {
                         // Only call functions if link does not match current page
                         if (window.location.pathname !== item.link) {
                           hideHeaderContent();
-                          setTimeout(() => navigate(`${item.link}`), 1000);
+                          setTimeout(() => navigate(item.link), 1000);
                         }
                       }}
                     >

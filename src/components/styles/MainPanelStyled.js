@@ -10,6 +10,12 @@ const MainPanelStyled = styled.main`
   grid-template-columns: 100%;
   justify-content: end;
 
+  div.hide-panel {
+    overflow: hidden;
+    margin: -6px;
+    padding: 6px;
+  }
+
   div.panel {
     position: relative;
     z-index: 1;
