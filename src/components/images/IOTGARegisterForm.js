@@ -21,7 +21,7 @@ const IOTGARegisterForm = () => (
           relativePath: { eq: "iotga-register-form.jpg" }
         ) {
           childImageSharp {
-            fluid(maxWidth: 1000, quality: 70) {
+            fluid(maxWidth: 530, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }

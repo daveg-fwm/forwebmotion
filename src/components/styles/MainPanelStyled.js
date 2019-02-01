@@ -14,11 +14,12 @@ const MainPanelStyled = styled.main`
     overflow: hidden;
     margin: -6px;
     padding: 6px;
+    position: relative;
+    z-index: 1;
   }
 
   div.panel {
-    position: relative;
-    z-index: 1;
+    overflow: hidden;
     padding: 50px 20px;
     background-color: #fff;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);

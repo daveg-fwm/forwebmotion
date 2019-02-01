@@ -1,5 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 
 /*
@@ -13,13 +14,13 @@ import Img from 'gatsby-image';
  * - `StaticQuery`: https://gatsby.app/staticquery
  */
 
-const WKMPGBanner = () => (
+const WKMPGBanner = ({ mainBannerClass }) => (
   <StaticQuery
     query={graphql`
       query {
         placeholderImage: file(relativePath: { eq: "wkmpg-banner.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 1000, quality: 70) {
+            fluid(maxWidth: 1000, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -30,11 +31,15 @@ const WKMPGBanner = () => (
       <Img
         fluid={data.placeholderImage.childImageSharp.fluid}
         alt="WKM Payment Gateway project"
-        className="banner"
+        className={`banner ${mainBannerClass}`}
         backgroundColor="#fff"
       />
     )}
   />
 );
+
+WKMPGBanner.propTypes = {
+  mainBannerClass: PropTypes.string,
+};
 
 export default WKMPGBanner;

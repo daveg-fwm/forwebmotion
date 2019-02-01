@@ -12,12 +12,17 @@ const FooterPanelStyled = styled.footer`
   font-size: 1.6rem;
   font-weight: 400;
 
-  div {
+  .hide-panel {
+    overflow: hidden;
+    margin: -6px;
+    padding: 6px;
+  }
+
+  .footer-panel {
     width: 100%;
     height: 180px;
     position: relative;
     z-index: 1;
-    float: right;
     padding: 40px 25px;
     margin-bottom: 40px;
     background-color: #fff;
@@ -41,7 +46,7 @@ const FooterPanelStyled = styled.footer`
       position: fixed;
       top: 420px;
 
-      div {
+      .footer-panel {
         width: 300px;
         float: none;
       }
@@ -51,7 +56,7 @@ const FooterPanelStyled = styled.footer`
       position: relative;
       top: 0;
 
-      div {
+      .footer-panel {
         width: calc(100% - 340px);
         float: right;
       }

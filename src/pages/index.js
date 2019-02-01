@@ -3,37 +3,25 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import {
-  HomePanelStyled,
-  ButtonStyled,
-} from '../components/styles/HomePanelStyled';
-import { FWMLogo } from '../components/svg/InlineSVG';
+import Home from '../components/Home';
 import Project from '../components/Project';
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location }) => {
   const PreviewData = data.allDataJson.edges[0].node.preview;
 
   return (
     /*
-      Send page data so HeaderComponent knows to use static content - data is passed to layout component which passes the data down to the header component
-      Pass footer class to layout component which passes the class down to the footer component
+      Send page data so HeaderComponent knows to use static content - data is passed to layout component which passes the data down to the header component.
+      Location is used to determine the current page - passed to layout component which passes the data down to the header component.
+      Pass footer class to layout component which passes the class down to the footer component.
     */
-    <Layout headerData={{ page: 'index' }} footerClass={{ class: 'fixed' }}>
+    <Layout
+      headerData={{ page: 'index' }}
+      footerClass={{ class: 'fixed' }}
+      location={location}
+    >
       <SEO title="Home" />
-
-      {/* First panel on homepage */}
-      <div className="hide-panel">
-        <HomePanelStyled className="panel">
-          <FWMLogo />
-          <h1>A Web Developer's journey.</h1>
-          <p>
-            Everything we learn today is but a stepping stone to what we will
-            learn tomorrow.
-          </p>
-          <ButtonStyled>The journey so far</ButtonStyled>
-        </HomePanelStyled>
-      </div>
-
+      <Home />
       {/* Pass projects' preview data to Project component */}
       <Project PreviewData={PreviewData} />
     </Layout>
@@ -83,6 +71,7 @@ export const query = graphql`
 
 IndexPage.propTypes = {
   data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default IndexPage;

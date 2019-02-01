@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 const ProjectPreviewStyled = styled.div`
   .intro {
     margin-bottom: 40px;
+    transform: translateY(-200%);
   }
 
   .project {
@@ -14,11 +15,14 @@ const ProjectPreviewStyled = styled.div`
     font-size: 1.6rem;
     font-weight: 600;
     position: relative;
+    overflow: hidden;
   }
 
   .project-arrow {
     display: flex;
     flex-direction: column;
+    margin-left: 2px;
+    transform: translateX(-100%);
   }
 
   h1 {
@@ -34,6 +38,7 @@ const ProjectPreviewStyled = styled.div`
     height: 64vw;
     max-height: 380px;
     padding: 9px 15px;
+    transform: translateX(-110%);
 
     p {
       color: #fff;
@@ -105,10 +110,18 @@ const ProjectPreviewStyled = styled.div`
     max-width: 550px;
     max-height: 300px;
     position: absolute !important;
-    bottom: 0;
+    bottom: 6px;
     right: 10px;
     background-color: #fff;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(110%);
+  }
+
+  .project-page-banner {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transform: translateY(110%) scale(1.05455, 1.05455);
   }
 
   img {
@@ -117,6 +130,22 @@ const ProjectPreviewStyled = styled.div`
     margin: auto;
     padding: 4.55%;
     object-fit: contain !important;
+  }
+
+  .close-project {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    transform: translateX(-100%);
+
+    span {
+      display: block;
+      width: 16px;
+      height: 2px;
+      background-color: #40afe9;
+      position: absolute;
+      top: 7px;
+    }
   }
 
   @media screen and (min-width: 1200px) and (min-height: 620px) {
@@ -133,10 +162,18 @@ const ProjectPreviewStyled = styled.div`
       height: 28.5vw;
     }
 
+    .project-page-bg {
+      width: calc(100% - 25px);
+    }
+
     .banner {
       width: 40.3vw;
       height: 22vw;
       right: 40px;
+    }
+
+    .project-page-banner {
+      right: 0;
     }
 
     h1 {

@@ -14,22 +14,24 @@ class Header extends React.Component {
       })
     ).isRequired,
     data: PropTypes.object.isRequired,
+    locationPathname: PropTypes.string.isRequired,
     headerContentContainerRef: PropTypes.object.isRequired,
     headerContentRef: PropTypes.object.isRequired,
     navRef: PropTypes.object.isRequired,
     toggleNav: PropTypes.func.isRequired,
-    hideHeaderContent: PropTypes.func.isRequired,
+    animateExit: PropTypes.func.isRequired,
   };
 
   render() {
     const {
       menuLinks,
       data,
+      locationPathname,
       headerContentContainerRef,
       headerContentRef,
       navRef,
       toggleNav,
-      hideHeaderContent,
+      animateExit,
     } = this.props;
 
     return (
@@ -43,8 +45,8 @@ class Header extends React.Component {
                 e.preventDefault();
 
                 // Only call functions if link does not match current page
-                if (window.location.pathname !== '/') {
-                  hideHeaderContent();
+                if (locationPathname !== '/') {
+                  animateExit();
                   setTimeout(() => navigate('/'), 1000);
                 }
               }}
@@ -62,10 +64,10 @@ class Header extends React.Component {
             className="header-content-container"
             ref={headerContentContainerRef}
           >
-            {/*
-              Send data from layout to populate content for this component - no data for index page as content structure for header is different to other pages so edit directly in component
-            */}
-            <HeaderContent data={data} headerContentRef={headerContentRef} />
+            <div className="hide-panel" ref={headerContentRef}>
+              {/* Send data from layout to populate content for this component */}
+              <HeaderContent data={data} />
+            </div>
 
             <nav ref={navRef}>
               <ul>
@@ -75,14 +77,14 @@ class Header extends React.Component {
                     <a
                       href={item.link}
                       className={
-                        window.location.pathname === item.link ? 'active' : null
+                        locationPathname === item.link ? 'active' : null
                       }
                       onClick={e => {
                         e.preventDefault();
 
                         // Only call functions if link does not match current page
-                        if (window.location.pathname !== item.link) {
-                          hideHeaderContent();
+                        if (locationPathname !== item.link) {
+                          animateExit();
                           setTimeout(() => navigate(item.link), 1000);
                         }
                       }}

@@ -19,7 +19,7 @@ const RSCPaymentForm = () => (
       query {
         placeholderImage: file(relativePath: { eq: "rsc-payment-form.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 1200, quality: 90) {
+            fluid(maxWidth: 530, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }

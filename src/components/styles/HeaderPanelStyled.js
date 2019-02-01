@@ -44,6 +44,12 @@ const HeaderPanelStyled = styled.header`
     transform: translateY(-100%);
   }
 
+  div.hide-panel {
+    overflow: hidden;
+    margin: 0 -25px;
+    padding: 0 25px;
+  }
+
   nav {
     width: 100%;
     height: calc(100% - 85px);

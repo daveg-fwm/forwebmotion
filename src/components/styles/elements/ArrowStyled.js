@@ -10,6 +10,10 @@ const ArrowStyled = styled.span`
     transform: rotate(90deg) translateY(-7px) scale(0.8, 0.8);
   }
 
+  &.down-arrow {
+    transform: rotate(180deg);
+  }
+
   span:nth-of-type(1) {
     width: 0;
     height: 0;

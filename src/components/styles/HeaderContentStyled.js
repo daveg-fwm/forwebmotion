@@ -8,6 +8,7 @@ const HeaderContentStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transform: translateX(-100%);
   }
 
   .rsc-header {

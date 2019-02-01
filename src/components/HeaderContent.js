@@ -33,7 +33,6 @@ class HeaderContent extends React.Component {
       appIcon: PropTypes.string,
       techStack: PropTypes.object,
     }).isRequired,
-    headerContentRef: PropTypes.object.isRequired,
   };
 
   components = {
@@ -60,7 +59,7 @@ class HeaderContent extends React.Component {
   };
 
   render() {
-    const { data, headerContentRef } = this.props;
+    const { data } = this.props;
     // Create component to display logo dynamically
     const Logo = this.components[data.logo];
     // Create component to display app icon dynamically
@@ -69,7 +68,7 @@ class HeaderContent extends React.Component {
     // Header content on homepage is static and structured differently to other pages
     if ('page' in data) {
       return (
-        <HeaderContentStyled className="header-content" ref={headerContentRef}>
+        <HeaderContentStyled className="header-content">
           <p>
             Currently my focus is on JavaScript. I've recently completed courses
             on ES6 and React. This site was built with React and represents my
@@ -97,7 +96,7 @@ class HeaderContent extends React.Component {
 
     // Header content is populated using data received from layout component
     return (
-      <HeaderContentStyled className="header-content" ref={headerContentRef}>
+      <HeaderContentStyled className="header-content">
         <div className={`project-header ${data.class}`}>
           <Logo />
           {data.appIcon !== 'static' ? <AppIcon /> : null}

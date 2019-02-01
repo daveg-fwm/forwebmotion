@@ -12,10 +12,15 @@ const WkmPaymentGateway = ({ data }) => {
 
   return (
     /*
-      Pass wkmpg header data to layout component which passes the data down to the header component
-      Pass footer class to layout component which passes the class down to the footer component
+      Pass wkmpg header data to layout component which passes the data down to the header component.
+      Location is used to determine the current page - passed to layout component which passes the data down to the header component.
+      Pass footer class to layout component which passes the class down to the footer component.
     */
-    <Layout headerData={HeaderData} footerClass={{ class: 'relative' }}>
+    <Layout
+      headerData={HeaderData}
+      footerClass={{ class: 'relative' }}
+      location={location}
+    >
       <SEO title="WKM Payment Gateway" />
       {/* Pass wkmpg preview and main data to Project component */}
       <Project PreviewData={PreviewData} MainData={MainData} />
@@ -80,6 +85,7 @@ export const query = graphql`
 
 WkmPaymentGateway.propTypes = {
   data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default WkmPaymentGateway;

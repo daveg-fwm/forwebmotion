@@ -12,30 +12,59 @@ class Layout extends React.Component {
     children: PropTypes.node.isRequired,
     headerData: PropTypes.object.isRequired,
     footerClass: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
   };
 
   state = {
     showMenu: false,
     windowWidth: window.innerWidth,
     windowHeight: window.innerHeight,
-    // Create a ref for div.head-content-container - value passed up from Header component via props
+    // Header and nav refs passed up from Header component via props
     headerContentContainerRef: React.createRef(),
-    // Create a ref for the HeaderContent component - value passed up from HeaderContent component via props
     headerContentRef: React.createRef(),
-    // Create a ref for the nav element - value passed up from Header component via props
     navRef: React.createRef(),
+    // Home component
+    homeRef: React.createRef(),
+    // Project component - 1 for each project preview panel
+    previewRef1: React.createRef(),
+    previewRef2: React.createRef(),
+    previewRef3: React.createRef(),
+    // Project component - single main panel
+    mainRef: React.createRef(),
+    // Footer component
+    footerRef: React.createRef(),
   };
 
-  componentDidMount = () => {
-    const { headerContentRef } = this.state;
+  targets = [];
+  targetsChildren = [];
 
-    // Animate HeaderContent component in
-    anime({
-      targets: headerContentRef.current,
-      translateY: () => ['-100%', '0%'],
-      easing: 'easeOutCubic',
-      duration: 500,
-    });
+  componentDidMount = () => {
+    const { previewRef1, previewRef2, previewRef3 } = this.state;
+    const { location } = this.props;
+
+    /*
+       No hash means the page doesn't need to scroll so panels can animate in immediately.
+       If there is a hash, scroll to the project preview that matches before panels animate in.
+    */
+    if (location.hash === undefined || location.hash === '') {
+      this.animateEnter();
+    } else {
+      let scrollTarget = 0;
+
+      // Compare hash to project preview ids
+      switch (location.hash.substr(1)) {
+        case previewRef1.current.children[0].id:
+          scrollTarget = previewRef1.current.offsetTop;
+          break;
+        case previewRef2.current.children[0].id:
+          scrollTarget = previewRef2.current.offsetTop;
+          break;
+        default:
+          scrollTarget = previewRef3.current.offsetTop;
+      }
+
+      window.scrollTo(0, scrollTarget);
+    }
 
     window.addEventListener('resize', this.updateSize);
   };
@@ -100,6 +129,7 @@ class Layout extends React.Component {
     });
   };
 
+  // Hide HeaderContent component
   hideHeaderContent = () => {
     const { showMenu, headerContentRef } = this.state;
     const delay = showMenu ? 500 : 0;
@@ -107,23 +137,317 @@ class Layout extends React.Component {
     // Close nav menu if it's open
     if (showMenu) this.toggleNav();
 
-    // Hide HeaderContent component
-    anime({
-      targets: headerContentRef.current,
-      translateY: () => ['0%', '-100%'],
-      easing: 'easeOutCubic',
-      duration: 500,
-      delay,
-    });
+    // Animate header content
+    anime
+      .timeline({
+        targets: headerContentRef.current,
+        translateY: () => ['0%', '-110%'],
+        easing: 'easeOutCubic',
+        duration: 500,
+        delay,
+      })
+      .add({
+        targets: headerContentRef.current.children,
+        translateY: () => ['0%', '110%'],
+      });
+  };
+
+  // Enter animations
+  animateEnter = () => {
+    const {
+      headerContentRef,
+      homeRef,
+      previewRef1,
+      previewRef2,
+      previewRef3,
+      mainRef,
+      footerRef,
+    } = this.state;
+
+    // Homepage and project pages use different values for animation
+    const from =
+      homeRef.current !== null ? 'calc(102% + 12px)' : 'calc(100.6% + 12px)';
+
+    /*
+      Homepage animates multiple preview panels.
+      Project pages have a single main panel.
+    */
+    this.targets =
+      homeRef.current !== null
+        ? [
+            homeRef.current,
+            previewRef1.current,
+            previewRef2.current,
+            previewRef3.current,
+          ]
+        : mainRef.current;
+
+    this.targetsChildren =
+      homeRef.current !== null
+        ? [
+            homeRef.current.children,
+            previewRef1.current.children,
+            previewRef2.current.children,
+            previewRef3.current.children,
+          ]
+        : mainRef.current.children;
+
+    // Animate main panels
+    anime
+      .timeline({
+        targets: this.targets,
+        translateY: () => ['-100%', '0%'],
+        easing: 'easeInCubic',
+        duration: 500,
+      })
+      .add({
+        targets: this.targetsChildren,
+        translateY: () => [from, '0%'],
+      });
+
+    // Animate header panel
+    anime
+      .timeline({
+        targets: headerContentRef.current,
+        translateY: () => ['-100%', '0%'],
+        easing: 'easeInCubic',
+        duration: 500,
+      })
+      .add({
+        targets: headerContentRef.current.children,
+        translateY: () => ['100%', '0%'],
+      });
+
+    // Animate project header with logo and app icon
+    if (homeRef.current === null) {
+      anime({
+        targets: headerContentRef.current.children[0].children[0],
+        translateX: () => ['-100%', '0%'],
+        easing: 'easeInCubic',
+        duration: 500,
+      });
+    }
+
+    // Animate footer panel
+    anime
+      .timeline({
+        targets: footerRef.current,
+        translateY: () => ['-100%', '0%'],
+        easing: 'easeInCubic',
+        duration: 500,
+      })
+      .add({
+        targets: footerRef.current.children,
+        translateY: () => ['calc(129% + 12px)', '0%'],
+      });
+  };
+
+  // Exit animations
+  animateExit = () => {
+    const {
+      homeRef,
+      previewRef1,
+      previewRef2,
+      previewRef3,
+      mainRef,
+      footerRef,
+    } = this.state;
+
+    // Close nav menu and slide header content out
+    this.hideHeaderContent();
+
+    /*
+      Homepage animates multiple preview panels.
+      Project pages have a single main panel.
+    */
+    this.targets =
+      homeRef.current !== null
+        ? [
+            homeRef.current,
+            previewRef1.current,
+            previewRef2.current,
+            previewRef3.current,
+          ]
+        : mainRef.current;
+
+    this.targetsChildren =
+      homeRef.current !== null
+        ? [
+            homeRef.current.children,
+            previewRef1.current.children,
+            previewRef2.current.children,
+            previewRef3.current.children,
+          ]
+        : mainRef.current.children;
+
+    // Animate main panels
+    anime
+      .timeline({
+        targets: this.targets,
+        translateY: () => ['0%', '-100%'],
+        easing: 'easeOutCubic',
+        duration: 500,
+      })
+      .add({
+        targets: this.targetsChildren,
+        translateY: () => ['0%', 'calc(100% + 12px)'],
+      });
+
+    // Animate footer panel
+    anime
+      .timeline({
+        targets: footerRef.current,
+        translateY: () => ['0%', '-100%'],
+        easing: 'easeOutCubic',
+        duration: 500,
+      })
+      .add({
+        targets: footerRef.current.children,
+        translateY: () => ['0%', 'calc(122% + 12px)'],
+      });
+  };
+
+  // Intersection Observer animations on homepage
+  animateProjectPreview = ref => {
+    /*
+      Traversing object rather than creating a ref for each element:
+
+      div.hide-panel {
+        div.panel {
+          div.ProjectPreviewStyled {
+            p.intro
+            a.project {
+              div.project-arrow
+              div.project-bg
+              div.banner
+            }
+          }
+        }
+      }
+    */
+    const intro = ref.current.children[0].children[0].children[0];
+    const arrow = ref.current.children[0].children[0].children[1].children[0];
+    const bg = ref.current.children[0].children[0].children[1].children[1];
+    const banner = ref.current.children[0].children[0].children[1].children[2];
+
+    anime
+      .timeline({
+        easing: 'easeOutQuart',
+        duration: 500,
+      })
+      .add({
+        targets: intro,
+        translateY: () => ['-200%', '0%'],
+      })
+      .add({
+        targets: bg,
+        translateX: () => ['-110%', '0%'],
+        easing: 'easeOutBack',
+      })
+      .add({
+        targets: arrow,
+        translateX: () => ['-100%', '0%'],
+        duration: 300,
+      })
+      .add({
+        targets: banner,
+        translateY: () => ['110%', '0%'],
+      });
+  };
+
+  // Intersection Observer animations on project pages
+  animateProjectMain = () => {
+    /*
+      Traversing object rather than creating a ref for each element:
+
+      div.hide-panel {
+        div.panel {
+          div.ProjectPreviewStyled {
+            div.project {
+              a
+              div.project-bg
+              div.banner
+            }
+          }
+        }
+      }
+    */
+    const { mainRef } = this.state;
+
+    const closeLink =
+      mainRef.current.children[0].children[0].children[0].children[0];
+    const bg = mainRef.current.children[0].children[0].children[0].children[1];
+    const banner =
+      mainRef.current.children[0].children[0].children[0].children[2];
+    const mainContent = mainRef.current.children[0].children[1];
+
+    anime
+      .timeline({
+        easing: 'easeOutQuart',
+        duration: 500,
+      })
+      .add({
+        targets: bg,
+        translateX: () => ['-110%', '0%'],
+        easing: 'easeOutBack',
+        delay: 500,
+      })
+      .add({
+        targets: banner,
+        translateY: () => ['110%', '-4%'],
+        scale: 1.05455,
+      })
+      .add({
+        targets: mainContent,
+        translateY: () => ['10%', '0%'],
+        opacity: () => [0, 1],
+      })
+      .add({
+        targets: closeLink,
+        translateX: () => ['-100%', '0%'],
+        duration: 250,
+      })
+      .add({
+        targets: closeLink.children[0],
+        rotate: 45,
+        duration: 250,
+      })
+      .add(
+        {
+          targets: closeLink.children[1],
+          rotate: -45,
+          duration: 250,
+        },
+        '-=250'
+      );
   };
 
   render() {
-    const { children, headerData, footerClass } = this.props;
-    const { headerContentContainerRef, headerContentRef, navRef } = this.state;
+    const { children, headerData, footerClass, location } = this.props;
+    const {
+      headerContentContainerRef,
+      headerContentRef,
+      navRef,
+      homeRef,
+      previewRef1,
+      previewRef2,
+      previewRef3,
+      mainRef,
+      footerRef,
+    } = this.state;
 
     // Send custom props to children
     const childrenWithProps = React.Children.map(children, child =>
-      React.cloneElement(child, { hideHeaderContent: this.hideHeaderContent })
+      React.cloneElement(child, {
+        homeRef,
+        previewRef1,
+        previewRef2,
+        previewRef3,
+        mainRef,
+        animateExit: this.animateExit,
+        animateProjectPreview: this.animateProjectPreview,
+        animateProjectMain: this.animateProjectMain,
+      })
     );
 
     return (
@@ -147,21 +471,24 @@ class Layout extends React.Component {
             <GlobalStyled />
 
             {/*
-              Send page link and header content data to Header component.
-              Header content data is received from pages.
+              Send page link, pathname and header content data to Header component.
+              Page links are received from gatsby-config.js.
+              Header content data and pathname is received from pages.
+              Refs and functions are used for animations.
             */}
             <Header
               menuLinks={data.site.siteMetadata.menuLinks}
               data={headerData}
+              locationPathname={location.pathname}
               headerContentContainerRef={headerContentContainerRef}
               headerContentRef={headerContentRef}
               navRef={navRef}
               toggleNav={this.toggleNav}
-              hideHeaderContent={this.hideHeaderContent}
+              animateExit={this.animateExit}
             />
 
             <MainPanelStyled>{childrenWithProps}</MainPanelStyled>
-            <Footer footerClass={footerClass} />
+            <Footer footerClass={footerClass} footerRef={footerRef} />
           </>
         )}
       />
