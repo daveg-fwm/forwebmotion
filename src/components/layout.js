@@ -38,33 +38,101 @@ class Layout extends React.Component {
   targets = [];
   targetsChildren = [];
 
+  // Enter animations
   componentDidMount = () => {
-    const { previewRef1, previewRef2, previewRef3 } = this.state;
+    const {
+      headerContentRef,
+      homeRef,
+      previewRef1,
+      previewRef2,
+      previewRef3,
+      mainRef,
+      footerRef,
+    } = this.state;
+
     const { location } = this.props;
 
+    // Homepage and project pages use different values for animation
+    const from =
+      homeRef.current !== null ? 'calc(102% + 12px)' : 'calc(100.6% + 12px)';
+
     /*
-       No hash means the page doesn't need to scroll so panels can animate in immediately.
-       If there is a hash, scroll to the project preview that matches before panels animate in.
+      Homepage animates multiple preview panels.
+      Project pages have a single main panel.
+    */
+    this.targets =
+      homeRef.current !== null
+        ? [
+            homeRef.current,
+            previewRef1.current,
+            previewRef2.current,
+            previewRef3.current,
+          ]
+        : mainRef.current;
+
+    this.targetsChildren =
+      homeRef.current !== null
+        ? [
+            homeRef.current.children,
+            previewRef1.current.children,
+            previewRef2.current.children,
+            previewRef3.current.children,
+          ]
+        : mainRef.current.children;
+
+    /*
+      Animate main panels
+      If hash exists window only scrolls to correct place if main panels are not animated in
     */
     if (location.hash === undefined || location.hash === '') {
-      this.animateEnter();
-    } else {
-      let scrollTarget = 0;
-
-      // Compare hash to project preview ids
-      switch (location.hash.substr(1)) {
-        case previewRef1.current.children[0].id:
-          scrollTarget = previewRef1.current.offsetTop;
-          break;
-        case previewRef2.current.children[0].id:
-          scrollTarget = previewRef2.current.offsetTop;
-          break;
-        default:
-          scrollTarget = previewRef3.current.offsetTop;
-      }
-
-      window.scrollTo(0, scrollTarget);
+      anime
+        .timeline({
+          targets: this.targets,
+          translateY: () => ['-100%', '0%'],
+          easing: 'easeInCubic',
+          duration: 500,
+        })
+        .add({
+          targets: this.targetsChildren,
+          translateY: () => [from, '0%'],
+        });
     }
+
+    // Animate header panel
+    anime
+      .timeline({
+        targets: headerContentRef.current,
+        translateY: () => ['-100%', '0%'],
+        easing: 'easeInCubic',
+        duration: 500,
+      })
+      .add({
+        targets: headerContentRef.current.children,
+        translateY: () => ['100%', '0%'],
+      });
+
+    // Animate project header with logo and app icon
+    if (homeRef.current === null) {
+      anime({
+        targets: headerContentRef.current.children[0].children[0],
+        translateX: () => ['-100%', '0%'],
+        easing: 'easeInCubic',
+        duration: 500,
+      });
+    }
+
+    // Animate footer panel
+    anime
+      .timeline({
+        targets: footerRef.current,
+        translateY: () => ['-100%', '0%'],
+        easing: 'easeInCubic',
+        duration: 500,
+      })
+      .add({
+        targets: footerRef.current.children,
+        translateY: () => ['calc(129% + 12px)', '0%'],
+      });
 
     window.addEventListener('resize', this.updateSize);
   };
@@ -149,96 +217,6 @@ class Layout extends React.Component {
       .add({
         targets: headerContentRef.current.children,
         translateY: () => ['0%', '110%'],
-      });
-  };
-
-  // Enter animations
-  animateEnter = () => {
-    const {
-      headerContentRef,
-      homeRef,
-      previewRef1,
-      previewRef2,
-      previewRef3,
-      mainRef,
-      footerRef,
-    } = this.state;
-
-    // Homepage and project pages use different values for animation
-    const from =
-      homeRef.current !== null ? 'calc(102% + 12px)' : 'calc(100.6% + 12px)';
-
-    /*
-      Homepage animates multiple preview panels.
-      Project pages have a single main panel.
-    */
-    this.targets =
-      homeRef.current !== null
-        ? [
-            homeRef.current,
-            previewRef1.current,
-            previewRef2.current,
-            previewRef3.current,
-          ]
-        : mainRef.current;
-
-    this.targetsChildren =
-      homeRef.current !== null
-        ? [
-            homeRef.current.children,
-            previewRef1.current.children,
-            previewRef2.current.children,
-            previewRef3.current.children,
-          ]
-        : mainRef.current.children;
-
-    // Animate main panels
-    anime
-      .timeline({
-        targets: this.targets,
-        translateY: () => ['-100%', '0%'],
-        easing: 'easeInCubic',
-        duration: 500,
-      })
-      .add({
-        targets: this.targetsChildren,
-        translateY: () => [from, '0%'],
-      });
-
-    // Animate header panel
-    anime
-      .timeline({
-        targets: headerContentRef.current,
-        translateY: () => ['-100%', '0%'],
-        easing: 'easeInCubic',
-        duration: 500,
-      })
-      .add({
-        targets: headerContentRef.current.children,
-        translateY: () => ['100%', '0%'],
-      });
-
-    // Animate project header with logo and app icon
-    if (homeRef.current === null) {
-      anime({
-        targets: headerContentRef.current.children[0].children[0],
-        translateX: () => ['-100%', '0%'],
-        easing: 'easeInCubic',
-        duration: 500,
-      });
-    }
-
-    // Animate footer panel
-    anime
-      .timeline({
-        targets: footerRef.current,
-        translateY: () => ['-100%', '0%'],
-        easing: 'easeInCubic',
-        duration: 500,
-      })
-      .add({
-        targets: footerRef.current.children,
-        translateY: () => ['calc(129% + 12px)', '0%'],
       });
   };
 
