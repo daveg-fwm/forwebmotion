@@ -32,7 +32,6 @@ const IOTGARegisterForm = () => (
       <Img
         fluid={data.placeholderImage.childImageSharp.fluid}
         alt="IoT Global Awards registration form"
-        className="tall"
         backgroundColor="#fff"
       />
     )}

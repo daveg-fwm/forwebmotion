@@ -16,7 +16,6 @@ const MainPanelStyled = styled.main`
     padding: 6px;
     position: relative;
     z-index: 1;
-    /* transform: translateY(-100%); */
   }
 
   div.panel {
@@ -24,7 +23,6 @@ const MainPanelStyled = styled.main`
     padding: 50px 20px;
     background-color: #fff;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-    /* transform: translateY(calc(102% + 12px)); */
   }
 
   @media screen and (min-width: 1200px) and (min-height: 620px) {

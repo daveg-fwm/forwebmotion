@@ -1,24 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { HomePanelStyled, ButtonStyled } from './styles/HomePanelStyled';
-import { FWMLogo } from './svg/InlineSVG';
+import { HomePanelStyled, ArrowStyled } from './styles/HomePanelStyled';
+import { FWMIcon, FWMLogo } from './svg/InlineSVG';
 
-const Home = ({ homeRef }) => (
+const Home = ({ homeRef, homeScroll }) => (
   <div className="hide-panel" ref={homeRef}>
     <HomePanelStyled className="panel">
+      <FWMIcon />
       <FWMLogo />
       <h1>A Web Developer's journey.</h1>
-      <p>
-        Everything we learn today is but a stepping stone to what we will learn
-        tomorrow.
-      </p>
-      <ButtonStyled>The journey so far</ButtonStyled>
+      <button type="button" onClick={() => homeScroll()}>
+        <ArrowStyled className="down-arrow">
+          <span />
+          <span />
+        </ArrowStyled>
+      </button>
     </HomePanelStyled>
   </div>
 );
 
 Home.propTypes = {
   homeRef: PropTypes.object,
+  homeScroll: PropTypes.func,
 };
 
 export default Home;

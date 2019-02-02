@@ -33,8 +33,8 @@ const HeaderPanelStyled = styled.header`
   }
 
   .fwm-icon {
-    width: 64.48px;
-    height: 25px;
+    width: 46px;
+    height: 27.89px;
   }
 
   .header-content-container {
@@ -54,7 +54,9 @@ const HeaderPanelStyled = styled.header`
     width: 100%;
     height: calc(100% - 85px);
     background-color: #fff;
-    margin-top: 10px;
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
   }
 
   ul {
@@ -116,6 +118,7 @@ const HeaderPanelStyled = styled.header`
       left: 0;
       padding: 0 25px;
       margin-top: 0;
+      border-top: 0;
       transform: translateY(-100%);
     }
   }

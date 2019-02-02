@@ -31,7 +31,9 @@ const IOTGABanner = ({ mainBannerClass }) => (
       <Img
         fluid={data.placeholderImage.childImageSharp.fluid}
         alt="IoT Global Awards project"
-        className={`banner ${mainBannerClass}`}
+        className={`banner${
+          mainBannerClass !== undefined ? ` ${mainBannerClass}` : ''
+        }`}
         backgroundColor="#fff"
       />
     )}

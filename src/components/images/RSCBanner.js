@@ -31,7 +31,9 @@ const RSCBanner = ({ mainBannerClass }) => (
       <Img
         fluid={data.placeholderImage.childImageSharp.fluid}
         alt="Red Sofa Cafe project"
-        className={`banner ${mainBannerClass}`}
+        className={`banner${
+          mainBannerClass !== undefined ? ` ${mainBannerClass}` : ''
+        }`}
         backgroundColor="#fff"
       />
     )}

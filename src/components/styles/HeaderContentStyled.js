@@ -61,11 +61,6 @@ const HeaderContentStyled = styled.div`
     margin-bottom: 10px;
   }
 
-  section:last-of-type {
-    border-bottom: 1px solid;
-    padding-bottom: 10px;
-  }
-
   h2 {
     font-size: 1.6rem;
     margin: 0 0 15px;

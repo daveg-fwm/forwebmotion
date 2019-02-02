@@ -18,6 +18,10 @@ const ProjectPreviewStyled = styled.div`
     overflow: hidden;
   }
 
+  a.project:active {
+    animation: none;
+  }
+
   .project-arrow {
     display: flex;
     flex-direction: column;
@@ -117,6 +121,14 @@ const ProjectPreviewStyled = styled.div`
     transform: translateY(110%);
   }
 
+  a.project.allow-hover .banner {
+    transition: transform 0.2s ease-out;
+  }
+
+  a.project.allow-hover:hover .banner {
+    transform: translateY(-10px) translateX(-16px) scale(1.05455, 1.05455) !important;
+  }
+
   .project-page-banner {
     left: 0;
     right: 0;
@@ -149,6 +161,10 @@ const ProjectPreviewStyled = styled.div`
   }
 
   @media screen and (min-width: 1200px) and (min-height: 620px) {
+    .intro {
+      margin-bottom: 60px;
+    }
+
     .preview {
       margin-bottom: 80px;
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
-import { InView, useInView } from 'react-intersection-observer';
+import { InView } from 'react-intersection-observer';
 import ProjectPreviewStyled from './styles/ProjectPreviewStyled';
 import ProjectMainStyled from './styles/ProjectMainStyled';
 import ArrowStyled from './styles/elements/ArrowStyled';
@@ -9,7 +9,6 @@ import {
   RSCBanner,
   IOTGABanner,
   WKMPGBanner,
-  IOTGAEntryForm,
   IOTGARegisterForm,
   RSCOurStory,
   RSCPaymentForm,
@@ -27,6 +26,9 @@ class Project extends React.Component {
     previewRef1: PropTypes.object,
     previewRef2: PropTypes.object,
     previewRef3: PropTypes.object,
+    allowHoverPreviewRef1: PropTypes.bool,
+    allowHoverPreviewRef2: PropTypes.bool,
+    allowHoverPreviewRef3: PropTypes.bool,
     mainRef: PropTypes.object,
     animateExit: PropTypes.func,
     animateProjectPreview: PropTypes.func,
@@ -41,7 +43,6 @@ class Project extends React.Component {
     RSCBanner,
     IOTGABanner,
     WKMPGBanner,
-    IOTGAEntryForm,
     IOTGARegisterForm,
     RSCOurStory,
     RSCPaymentForm,
@@ -53,7 +54,16 @@ class Project extends React.Component {
     const video = document.getElementById('wkm-gateway-video');
 
     this.setState({ playVideo: !playVideo });
-    return action === 'play' ? video.play() : video.pause();
+
+    // Add video controls and start the video
+    if (action === 'play') {
+      video.setAttribute('controls', 'controls');
+      return video.play();
+    }
+
+    // Remove video controls and pause the video
+    video.removeAttribute('controls');
+    return video.pause();
   };
 
   render() {
@@ -63,6 +73,9 @@ class Project extends React.Component {
       previewRef1,
       previewRef2,
       previewRef3,
+      allowHoverPreviewRef1,
+      allowHoverPreviewRef2,
+      allowHoverPreviewRef3,
       mainRef,
       animateExit,
       animateProjectPreview,
@@ -71,8 +84,13 @@ class Project extends React.Component {
 
     const { playVideo } = this.state;
 
-    // Add previewRefs to array - will cycle through in .map below
+    // Add previewRefs and allowHoverPreviewRefs to arrays - will cycle through in .map below
     const previewRef = [previewRef1, previewRef2, previewRef3];
+    const allowHoverPreviewRef = [
+      allowHoverPreviewRef1,
+      allowHoverPreviewRef2,
+      allowHoverPreviewRef3,
+    ];
 
     // MainData does not exist on index.js
     if (MainData === undefined) {
@@ -99,7 +117,9 @@ class Project extends React.Component {
                     <p className="intro">{PreviewData[key].intro}</p>
                     <a
                       href={PreviewData[key].link}
-                      className={`project ${PreviewData[key].class}`}
+                      className={`project ${PreviewData[key].class}${
+                        allowHoverPreviewRef[i] ? ' allow-hover' : ''
+                      }`}
                       onClick={e => {
                         e.preventDefault();
                         animateExit();

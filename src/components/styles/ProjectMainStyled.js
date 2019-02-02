@@ -11,18 +11,6 @@ const ProjectMainStyled = styled.div`
     margin: 100px 0;
   }
 
-  .gatsby-image-wrapper {
-    transition: transform 0.2s;
-
-    &:hover {
-      transform: scale(1.2, 1.2);
-    }
-
-    &.tall:hover {
-      transform: scale(1.1, 1.1);
-    }
-  }
-
   .video-container {
     position: relative;
   }

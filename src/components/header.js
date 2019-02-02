@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
-import { HeaderPanelStyled, NavButtonStyled } from './styles/HeaderPanelStyled';
+import {
+  HeaderPanelStyled,
+  NavButtonStyled,
+  ArrowStyled,
+} from './styles/HeaderPanelStyled';
 import { FWMIcon } from './svg/InlineSVG';
 import HeaderContent from './HeaderContent';
 
@@ -18,6 +22,7 @@ class Header extends React.Component {
     headerContentContainerRef: PropTypes.object.isRequired,
     headerContentRef: PropTypes.object.isRequired,
     navRef: PropTypes.object.isRequired,
+    navButtonRef: PropTypes.object.isRequired,
     toggleNav: PropTypes.func.isRequired,
     animateExit: PropTypes.func.isRequired,
   };
@@ -30,6 +35,7 @@ class Header extends React.Component {
       headerContentContainerRef,
       headerContentRef,
       navRef,
+      navButtonRef,
       toggleNav,
       animateExit,
     } = this.props;
@@ -53,7 +59,11 @@ class Header extends React.Component {
             >
               <FWMIcon />
             </a>
-            <NavButtonStyled type="button" onClick={() => toggleNav()}>
+            <NavButtonStyled
+              type="button"
+              ref={navButtonRef}
+              onClick={() => toggleNav()}
+            >
               <span />
               <span />
               <span />
@@ -76,9 +86,9 @@ class Header extends React.Component {
                   <li key={item.name}>
                     <a
                       href={item.link}
-                      className={
+                      className={`right-arrow-link ${
                         locationPathname === item.link ? 'active' : null
-                      }
+                      }`}
                       onClick={e => {
                         e.preventDefault();
 
@@ -89,7 +99,11 @@ class Header extends React.Component {
                         }
                       }}
                     >
-                      {item.name}
+                      <ArrowStyled className="right-arrow">
+                        <span />
+                        <span />
+                      </ArrowStyled>
+                      <span className="a-svg-txt">{item.name}</span>
                     </a>
                   </li>
                 ))}

@@ -31,7 +31,9 @@ const WKMPGBanner = ({ mainBannerClass }) => (
       <Img
         fluid={data.placeholderImage.childImageSharp.fluid}
         alt="WKM Payment Gateway project"
-        className={`banner ${mainBannerClass}`}
+        className={`banner${
+          mainBannerClass !== undefined ? ` ${mainBannerClass}` : ''
+        }`}
         backgroundColor="#fff"
       />
     )}

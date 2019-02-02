@@ -171,7 +171,7 @@ const GlobalStyled = () => (
         margin-left: 25px;
       }
 
-      @media screen and (min-width: 400px) {
+      @media screen and (min-width: 600px) {
         html {
           font-size: 10px;
         }

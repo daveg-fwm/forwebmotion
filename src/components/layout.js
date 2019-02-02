@@ -23,12 +23,17 @@ class Layout extends React.Component {
     headerContentContainerRef: React.createRef(),
     headerContentRef: React.createRef(),
     navRef: React.createRef(),
+    navButtonRef: React.createRef(),
     // Home component
     homeRef: React.createRef(),
     // Project component - 1 for each project preview panel
     previewRef1: React.createRef(),
     previewRef2: React.createRef(),
     previewRef3: React.createRef(),
+    // Project preview banners zoom out when hovering over link, but only allow after project preview has animated in
+    allowHoverPreviewRef1: false,
+    allowHoverPreviewRef2: false,
+    allowHoverPreviewRef3: false,
     // Project component - single main panel
     mainRef: React.createRef(),
     // Footer component
@@ -172,6 +177,7 @@ class Layout extends React.Component {
       windowHeight,
       headerContentContainerRef,
       navRef,
+      navButtonRef,
     } = this.state;
 
     // Ref elements change when Header component is positioned top center or left
@@ -181,6 +187,43 @@ class Layout extends React.Component {
         : navRef;
 
     this.setState({ showMenu: !showMenu });
+
+    const rotate = !showMenu ? 45 : 0;
+    const translateY0 = !showMenu ? '6px' : '0px';
+    const translateX0 = !showMenu ? '8px' : '0px';
+    const translateY2 = !showMenu ? '-5px' : '0px';
+    const translateX2 = !showMenu ? '7px' : '0px';
+    const opacity = !showMenu ? 0 : 1;
+
+    // Animate nav menu button
+    anime
+      .timeline({
+        easing: 'easeOutCubic',
+        duration: 500,
+      })
+      .add({
+        targets: navButtonRef.current.children[0],
+        rotate,
+        translateY: translateY0,
+        translateX: translateX0,
+      })
+      .add(
+        {
+          targets: navButtonRef.current.children[2],
+          rotate: -rotate,
+          translateY: translateY2,
+          translateX: translateX2,
+        },
+        '-=500'
+      )
+      .add(
+        {
+          targets: navButtonRef.current.children[1],
+          opacity,
+          duration: 100,
+        },
+        '-=500'
+      );
 
     // Animate nav menu open/close
     anime({
@@ -287,6 +330,20 @@ class Layout extends React.Component {
 
   // Intersection Observer animations on homepage
   animateProjectPreview = ref => {
+    // Determine which project preview should be allowed to change hover state to true
+    let allowHover = '';
+
+    switch (ref.current.children[0].id) {
+      case 'rsc-project':
+        allowHover = 'allowHoverPreviewRef1';
+        break;
+      case 'iotga-project':
+        allowHover = 'allowHoverPreviewRef2';
+        break;
+      default:
+        allowHover = 'allowHoverPreviewRef3';
+    }
+
     /*
       Traversing object rather than creating a ref for each element:
 
@@ -330,7 +387,13 @@ class Layout extends React.Component {
       .add({
         targets: banner,
         translateY: () => ['110%', '0%'],
-      });
+      })
+      .finished.then(
+        // Use timeout to ensure transitions don't conflict
+        setTimeout(() => {
+          this.setState({ [allowHover]: true });
+        }, 2500)
+      );
   };
 
   // Intersection Observer animations on project pages
@@ -400,16 +463,48 @@ class Layout extends React.Component {
       );
   };
 
+  // Scroll to first project preview after clicking down arrow in Home component
+  homeScroll = () => {
+    const { windowWidth, windowHeight, previewRef1 } = this.state;
+    const scrollElement =
+      window.document.scrollingElement ||
+      window.document.body ||
+      window.document.documentElement;
+
+    // Get top position of first project preview (add 6 due to hide-panel padding)
+    const projectPos = previewRef1.current.offsetTop + 6;
+
+    // Match scroll offset with main element padding-top
+    let offset = 20;
+
+    if (windowWidth < 1200 || windowHeight < 620) {
+      offset = 125;
+    } else if (windowHeight >= 660) {
+      offset = 40;
+    }
+
+    anime({
+      targets: scrollElement,
+      scrollTop: projectPos - offset,
+      easing: 'easeInOutQuad',
+      duration: 500,
+    });
+  };
+
   render() {
     const { children, headerData, footerClass, location } = this.props;
     const {
       headerContentContainerRef,
       headerContentRef,
       navRef,
+      navButtonRef,
       homeRef,
       previewRef1,
       previewRef2,
       previewRef3,
+      allowHoverPreviewRef1,
+      allowHoverPreviewRef2,
+      allowHoverPreviewRef3,
       mainRef,
       footerRef,
     } = this.state;
@@ -421,7 +516,11 @@ class Layout extends React.Component {
         previewRef1,
         previewRef2,
         previewRef3,
+        allowHoverPreviewRef1,
+        allowHoverPreviewRef2,
+        allowHoverPreviewRef3,
         mainRef,
+        homeScroll: this.homeScroll,
         animateExit: this.animateExit,
         animateProjectPreview: this.animateProjectPreview,
         animateProjectMain: this.animateProjectMain,
@@ -461,6 +560,7 @@ class Layout extends React.Component {
               headerContentContainerRef={headerContentContainerRef}
               headerContentRef={headerContentRef}
               navRef={navRef}
+              navButtonRef={navButtonRef}
               toggleNav={this.toggleNav}
               animateExit={this.animateExit}
             />

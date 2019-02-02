@@ -24,7 +24,7 @@ const FooterPanelStyled = styled.footer`
     position: relative;
     z-index: 1;
     padding: 40px 25px;
-    margin-bottom: 40px;
+    margin-bottom: 38px;
     background-color: #fff;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
   }
