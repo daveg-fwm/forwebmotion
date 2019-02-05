@@ -51,12 +51,12 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'forwebmotion',
-        short_name: 'fwmotion',
+        short_name: 'fwm',
         start_url: '/',
         background_color: '#40afe9',
         theme_color: '#40afe9',
         display: 'browser',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/forwebmotion-icon.png', // This path is relative to the root of the site.
       },
     },
     {

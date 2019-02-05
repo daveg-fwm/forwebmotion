@@ -5,6 +5,7 @@ import WKMPGBanner from './WKMPGBanner';
 import IOTGARegisterForm from './IOTGARegisterForm';
 import RSCOurStory from './RSCOurStory';
 import RSCPaymentForm from './RSCPaymentForm';
+import AboutBanner from './AboutBanner';
 
 export {
   RSCBanner,
@@ -13,4 +14,5 @@ export {
   IOTGARegisterForm,
   RSCOurStory,
   RSCPaymentForm,
+  AboutBanner,
 };

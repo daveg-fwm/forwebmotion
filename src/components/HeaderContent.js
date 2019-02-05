@@ -23,6 +23,15 @@ import {
   SagePayIcon,
   WordPressIcon,
   ZendIcon,
+  AnimeJSIcon,
+  GatsbyIcon,
+  AmplifyIcon,
+  EmotionIcon,
+  GitIcon,
+  AWSIcon,
+  VSCodeIcon,
+  ReactIcon,
+  FWMLogo,
 } from './svg/InlineSVG';
 
 class HeaderContent extends React.Component {
@@ -56,6 +65,15 @@ class HeaderContent extends React.Component {
     SagePayIcon,
     WordPressIcon,
     ZendIcon,
+    AnimeJSIcon,
+    GatsbyIcon,
+    AmplifyIcon,
+    EmotionIcon,
+    GitIcon,
+    AWSIcon,
+    VSCodeIcon,
+    ReactIcon,
+    FWMLogo,
   };
 
   render() {
@@ -70,10 +88,10 @@ class HeaderContent extends React.Component {
       return (
         <HeaderContentStyled className="header-content">
           <p>
-            Currently my focus is on JavaScript. I've recently completed courses
-            on ES6 and React. This site was built with React and represents my
-            progress so far.
+            Everything we learn today is but a stepping stone to what we will
+            learn tomorrow.
           </p>
+          <p>Check out the links below to find out what I'm learning today.</p>
           <a
             className="a-svg"
             href="#"

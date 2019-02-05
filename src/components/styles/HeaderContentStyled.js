@@ -40,8 +40,19 @@ const HeaderContentStyled = styled.div`
     margin-top: 1px;
   }
 
+  .about-header {
+    background-color: #40afe9;
+  }
+
+  .fwm-logo {
+    width: 140px;
+    height: 17.33px;
+    fill: #fff;
+  }
+
   .wordpress-icon,
-  .zend-icon {
+  .zend-icon,
+  .react-icon {
     width: 30px;
     height: 30px;
     fill: #fff;
@@ -102,7 +113,8 @@ const HeaderContentStyled = styled.div`
     margin-left: -80px;
   }
 
-  .project-header div.SVGInline.wordpress-icon .tooltip {
+  .project-header div.SVGInline.wordpress-icon .tooltip,
+  .project-header div.SVGInline.react-icon .tooltip {
     bottom: 10px;
     margin-left: -75px;
   }
@@ -144,6 +156,15 @@ const HeaderContentStyled = styled.div`
     margin-left: -10px;
   }
 
+  div.animejs-icon .tooltip,
+  div.emotion-icon .tooltip {
+    margin-left: -7px;
+  }
+
+  div.aws-icon .tooltip {
+    margin-left: 0px;
+  }
+
   .html-icon,
   .css-icon,
   .js-icon,
@@ -153,7 +174,10 @@ const HeaderContentStyled = styled.div`
   .azuredevops-icon,
   section .github-icon,
   .sourcetree-icon,
-  .doctrine-icon {
+  .doctrine-icon,
+  .gatsby-icon,
+  .vscode-icon,
+  .git-icon {
     width: 30px;
     height: 30px;
 
@@ -219,6 +243,51 @@ const HeaderContentStyled = styled.div`
   .sagepay-icon {
     width: 50px;
     height: 11.61px;
+
+    svg {
+      margin-right: 20px;
+    }
+  }
+
+  .animejs-icon {
+    width: 50px;
+    height: 12px;
+    position: relative;
+    top: -2px;
+
+    svg {
+      margin-right: 12px;
+      margin-left: -3px;
+    }
+  }
+
+  .emotion-icon {
+    width: 56px;
+    height: 12.36px;
+    position: relative;
+    top: -2px;
+
+    svg {
+      margin-right: 0;
+    }
+  }
+
+  .amplify-icon {
+    width: 32px;
+    height: 23.86px;
+    position: relative;
+    top: -1px;
+
+    svg {
+      margin-right: 20px;
+    }
+  }
+
+  .aws-icon {
+    width: 60px;
+    height: 24px;
+    position: relative;
+    top: -1px;
 
     svg {
       margin-right: 20px;

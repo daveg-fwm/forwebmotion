@@ -77,6 +77,32 @@
           "nginx": "NginxIcon"
         }
       }
+    },
+    "about": {
+      "class": "about-header",
+      "logo": "FWMLogo",
+      "appIcon": "ReactIcon",
+      "techStack": {
+        "frontEnd": {
+          "title": "Front-end",
+          "html": "HTMLIcon",
+          "css": "CSSIcon",
+          "js": "JSIcon",
+          "animejs": "AnimeJSIcon",
+          "emotion": "EmotionIcon"
+        },
+        "toolchainsCloudServices": {
+          "title": "Toolchains and Cloud Services",
+          "gatsby": "GatsbyIcon",
+          "amplify": "AmplifyIcon",
+          "aws": "AWSIcon"
+        },
+        "ideVersionControl": {
+          "title": "IDE and Version Control",
+          "vscode": "VSCodeIcon",
+          "git": "GitIcon"
+        }
+      }
     }
   },
   "preview": {
@@ -87,8 +113,16 @@
       "type": "Static PHP",
       "link": "/red-sofa-cafe",
       "bannerImg": "RSCBanner",
-      "intro":
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "intro": [
+        {
+          "paragraph":
+            "My story begins with a vibey neighbourhood cafe which quickly became an integral part of the Vredehoek cafe culture located in sunny Cape Town, SA."
+        },
+        {
+          "paragraph":
+            "I took on this project during the break between my 2nd and 3rd year of studies. The opportunity to build something from the ground up was invaluable to my perspective on design and progression as a developer."
+        }
+      ]
     },
     "iotga": {
       "name": "IoT Global Awards",
@@ -97,8 +131,16 @@
       "type": "WordPress",
       "link": "/iot-global-awards",
       "bannerImg": "IOTGABanner",
-      "intro":
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "intro": [
+        {
+          "paragraph":
+            "The cafe site paid off as it got me my first gig with UK based firm, WKM Global. It was here that I came to learn the ins and outs of WordPress while experimenting with techniques such as AJAX, Flexbox and CSS animations."
+        },
+        {
+          "paragraph":
+            "As our requirements grew more complex, it became clear we needed to improve our workflow and website performance. The decision was made to move from shared to cloud hosting where I gained further experience and skills, this time on the back-end, by learning to install and configure web servers and setting up Git version control via Microsoft Azure DevOps. The IoT Global Awards site was the first to benefit from our new infrastructure."
+        }
+      ]
     },
     "wkmpg": {
       "name": "WKM Payment Gateway",
@@ -107,14 +149,40 @@
       "type": "Zend Framework 3",
       "link": "/wkm-payment-gateway",
       "bannerImg": "WKMPGBanner",
-      "intro":
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "intro": [
+        {
+          "paragraph":
+            "By mid 2018 I had a solid understanding of WordPress. Apart from IoT Global Awards I had also built a couple news portals expanding my knowledge to include posts, categories and tags along with commonly used plugins such as Yoast SEO."
+        },
+        {
+          "paragraph":
+            "WKM was now in need of a more customisable payment system for users of its various websites. The time had come to graduate to building a web application. Having prior knowledge of Zend Framework 2, I was excited to dive into the latest version. This was also an opportunity to work with the Sage Pay REST API, something I'm sure will come in handy down the road."
+        }
+      ]
+    },
+    "about": {
+      "name": "About Forwebmotion",
+      "class": "forwebmotion-project",
+      "year": "2019",
+      "type": "React",
+      "link": "/about",
+      "bannerImg": "AboutBanner",
+      "intro": [
+        {
+          "paragraph":
+            "As you've no doubt realised by now, the forwebmotion philosophy is all about looking ahead. Today's technology is awesome, but it's nothing compared to what's to come. I'm going to do everything possible to be ready for it."
+        },
+        {
+          "paragraph":
+            "In the spirit of moving forward I have built this site with React using the Gatsby toolchain and hosted by Amazon Web Services. JavaScript is now my primary focus and I encourage you to read on about this project and take a look at the code in my repo."
+        }
+      ]
     }
   },
   "main": {
     "rsc": [
       {
-        "type": "text",
+        "type": "paragraph",
         "content":
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
       },
@@ -123,7 +191,7 @@
         "content": "RSCOurStory"
       },
       {
-        "type": "text",
+        "type": "paragraph",
         "content":
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
       },
@@ -134,7 +202,7 @@
     ],
     "iotga": [
       {
-        "type": "text",
+        "type": "paragraph",
         "content":
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
       },
@@ -143,14 +211,14 @@
         "content": "IOTGARegisterForm"
       },
       {
-        "type": "text",
+        "type": "paragraph",
         "content":
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
       }
     ],
     "wkmpg": [
       {
-        "type": "text",
+        "type": "paragraph",
         "content":
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
       },
@@ -159,9 +227,16 @@
         "content": "wkm-payment-gateway.mp4"
       },
       {
-        "type": "text",
+        "type": "paragraph",
         "content":
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      }
+    ],
+    "about": [
+      {
+        "type": "paragraph",
+        "content":
+          "My name is Dave Green. I am a web developer based in Cape Town, South Africa. This is my journey."
       }
     ]
   }

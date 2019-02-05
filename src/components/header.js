@@ -11,6 +11,7 @@ import HeaderContent from './HeaderContent';
 
 class Header extends React.Component {
   static propTypes = {
+    scrollMenu: PropTypes.bool.isRequired,
     menuLinks: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
@@ -29,6 +30,7 @@ class Header extends React.Component {
 
   render() {
     const {
+      scrollMenu,
       menuLinks,
       data,
       locationPathname,
@@ -41,7 +43,7 @@ class Header extends React.Component {
     } = this.props;
 
     return (
-      <HeaderPanelStyled>
+      <HeaderPanelStyled className={scrollMenu ? 'scroll' : 'no-scroll'}>
         <div className="header-panel-inner">
           <div className="top-nav">
             <a

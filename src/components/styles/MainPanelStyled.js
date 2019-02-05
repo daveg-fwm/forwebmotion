@@ -2,13 +2,17 @@ import styled from '@emotion/styled';
 
 const MainPanelStyled = styled.main`
   width: 100%;
-  max-width: 1366px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 125px 10px 40px;
   display: grid;
   grid-gap: 10vh 40px;
   grid-template-columns: 100%;
   justify-content: end;
+
+  &.scroll {
+    position: fixed;
+  }
 
   div.hide-panel {
     overflow: hidden;
@@ -26,6 +30,7 @@ const MainPanelStyled = styled.main`
   }
 
   @media screen and (min-width: 1200px) and (min-height: 620px) {
+    max-width: 1366px;
     grid-template-columns: calc(100% - 340px);
     padding: 20px 40px;
 

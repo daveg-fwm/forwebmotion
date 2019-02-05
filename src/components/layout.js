@@ -17,6 +17,8 @@ class Layout extends React.Component {
 
   state = {
     showMenu: false,
+    scrollMenu: false,
+    scrollPos: 0,
     windowWidth: window.innerWidth,
     windowHeight: window.innerHeight,
     // Header and nav refs passed up from Header component via props
@@ -30,10 +32,12 @@ class Layout extends React.Component {
     previewRef1: React.createRef(),
     previewRef2: React.createRef(),
     previewRef3: React.createRef(),
+    aboutPreviewRef: React.createRef(),
     // Project preview banners zoom out when hovering over link, but only allow after project preview has animated in
     allowHoverPreviewRef1: false,
     allowHoverPreviewRef2: false,
     allowHoverPreviewRef3: false,
+    allowHoverAboutPreviewRef: false,
     // Project component - single main panel
     mainRef: React.createRef(),
     // Footer component
@@ -42,6 +46,7 @@ class Layout extends React.Component {
 
   targets = [];
   targetsChildren = [];
+  hoverTimeoutId = () => {};
 
   // Enter animations
   componentDidMount = () => {
@@ -51,6 +56,7 @@ class Layout extends React.Component {
       previewRef1,
       previewRef2,
       previewRef3,
+      aboutPreviewRef,
       mainRef,
       footerRef,
     } = this.state;
@@ -72,6 +78,7 @@ class Layout extends React.Component {
             previewRef1.current,
             previewRef2.current,
             previewRef3.current,
+            aboutPreviewRef.current,
           ]
         : mainRef.current;
 
@@ -82,6 +89,7 @@ class Layout extends React.Component {
             previewRef1.current.children,
             previewRef2.current.children,
             previewRef3.current.children,
+            aboutPreviewRef.current.children,
           ]
         : mainRef.current.children;
 
@@ -127,7 +135,7 @@ class Layout extends React.Component {
     }
 
     // Animate footer panel
-    anime
+    const animation = anime
       .timeline({
         targets: footerRef.current,
         translateY: () => ['-100%', '0%'],
@@ -139,11 +147,14 @@ class Layout extends React.Component {
         translateY: () => ['calc(129% + 12px)', '0%'],
       });
 
+    if (homeRef.current !== null) animation.finished.then(this.homeScroll());
+
     window.addEventListener('resize', this.updateSize);
   };
 
   // Prevent memory leaks
   componentWillUnmount = () => {
+    clearTimeout(this.hoverTimeoutId);
     window.removeEventListener('resize', this.updateSize);
   };
 
@@ -173,6 +184,8 @@ class Layout extends React.Component {
   toggleNav = () => {
     const {
       showMenu,
+      scrollMenu,
+      scrollPos,
       windowWidth,
       windowHeight,
       headerContentContainerRef,
@@ -185,6 +198,35 @@ class Layout extends React.Component {
       windowWidth < 1200 || windowHeight < 620
         ? headerContentContainerRef
         : navRef;
+
+    /*
+      If nav menu is top center, toggle state for scrollMenu.
+      Main and footer will have fixed positioning and the nav header will change to absolute.
+      This will preserve the smooth scroll experience on iOS.
+    */
+    if (windowWidth < 1200 || windowHeight < 620) {
+      const scrollElement =
+        window.document.scrollingElement ||
+        window.document.body ||
+        window.document.documentElement;
+
+      /*
+        If menu is about to be opened record the scroll position.
+        If menu is about to be closed scroll to the saved position.
+      */
+      if (!scrollMenu) {
+        this.setState({ scrollPos: window.pageYOffset });
+      } else {
+        anime({
+          targets: scrollElement,
+          scrollTop: scrollPos,
+          easing: 'easeInOutQuad',
+          duration: 10,
+        });
+      }
+
+      this.setState({ scrollMenu: !scrollMenu });
+    }
 
     this.setState({ showMenu: !showMenu });
 
@@ -270,6 +312,7 @@ class Layout extends React.Component {
       previewRef1,
       previewRef2,
       previewRef3,
+      aboutPreviewRef,
       mainRef,
       footerRef,
     } = this.state;
@@ -288,6 +331,7 @@ class Layout extends React.Component {
             previewRef1.current,
             previewRef2.current,
             previewRef3.current,
+            aboutPreviewRef.current,
           ]
         : mainRef.current;
 
@@ -298,6 +342,7 @@ class Layout extends React.Component {
             previewRef1.current.children,
             previewRef2.current.children,
             previewRef3.current.children,
+            aboutPreviewRef.current.children,
           ]
         : mainRef.current.children;
 
@@ -328,7 +373,39 @@ class Layout extends React.Component {
       });
   };
 
-  // Intersection Observer animations on homepage
+  // Intersection Observer animations for intro text on homepage
+  animateProjectIntro = ref => {
+    /*
+      Traversing object rather than creating a ref for each element:
+
+      div.hide-panel {
+        div.panel {
+          div.ProjectPreviewStyled {
+            p.intro
+          }
+        }
+      }
+    */
+    const intro = ref.current.children[0].children[0].children[0];
+
+    anime({
+      targets: intro,
+      translateY: () => ['-200%', '0%'],
+      easing: 'easeOutQuart',
+      duration: 500,
+    });
+  };
+
+  /*
+    Use timeout to ensure transitions don't conflict.
+    This function is called once animateProjectPreview animations complete.
+  */
+  hoverTimer = allowHover =>
+    setTimeout(() => {
+      this.setState({ [allowHover]: true });
+    }, 2500);
+
+  // Intersection Observer animations for preview banners on homepage
   animateProjectPreview = ref => {
     // Determine which project preview should be allowed to change hover state to true
     let allowHover = '';
@@ -340,8 +417,11 @@ class Layout extends React.Component {
       case 'iotga-project':
         allowHover = 'allowHoverPreviewRef2';
         break;
-      default:
+      case 'wkmpg-project':
         allowHover = 'allowHoverPreviewRef3';
+        break;
+      default:
+        allowHover = 'allowHoverAboutPreviewRef';
     }
 
     /*
@@ -360,7 +440,6 @@ class Layout extends React.Component {
         }
       }
     */
-    const intro = ref.current.children[0].children[0].children[0];
     const arrow = ref.current.children[0].children[0].children[1].children[0];
     const bg = ref.current.children[0].children[0].children[1].children[1];
     const banner = ref.current.children[0].children[0].children[1].children[2];
@@ -371,12 +450,8 @@ class Layout extends React.Component {
         duration: 500,
       })
       .add({
-        targets: intro,
-        translateY: () => ['-200%', '0%'],
-      })
-      .add({
         targets: bg,
-        translateX: () => ['-110%', '0%'],
+        translateX: () => ['-115%', '0%'],
         easing: 'easeOutBack',
       })
       .add({
@@ -389,10 +464,11 @@ class Layout extends React.Component {
         translateY: () => ['110%', '0%'],
       })
       .finished.then(
-        // Use timeout to ensure transitions don't conflict
-        setTimeout(() => {
-          this.setState({ [allowHover]: true });
-        }, 2500)
+        /*
+          Use timeout to ensure transitions don't conflict.
+          Cancel setTimeout using this.hoverTimeoutId in ComponentWillUnmount.
+        */
+        (this.hoverTimeoutId = this.hoverTimer(allowHover))
       );
   };
 
@@ -429,7 +505,7 @@ class Layout extends React.Component {
       })
       .add({
         targets: bg,
-        translateX: () => ['-110%', '0%'],
+        translateX: () => ['-115%', '0%'],
         easing: 'easeOutBack',
         delay: 500,
       })
@@ -463,37 +539,77 @@ class Layout extends React.Component {
       );
   };
 
-  // Scroll to first project preview after clicking down arrow in Home component
-  homeScroll = () => {
-    const { windowWidth, windowHeight, previewRef1 } = this.state;
+  /*
+    Scroll to first project preview after clicking down arrow in Home component.
+    Scroll to project preview that matches hash on homepage.
+  */
+  homeScroll = hashOnClick => {
+    const {
+      windowWidth,
+      windowHeight,
+      previewRef1,
+      previewRef2,
+      previewRef3,
+      aboutPreviewRef,
+    } = this.state;
+
     const scrollElement =
       window.document.scrollingElement ||
       window.document.body ||
       window.document.documentElement;
 
-    // Get top position of first project preview (add 6 due to hide-panel padding)
-    const projectPos = previewRef1.current.offsetTop + 6;
+    const { location } = this.props;
 
-    // Match scroll offset with main element padding-top
-    let offset = 20;
+    // Check if home down arrow was clicked or hash exists in url
+    const hash =
+      hashOnClick === '#rsc-project' ? '#rsc-project' : location.hash;
 
-    if (windowWidth < 1200 || windowHeight < 620) {
-      offset = 125;
-    } else if (windowHeight >= 660) {
-      offset = 40;
+    // Smooth scroll if arrow was clicked and scroll immediately to project if hash exists in url
+    const duration = hashOnClick === '#rsc-project' ? 500 : 10;
+
+    let projectRef = {};
+
+    if (hash !== undefined && hash !== '') {
+      // Pass ref with current hash so window scrolls to correct place
+      switch (hash) {
+        case '#rsc-project':
+          projectRef = previewRef1;
+          break;
+        case '#iotga-project':
+          projectRef = previewRef2;
+          break;
+        case '#wkmpg-project':
+          projectRef = previewRef3;
+          break;
+        default:
+          projectRef = aboutPreviewRef;
+      }
+
+      // Get top position of first project preview (add 6 due to hide-panel padding)
+      const projectPos = projectRef.current.offsetTop + 6;
+
+      // Match scroll offset with main element padding-top
+      let offset = 20;
+
+      if (windowWidth < 1200 || windowHeight < 620) {
+        offset = 125;
+      } else if (windowHeight >= 660) {
+        offset = 40;
+      }
+
+      anime({
+        targets: scrollElement,
+        scrollTop: projectPos - offset,
+        easing: 'easeInOutQuad',
+        duration,
+      });
     }
-
-    anime({
-      targets: scrollElement,
-      scrollTop: projectPos - offset,
-      easing: 'easeInOutQuad',
-      duration: 500,
-    });
   };
 
   render() {
     const { children, headerData, footerClass, location } = this.props;
     const {
+      scrollMenu,
       headerContentContainerRef,
       headerContentRef,
       navRef,
@@ -502,9 +618,11 @@ class Layout extends React.Component {
       previewRef1,
       previewRef2,
       previewRef3,
+      aboutPreviewRef,
       allowHoverPreviewRef1,
       allowHoverPreviewRef2,
       allowHoverPreviewRef3,
+      allowHoverAboutPreviewRef,
       mainRef,
       footerRef,
     } = this.state;
@@ -516,12 +634,15 @@ class Layout extends React.Component {
         previewRef1,
         previewRef2,
         previewRef3,
+        aboutPreviewRef,
         allowHoverPreviewRef1,
         allowHoverPreviewRef2,
         allowHoverPreviewRef3,
+        allowHoverAboutPreviewRef,
         mainRef,
         homeScroll: this.homeScroll,
         animateExit: this.animateExit,
+        animateProjectIntro: this.animateProjectIntro,
         animateProjectPreview: this.animateProjectPreview,
         animateProjectMain: this.animateProjectMain,
       })
@@ -554,6 +675,7 @@ class Layout extends React.Component {
               Refs and functions are used for animations.
             */}
             <Header
+              scrollMenu={scrollMenu}
               menuLinks={data.site.siteMetadata.menuLinks}
               data={headerData}
               locationPathname={location.pathname}
@@ -565,8 +687,14 @@ class Layout extends React.Component {
               animateExit={this.animateExit}
             />
 
-            <MainPanelStyled>{childrenWithProps}</MainPanelStyled>
-            <Footer footerClass={footerClass} footerRef={footerRef} />
+            <MainPanelStyled className={scrollMenu ? 'scroll' : 'no-scroll'}>
+              {childrenWithProps}
+            </MainPanelStyled>
+            <Footer
+              footerClass={footerClass}
+              scrollMenu={scrollMenu}
+              footerRef={footerRef}
+            />
           </>
         )}
       />

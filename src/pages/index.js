@@ -42,7 +42,9 @@ export const query = graphql`
               type
               link
               bannerImg
-              intro
+              intro {
+                paragraph
+              }
             }
             iotga {
               name
@@ -51,7 +53,9 @@ export const query = graphql`
               type
               link
               bannerImg
-              intro
+              intro {
+                paragraph
+              }
             }
             wkmpg {
               name
@@ -60,7 +64,20 @@ export const query = graphql`
               type
               link
               bannerImg
-              intro
+              intro {
+                paragraph
+              }
+            }
+            about {
+              name
+              class
+              year
+              type
+              link
+              bannerImg
+              intro {
+                paragraph
+              }
             }
           }
         }

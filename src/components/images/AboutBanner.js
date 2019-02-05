@@ -1,5 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 
 /*
@@ -13,13 +14,13 @@ import Img from 'gatsby-image';
  * - `StaticQuery`: https://gatsby.app/staticquery
  */
 
-const RSCPaymentForm = () => (
+const AboutBanner = ({ mainBannerClass }) => (
   <StaticQuery
     query={graphql`
       query {
-        placeholderImage: file(relativePath: { eq: "rsc-payment-form.jpg" }) {
+        placeholderImage: file(relativePath: { eq: "about-banner.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 730, quality: 100) {
+            fluid(maxWidth: 1000, quality: 90) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -29,11 +30,18 @@ const RSCPaymentForm = () => (
     render={data => (
       <Img
         fluid={data.placeholderImage.childImageSharp.fluid}
-        alt="Red Sofa Cafe payment form"
+        alt="Dave Green Web Developer - forwebmotion"
+        className={`banner${
+          mainBannerClass !== undefined ? ` ${mainBannerClass}` : ''
+        }`}
         backgroundColor="#fff"
       />
     )}
   />
 );
 
-export default RSCPaymentForm;
+AboutBanner.propTypes = {
+  mainBannerClass: PropTypes.string,
+};
+
+export default AboutBanner;

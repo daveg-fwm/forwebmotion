@@ -12,6 +12,7 @@ import {
   IOTGARegisterForm,
   RSCOurStory,
   RSCPaymentForm,
+  AboutBanner,
 } from './images/images';
 
 class Project extends React.Component {
@@ -26,11 +27,14 @@ class Project extends React.Component {
     previewRef1: PropTypes.object,
     previewRef2: PropTypes.object,
     previewRef3: PropTypes.object,
+    aboutPreviewRef: PropTypes.object,
     allowHoverPreviewRef1: PropTypes.bool,
     allowHoverPreviewRef2: PropTypes.bool,
     allowHoverPreviewRef3: PropTypes.bool,
+    allowHoverAboutPreviewRef: PropTypes.bool,
     mainRef: PropTypes.object,
     animateExit: PropTypes.func,
+    animateProjectIntro: PropTypes.func,
     animateProjectPreview: PropTypes.func,
     animateProjectMain: PropTypes.func,
   };
@@ -46,6 +50,7 @@ class Project extends React.Component {
     IOTGARegisterForm,
     RSCOurStory,
     RSCPaymentForm,
+    AboutBanner,
   };
 
   // Play/pause video
@@ -73,11 +78,14 @@ class Project extends React.Component {
       previewRef1,
       previewRef2,
       previewRef3,
+      aboutPreviewRef,
       allowHoverPreviewRef1,
       allowHoverPreviewRef2,
       allowHoverPreviewRef3,
+      allowHoverAboutPreviewRef,
       mainRef,
       animateExit,
+      animateProjectIntro,
       animateProjectPreview,
       animateProjectMain,
     } = this.props;
@@ -85,11 +93,12 @@ class Project extends React.Component {
     const { playVideo } = this.state;
 
     // Add previewRefs and allowHoverPreviewRefs to arrays - will cycle through in .map below
-    const previewRef = [previewRef1, previewRef2, previewRef3];
+    const previewRef = [previewRef1, previewRef2, previewRef3, aboutPreviewRef];
     const allowHoverPreviewRef = [
       allowHoverPreviewRef1,
       allowHoverPreviewRef2,
       allowHoverPreviewRef3,
+      allowHoverAboutPreviewRef,
     ];
 
     // MainData does not exist on index.js
@@ -107,24 +116,34 @@ class Project extends React.Component {
                   id={PreviewData[key].class}
                   className="panel"
                   triggerOnce
-                  threshold={0.5}
+                  threshold={0.2}
                   onChange={inView =>
-                    inView ? animateProjectPreview(previewRef[i]) : null
+                    inView ? animateProjectIntro(previewRef[i]) : null
                   }
                 >
                   {/* Preview content for all projects on homepage */}
                   <ProjectPreviewStyled>
-                    <p className="intro">{PreviewData[key].intro}</p>
-                    <a
-                      href={PreviewData[key].link}
+                    <div className="intro">
+                      {PreviewData[key].intro.map((item, num) => (
+                        <p key={`${key}-intro${num}`}>{item.paragraph}</p>
+                      ))}
+                    </div>
+                    <InView
+                      tag="a"
                       className={`project ${PreviewData[key].class}${
                         allowHoverPreviewRef[i] ? ' allow-hover' : ''
                       }`}
+                      href={PreviewData[key].link}
                       onClick={e => {
                         e.preventDefault();
                         animateExit();
                         setTimeout(() => navigate(PreviewData[key].link), 1000);
                       }}
+                      triggerOnce
+                      threshold={0.8}
+                      onChange={inView =>
+                        inView ? animateProjectPreview(previewRef[i]) : null
+                      }
                     >
                       <div className="project-arrow">
                         <ArrowStyled className="arrow">
@@ -138,7 +157,7 @@ class Project extends React.Component {
                         <p>{PreviewData[key].type}</p>
                       </div>
                       <Banner />
-                    </a>
+                    </InView>
                   </ProjectPreviewStyled>
                 </InView>
               </div>
@@ -188,7 +207,7 @@ class Project extends React.Component {
           <ProjectMainStyled>
             {MainData.map((item, i) => {
               // Paragraphs
-              if (item.type === 'text') {
+              if (item.type === 'paragraph') {
                 return <p key={item.type + i}>{item.content}</p>;
               }
 

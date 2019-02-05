@@ -27,6 +27,10 @@ import IOTGALogo from './IOTGALogo';
 import WKMLogo from './WKMLogo';
 import SagePayIcon from './SagePayIcon';
 import LinkedInIcon from './LinkedInIcon';
+import AnimeJSIcon from './AnimeJSIcon';
+import GatsbyIcon from './GatsbyIcon';
+import AmplifyIcon from './AmplifyIcon';
+import EmotionIcon from './EmotionIcon';
 
 export {
   FWMIcon,
@@ -57,4 +61,8 @@ export {
   WKMLogo,
   SagePayIcon,
   LinkedInIcon,
+  AnimeJSIcon,
+  GatsbyIcon,
+  AmplifyIcon,
+  EmotionIcon,
 };

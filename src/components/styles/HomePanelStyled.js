@@ -21,11 +21,11 @@ const HomePanelStyled = styled.div`
   }
 
   span.fwm-logo {
-    margin: 25px 0 20px;
+    margin: 25px 0 10px;
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 2.6rem;
     font-weight: 300;
     margin: 0 0 30px;
   }
@@ -33,14 +33,17 @@ const HomePanelStyled = styled.div`
   button {
     background-color: transparent;
     border: 0;
-    margin-top: 40px;
     padding: 10px 20px;
     color: #40afe9;
   }
 
   @media screen and (min-width: 600px) {
-    h1 {
-      font-size: 2.6rem;
+    span.fwm-logo {
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-top: 40px;
     }
   }
 `;

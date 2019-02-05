@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 const ProjectPreviewStyled = styled.div`
   .intro {
-    margin-bottom: 40px;
     transform: translateY(-200%);
   }
 
@@ -18,8 +17,12 @@ const ProjectPreviewStyled = styled.div`
     overflow: hidden;
   }
 
-  a.project:active {
-    animation: none;
+  a.project {
+    margin-top: 40px;
+
+    &:active {
+      animation: none;
+    }
   }
 
   .project-arrow {
@@ -42,12 +45,17 @@ const ProjectPreviewStyled = styled.div`
     height: 64vw;
     max-height: 380px;
     padding: 9px 15px;
-    transform: translateX(-110%);
+    transform: translateX(-115%);
 
     p {
       color: #fff;
       margin-bottom: 8px;
     }
+  }
+
+  .project-page-bg {
+    margin-left: -25px;
+    padding: 25px;
   }
 
   .rsc-project {
@@ -108,6 +116,26 @@ const ProjectPreviewStyled = styled.div`
     }
   }
 
+  .forwebmotion-project {
+    h1 {
+      color: #40afe9;
+    }
+
+    .project-arrow {
+      color: #40afe9;
+
+      .arrow {
+        span:nth-of-type(2) {
+          background-color: #40afe9;
+        }
+      }
+    }
+
+    .project-bg {
+      background-color: #40afe9;
+    }
+  }
+
   .banner {
     width: 60.5vw;
     height: 33vw;
@@ -115,7 +143,7 @@ const ProjectPreviewStyled = styled.div`
     max-height: 300px;
     position: absolute !important;
     bottom: 6px;
-    right: 10px;
+    right: 15px;
     background-color: #fff;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
     transform: translateY(110%);
@@ -145,9 +173,11 @@ const ProjectPreviewStyled = styled.div`
   }
 
   .close-project {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     position: relative;
+    z-index: 1;
+    background-color: #fff;
     transform: translateX(-100%);
 
     span {
@@ -161,10 +191,6 @@ const ProjectPreviewStyled = styled.div`
   }
 
   @media screen and (min-width: 1200px) and (min-height: 620px) {
-    .intro {
-      margin-bottom: 60px;
-    }
-
     .preview {
       margin-bottom: 80px;
     }
@@ -174,12 +200,18 @@ const ProjectPreviewStyled = styled.div`
       margin: 0 -25px;
     }
 
+    a.project {
+      margin-top: 60px;
+    }
+
     .project-bg {
       height: 28.5vw;
     }
 
     .project-page-bg {
       width: calc(100% - 25px);
+      padding: 9px 15px;
+      margin-left: 0;
     }
 
     .banner {
@@ -194,6 +226,12 @@ const ProjectPreviewStyled = styled.div`
 
     h1 {
       height: 255px;
+    }
+
+    .close-project {
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
     }
   }
 `;

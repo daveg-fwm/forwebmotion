@@ -9,7 +9,7 @@ const Home = ({ homeRef, homeScroll }) => (
       <FWMIcon />
       <FWMLogo />
       <h1>A Web Developer's journey.</h1>
-      <button type="button" onClick={() => homeScroll()}>
+      <button type="button" onClick={() => homeScroll('#rsc-project')}>
         <ArrowStyled className="down-arrow">
           <span />
           <span />

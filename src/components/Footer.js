@@ -5,8 +5,10 @@ import { LinkedInIcon } from './svg/InlineSVG';
 
 const year = new Date().getFullYear();
 
-const Footer = ({ footerClass, footerRef }) => (
-  <FooterPanelStyled className={footerClass.class}>
+const Footer = ({ footerClass, scrollMenu, footerRef }) => (
+  <FooterPanelStyled
+    className={`${footerClass.class} ${scrollMenu ? 'scroll' : 'no-scroll'}`}
+  >
     <div className="hide-panel" ref={footerRef}>
       <div className="footer-panel">
         <a
@@ -31,6 +33,7 @@ Footer.propTypes = {
   footerClass: PropTypes.shape({
     class: PropTypes.string.isRequired,
   }).isRequired,
+  scrollMenu: PropTypes.bool.isRequired,
   footerRef: PropTypes.object.isRequired,
 };
 

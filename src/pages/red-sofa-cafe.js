@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Project from '../components/Project';
 
-const RedSofaCafe = ({ data }) => {
+const RedSofaCafe = ({ data, location }) => {
   const HeaderData = data.allDataJson.edges[0].node.header.rsc;
   const PreviewData = data.allDataJson.edges[0].node.preview.rsc;
   const MainData = data.allDataJson.edges[0].node.main.rsc;

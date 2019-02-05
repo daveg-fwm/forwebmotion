@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Project from '../components/Project';
 
-const IotGlobalAwards = ({ data }) => {
+const IotGlobalAwards = ({ data, location }) => {
   const HeaderData = data.allDataJson.edges[0].node.header.iotga;
   const PreviewData = data.allDataJson.edges[0].node.preview.iotga;
   const MainData = data.allDataJson.edges[0].node.main.iotga;

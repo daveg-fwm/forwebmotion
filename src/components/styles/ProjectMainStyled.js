@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 const ProjectMainStyled = styled.div`
-  width: 40.3vw;
   max-width: 530px;
   margin: 0 auto;
   transform: translateY(10%);
@@ -56,6 +55,10 @@ const ProjectMainStyled = styled.div`
     width: 100%;
     height: auto;
     cursor: pointer;
+  }
+
+  @media screen and (min-width: 1200px) and (min-height: 620px) {
+    width: 40.3vw;
   }
 `;
 

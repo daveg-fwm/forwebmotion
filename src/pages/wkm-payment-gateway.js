@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Project from '../components/Project';
 
-const WkmPaymentGateway = ({ data }) => {
+const WkmPaymentGateway = ({ data, location }) => {
   const HeaderData = data.allDataJson.edges[0].node.header.wkmpg;
   const PreviewData = data.allDataJson.edges[0].node.preview.wkmpg;
   const MainData = data.allDataJson.edges[0].node.main.wkmpg;

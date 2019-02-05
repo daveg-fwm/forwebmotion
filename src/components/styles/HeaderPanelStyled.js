@@ -16,6 +16,10 @@ const HeaderPanelStyled = styled.header`
   font-weight: 400;
   z-index: 2;
 
+  &.scroll {
+    position: absolute;
+  }
+
   .header-panel-inner {
     width: 100%;
     height: inherit;
