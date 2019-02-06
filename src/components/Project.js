@@ -206,6 +206,16 @@ class Project extends React.Component {
           {/* Main content for currently viewed project */}
           <ProjectMainStyled>
             {MainData.map((item, i) => {
+              // Headings
+              if (item.type === 'heading') {
+                return (
+                  <div key={item.type + i} className="heading">
+                    <h1>{item.content}</h1>
+                    <span />
+                  </div>
+                );
+              }
+
               // Paragraphs
               if (item.type === 'paragraph') {
                 return <p key={item.type + i}>{item.content}</p>;

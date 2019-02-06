@@ -21,7 +21,7 @@ const HomePanelStyled = styled.div`
   }
 
   span.fwm-logo {
-    margin: 25px 0 10px;
+    margin: 30px 0 10px;
   }
 
   h1 {
@@ -37,9 +37,9 @@ const HomePanelStyled = styled.div`
     color: #40afe9;
   }
 
-  @media screen and (min-width: 600px) {
+  @media (min-width: 400px) {
     span.fwm-logo {
-      margin-bottom: 20px;
+      margin-top: 35px;
     }
 
     button {

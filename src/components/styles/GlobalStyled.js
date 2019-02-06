@@ -75,7 +75,7 @@ const GlobalStyled = () => (
       body {
         padding: 0;
         margin: 0;
-        font-size: 2.4rem;
+        font-size: 2.2rem;
         line-height: 1.5;
         font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-weight: 300;
@@ -138,6 +138,17 @@ const GlobalStyled = () => (
         cursor: pointer;
       }
 
+      a,
+      button {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
       /* Set pointer-events to none so title doesn't show on hover */
       svg {
         pointer-events: none;
@@ -171,7 +182,7 @@ const GlobalStyled = () => (
         margin-left: 25px;
       }
 
-      @media screen and (min-width: 600px) {
+      @media (min-width: 400px) {
         html {
           font-size: 10px;
         }

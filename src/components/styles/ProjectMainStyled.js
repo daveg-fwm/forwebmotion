@@ -6,8 +6,28 @@ const ProjectMainStyled = styled.div`
   transform: translateY(10%);
   opacity: 0;
 
-  p {
-    margin: 100px 0;
+  .heading {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    margin: 60px 0 40px;
+
+    h1 {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-right: 20px;
+    }
+
+    span {
+      background-color: #121415;
+      height: 1px;
+    }
+  }
+
+  .gatsby-image-wrapper,
+  .video-container {
+    margin: 60px 0;
   }
 
   .video-container {
@@ -57,7 +77,18 @@ const ProjectMainStyled = styled.div`
     cursor: pointer;
   }
 
-  @media screen and (min-width: 1200px) and (min-height: 620px) {
+  @media (min-width: 400px) {
+    .gatsby-image-wrapper,
+    .video-container {
+      margin: 100px 0;
+    }
+
+    .heading {
+      margin-top: 100px;
+    }
+  }
+
+  @media (min-width: 1200px) and (min-height: 620px) {
     width: 40.3vw;
   }
 `;

@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 const HeaderContentStyled = styled.div`
+  width: 100%;
+
   .project-header {
     height: 84px;
     margin: 0 -25px 25px;
@@ -63,6 +65,11 @@ const HeaderContentStyled = styled.div`
     margin-top: 5px;
   }
 
+  section {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
   section:not(:first-of-type) {
     border-top: 1px solid;
     padding-top: 10px;
@@ -73,7 +80,7 @@ const HeaderContentStyled = styled.div`
   }
 
   h2 {
-    font-size: 1.6rem;
+    font-size: 2rem;
     margin: 0 0 15px;
   }
 
@@ -172,7 +179,7 @@ const HeaderContentStyled = styled.div`
   .ubuntu-icon,
   .gulp-icon,
   .azuredevops-icon,
-  section .github-icon,
+  section:not(.home-section) .github-icon,
   .sourcetree-icon,
   .doctrine-icon,
   .gatsby-icon,
@@ -202,7 +209,7 @@ const HeaderContentStyled = styled.div`
     }
   }
 
-  section .github-icon {
+  section:not(.home-section) .github-icon {
     fill: #121415;
 
     .tooltip {
@@ -294,7 +301,13 @@ const HeaderContentStyled = styled.div`
     }
   }
 
-  @media screen and (min-width: 1200px) and (min-height: 620px) {
+  @media (min-width: 400px) {
+    h2 {
+      font-size: 1.6rem;
+    }
+  }
+
+  @media (min-width: 1200px) and (min-height: 620px) {
     section:last-of-type {
       border-bottom: 0;
       padding-bottom: 0;

@@ -143,7 +143,7 @@ const ProjectPreviewStyled = styled.div`
     max-height: 300px;
     position: absolute !important;
     bottom: 6px;
-    right: 15px;
+    right: 12px;
     background-color: #fff;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
     transform: translateY(110%);
@@ -190,22 +190,27 @@ const ProjectPreviewStyled = styled.div`
     }
   }
 
-  @media screen and (min-width: 1200px) and (min-height: 620px) {
-    .preview {
-      margin-bottom: 80px;
-    }
-
-    .project {
-      height: 34vw;
-      margin: 0 -25px;
-    }
-
+  @media (min-width: 400px) {
     a.project {
       margin-top: 60px;
     }
 
-    .project-bg {
-      height: 28.5vw;
+    h1 {
+      height: 255px;
+    }
+
+    .banner {
+      right: 20px;
+    }
+
+    .project-page-banner {
+      right: 0;
+    }
+  }
+
+  @media (min-width: 600px) {
+    .project {
+      margin: 0 -25px;
     }
 
     .project-page-bg {
@@ -214,24 +219,33 @@ const ProjectPreviewStyled = styled.div`
       margin-left: 0;
     }
 
+    .close-project {
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+    }
+
     .banner {
-      width: 40.3vw;
-      height: 22vw;
       right: 40px;
     }
 
     .project-page-banner {
       right: 0;
     }
+  }
 
-    h1 {
-      height: 255px;
+  @media (min-width: 1200px) and (min-height: 620px) {
+    .project {
+      height: 34vw;
     }
 
-    .close-project {
-      width: 40px;
-      height: 40px;
-      background-color: transparent;
+    .project-bg {
+      height: 28.5vw;
+    }
+
+    .banner {
+      width: 40.3vw;
+      height: 22vw;
     }
   }
 `;

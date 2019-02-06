@@ -87,27 +87,31 @@ class HeaderContent extends React.Component {
     if ('page' in data) {
       return (
         <HeaderContentStyled className="header-content">
-          <p>
-            Everything we learn today is but a stepping stone to what we will
-            learn tomorrow.
-          </p>
-          <p>Check out the links below to find out what I'm learning today.</p>
-          <a
-            className="a-svg"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <GitHubIcon />
-            <span className="a-svg-txt">Forwebmotion repo</span>
-          </a>
-          <Link to="/about" className="right-arrow-link">
-            <ArrowStyled className="right-arrow">
-              <span />
-              <span />
-            </ArrowStyled>
-            <span className="a-svg-txt">More on forwebmotion</span>
-          </Link>
+          <section className="home-section">
+            <p>
+              Everything we learn today is but a stepping stone to what we will
+              learn tomorrow.
+            </p>
+            <p>
+              Check out the links below to find out what I'm learning today.
+            </p>
+            <a
+              className="a-svg"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GitHubIcon />
+              <span className="a-svg-txt">Forwebmotion repo</span>
+            </a>
+            <Link to="/about" className="right-arrow-link">
+              <ArrowStyled className="right-arrow">
+                <span />
+                <span />
+              </ArrowStyled>
+              <span className="a-svg-txt">More on forwebmotion</span>
+            </Link>
+          </section>
         </HeaderContentStyled>
       );
     }

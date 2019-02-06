@@ -12,7 +12,7 @@ const HeaderPanelStyled = styled.header`
   left: 0;
   right: 0;
   margin: 0 auto;
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 400;
   z-index: 2;
 
@@ -25,13 +25,17 @@ const HeaderPanelStyled = styled.header`
     height: inherit;
     min-height: 85px;
     position: relative;
+    z-index: 1;
+    background-color: #fff;
   }
 
   .top-nav {
-    background-color: #fff;
+    max-width: 930px;
+    margin: 0 auto;
     padding: 30px 25px 20px;
     display: flex;
     justify-content: space-between;
+    background-color: #fff;
     position: relative;
     z-index: 1;
   }
@@ -42,7 +46,7 @@ const HeaderPanelStyled = styled.header`
   }
 
   .header-content-container {
-    padding: 0px 25px 30px;
+    padding: 85px 25px 30px;
     background-color: #fff;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
     transform: translateY(-100%);
@@ -56,11 +60,12 @@ const HeaderPanelStyled = styled.header`
 
   nav {
     width: 100%;
+    max-width: 600px;
     height: calc(100% - 85px);
     background-color: #fff;
-    margin-top: 20px;
+    margin: 30px auto 0;
     border-top: 1px solid #ccc;
-    padding-top: 10px;
+    padding-top: 20px;
   }
 
   ul {
@@ -97,7 +102,18 @@ const HeaderPanelStyled = styled.header`
     display: inline-table;
   }
 
-  @media screen and (min-width: 1200px) and (min-height: 620px) {
+  @media (min-width: 400px) {
+    font-size: 1.6rem;
+  }
+
+  @media (min-width: 930px) {
+    div.hide-panel {
+      max-width: 930px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (min-width: 1200px) and (min-height: 620px) {
     height: auto;
     padding: 0 40px;
     top: 20px;
@@ -112,8 +128,14 @@ const HeaderPanelStyled = styled.header`
     }
 
     .header-content-container {
+      padding-top: 0;
       box-shadow: none;
       transform: none;
+    }
+
+    div.hide-panel {
+      max-width: auto;
+      margin: 0 -25px;
     }
 
     nav {
@@ -127,7 +149,7 @@ const HeaderPanelStyled = styled.header`
     }
   }
 
-  @media screen and (min-width: 1200px) and (min-height: 660px) {
+  @media (min-width: 1200px) and (min-height: 660px) {
     top: 40px;
   }
 `;

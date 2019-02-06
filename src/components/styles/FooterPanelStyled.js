@@ -9,11 +9,12 @@ const FooterPanelStyled = styled.footer`
   right: 0;
   padding: 0 10px;
   margin: 0 auto;
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 400;
 
   &.scroll {
     position: fixed;
+    opacity: 0;
   }
 
   .hide-panel {
@@ -43,9 +44,44 @@ const FooterPanelStyled = styled.footer`
     margin: 10px 0 15px;
   }
 
-  @media screen and (min-width: 1200px) and (min-height: 620px) {
-    max-width: 1366px;
+  p {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 400px) {
+    font-size: 1.6rem;
+  }
+
+  @media (min-width: 600px) {
+    .footer-panel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .email-me {
+      margin: -2px 0 0;
+    }
+  }
+
+  @media (min-width: 700px) {
     padding: 0 40px;
+  }
+
+  @media (min-width: 750px) {
+    .footer-panel {
+      padding: 40px 10%;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .footer-panel {
+      padding: 40px 15%;
+    }
+  }
+
+  @media (min-width: 1200px) and (min-height: 620px) {
+    max-width: 1366px;
 
     &.fixed {
       position: fixed;
@@ -54,6 +90,12 @@ const FooterPanelStyled = styled.footer`
       .footer-panel {
         width: 300px;
         float: none;
+        display: block;
+        padding: 40px 25px;
+      }
+
+      .email-me {
+        margin: 10px 0 15px;
       }
     }
 
@@ -64,11 +106,12 @@ const FooterPanelStyled = styled.footer`
       .footer-panel {
         width: calc(100% - 340px);
         float: right;
+        padding: 40px 10%;
       }
     }
   }
 
-  @media screen and (min-width: 1200px) and (min-height: 660px) {
+  @media (min-width: 1200px) and (min-height: 660px) {
     &.fixed {
       top: 440px;
     }

@@ -46,6 +46,10 @@ class Layout extends React.Component {
 
   targets = [];
   targetsChildren = [];
+
+  menuLeft = !(window.innerWidth < 1200 || window.innerHeight < 620);
+  menuCenter = !(window.innerWidth >= 1200 && window.innerHeight >= 620);
+
   hoverTimeoutId = () => {};
 
   // Enter animations
@@ -160,23 +164,62 @@ class Layout extends React.Component {
 
   // Save browser dimensions to state
   updateSize = () => {
-    const {
-      windowWidth,
-      windowHeight,
-      headerContentContainerRef,
-      navRef,
-    } = this.state;
+    const { headerContentContainerRef, navRef } = this.state;
 
     this.setState({
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight,
     });
 
-    // Remove styles for refs when position of Header component changes
-    if (windowWidth < 1200 || windowHeight < 620) {
+    /*
+      Ensure menu remains the same when position of Header component changes.
+      Remove styles for refs when position of Header component changes.
+      Use menuLeft and menuCenter so that code is only run at the point it moves above or below the breakpoints.
+    */
+    if (
+      this.menuLeft &&
+      (window.innerWidth < 1200 || window.innerHeight < 620)
+    ) {
+      if (navRef.current.style.transform === 'translateY(0%)') {
+        headerContentContainerRef.current.setAttribute(
+          'style',
+          'transform: translateY(calc(0% - 85px))'
+        );
+
+        this.setState({ scrollMenu: true });
+      } else {
+        headerContentContainerRef.current.setAttribute(
+          'style',
+          'transform: translateY(-100%)'
+        );
+
+        this.setState({ scrollMenu: false });
+      }
+
       navRef.current.removeAttribute('style');
-    } else {
+
+      this.menuLeft = false;
+      this.menuCenter = true;
+    } else if (
+      this.menuCenter &&
+      (window.innerWidth >= 1200 && window.innerHeight >= 620)
+    ) {
+      if (
+        headerContentContainerRef.current.style.transform ===
+        'translateY(calc(0% - 85px))'
+      ) {
+        navRef.current.setAttribute('style', 'transform: translateY(0%)');
+      } else {
+        navRef.current.setAttribute('style', 'transform: translateY(-100%)');
+      }
+
       headerContentContainerRef.current.removeAttribute('style');
+
+      // scrollMenu is always false - desktop header doesn't scroll
+      this.setState({ scrollMenu: false });
+
+      this.menuLeft = true;
+      this.menuCenter = false;
     }
   };
 
@@ -198,6 +241,10 @@ class Layout extends React.Component {
       windowWidth < 1200 || windowHeight < 620
         ? headerContentContainerRef
         : navRef;
+
+    // Use calc because from value is percentage - mixing percentage and px breaks animation
+    const to =
+      windowWidth < 1200 || windowHeight < 620 ? 'calc(0% - 85px)' : '0%';
 
     /*
       If nav menu is top center, toggle state for scrollMenu.
@@ -272,7 +319,7 @@ class Layout extends React.Component {
       targets: ref.current,
       translateY: () => {
         if (!showMenu) {
-          return ['-100%', '0%'];
+          return ['-100%', to];
         }
         // Menu is closed
         return ['0%', '-100%'];

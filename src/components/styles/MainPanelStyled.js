@@ -12,6 +12,7 @@ const MainPanelStyled = styled.main`
 
   &.scroll {
     position: fixed;
+    opacity: 0;
   }
 
   div.hide-panel {
@@ -29,18 +30,31 @@ const MainPanelStyled = styled.main`
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
   }
 
-  @media screen and (min-width: 1200px) and (min-height: 620px) {
-    max-width: 1366px;
-    grid-template-columns: calc(100% - 340px);
-    padding: 20px 40px;
-
+  @media (min-width: 400px) {
     div.panel {
-      padding: 85px 50px;
+      padding: 50px 25px;
       min-height: 580px;
     }
   }
 
-  @media screen and (min-width: 1200px) and (min-height: 660px) {
+  @media (min-width: 600px) {
+    div.panel {
+      padding: 85px 50px;
+    }
+  }
+
+  @media (min-width: 700px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media (min-width: 1200px) and (min-height: 620px) {
+    max-width: 1366px;
+    grid-template-columns: calc(100% - 340px);
+    padding: 20px 40px;
+  }
+
+  @media (min-width: 1200px) and (min-height: 660px) {
     padding: 40px;
   }
 `;
