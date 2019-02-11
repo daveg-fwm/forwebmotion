@@ -100,7 +100,7 @@
         "ideVersionControl": {
           "title": "IDE and Version Control",
           "vscode": "VSCodeIcon",
-          "git": "GitIcon"
+          "github": "GitHubIcon"
         }
       }
     }
@@ -120,7 +120,7 @@
         },
         {
           "paragraph":
-            "I took on this project during the break between my 2nd and 3rd year of studies. The opportunity to build something from the ground up was invaluable to my perspective on design and progression as a developer."
+            "I took on this project during the break between my second and third year of studies. The opportunity to build something from the ground up was invaluable to my perspective on design and progression as a developer."
         }
       ]
     },
@@ -138,7 +138,7 @@
         },
         {
           "paragraph":
-            "As our requirements grew more complex, it became clear we needed to improve our workflow and website performance. The decision was made to move from shared to cloud hosting where I gained further experience and skills, this time on the back-end, by learning to install and configure web servers and setting up Git version control via Microsoft Azure DevOps. The IoT Global Awards site was the first to benefit from our new infrastructure."
+            "As our requirements grew more complex, it became clear we needed to improve our workflow and website performance so the decision was made to move from shared to cloud hosting. I gained further experience and skills, this time on the back-end, by learning to install and configure web servers and setting up Git version control via Microsoft Azure DevOps. The IoT Global Awards site was the first to benefit from our new infrastructure."
         }
       ]
     },
@@ -156,7 +156,7 @@
         },
         {
           "paragraph":
-            "WKM was now in need of a more customisable payment system for users of its various websites. The time had come to graduate to building a web application. Having prior knowledge of Zend Framework 2, I was excited to dive into the latest version. This was also an opportunity to work with the Sage Pay REST API, something I'm sure will come in handy down the road."
+            "WKM was now in need of a more customisable payment system for users of its various websites. Having prior knowledge of Zend Framework 2, I was excited to dive into the latest version and build my first web application. This was also an opportunity to work with the Sage Pay REST API, something I'm sure will come in handy down the road."
         }
       ]
     },
@@ -170,7 +170,7 @@
       "intro": [
         {
           "paragraph":
-            "As you've no doubt realised by now, the forwebmotion philosophy is all about looking ahead. Today's technology is awesome, but it's nothing compared to what's to come. I'm going to do everything possible to be ready for it."
+            "As you've no doubt realised by now, the forwebmotion philosophy is all about learning something new. Increasing my skills and knowledge of the technology of today so that I will be ready for the technology of tomorrow."
         },
         {
           "paragraph":
@@ -183,80 +183,501 @@
     "rsc": [
       {
         "type": "heading",
-        "content":
-          "Red Sofa Cafe"
+        "content": ["Red Sofa Cafe"]
       },
       {
         "type": "paragraph",
-        "content":
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "content": [
+          "The moment you step through the door you are greeted by friendly staff and the aroma of freshly roasted coffee. A haven for those looking to relax and freelancers alike."
+        ]
       },
       {
         "type": "image",
-        "content": "RSCOurStory"
+        "content": ["RSCOurStory"]
+      },
+      {
+        "type": "heading",
+        "content": ["Main Objectives"]
+      },
+      {
+        "type": "list",
+        "content": [
+          "Try to bring that \"home away from home\" feeling to the design ( yes this is a developer portfolio, but I like a challenge 🙂 ).",
+          "Optimal performance and usability across all devices."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Front-End"]
       },
       {
         "type": "paragraph",
-        "content":
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "content": [
+          "Experimentation was the order of the day. This was my first launch ever and I decided to take full advantage of the opportunity."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Most notably was the use of Sass, Flexbox, deferred image loading and loading animations until banners were ready to display. A little AJAX for forms went a long way too, but more on that later."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "With regards to development time, Sass came in very handy as I had yet to discover the joys of Autoprefixer. Mixins to the rescue! Mostly, I used them for Flexbox and media queries which, along with partials and variables, made organising my styles a breeze and saved me a lot of time."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Back-End"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "I made mention of AJAX earlier which was a great way to provide real-time feedback for forms. At the time, the cafe hosted a movie night once a week and customers needed to be able to purchase tickets on the site."
+        ]
       },
       {
         "type": "image",
-        "content": "RSCPaymentForm"
+        "content": ["RSCPaymentForm"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Validation and sanitisation was handled by PHP with the response returned to the initiating AJAX request. If successful, customers were sent to a payment gateway provided by PayFast."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Customer details and their orders were stored in the database and I had developed a simple UI for the staff so they could view orders and payment status or manually add and edit orders as needed."
+        ]
+      },
+      {
+        "type": "website link",
+        "content": [
+          "https://redsofacafe.co.za/"
+        ]
       }
     ],
     "iotga": [
       {
         "type": "heading",
-        "content":
-          "IoT Global Awards"
+        "content": ["IoT Global Awards"]
       },
       {
         "type": "paragraph",
-        "content":
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "content": [
+          "The mission was clear. Build a platform for the best and brightest, the key players making a difference in the IoT space. Assemble a panel of expert judges to identify who among those are the most deserving of recognition. Spread their magnificence across the web via WKM Global’s ever-expanding network of IoT brands and partners."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Main Objectives"]
+      },
+      {
+        "type": "list",
+        "content": [
+          "Build and configure a web server on cloud hosting.",
+          "Set up version control using Microsoft Azure DevOps.",
+          "Configure the Gulp toolkit to automate CSS and JS tasks.",
+          "Ensure the user journey to enter the awards is simple and easy to digest."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Server"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "This was a daunting task especially considering the volume of documentation and sources I had to consult before it all came together. In the end, I’m pretty happy with the result."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "I installed a LAMP ( Linux, Apache, MySQL, PHP ) stack with NGINX as a reverse proxy on an Ubuntu OS and took many steps to secure the server."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "I then installed a Let’s Encrypt SSL certificate using Certbot which automatically renews the certificate every 3 months. All data sent to or from the awards site would now be encrypted by the HTTPS protocol."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["DevOps"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "To that point I had been working solo, but the team was growing and we needed to add version control to our workflow. Enter Microsoft Azure DevOps."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Step one involved installing a self-hosted Linux agent which meant our repo would be stored on our server and we would avoid the frequently occurring commit timeout I experienced with an Azure Hosted agent."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Next, I had to configure our pipelines. We needed 2 service connections:"
+        ]
+      },
+      {
+        "type": "list",
+        "content": [
+          "The first was for git and had to be authorised by a GitHub account.",
+          "The second required SSH settings for our server."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "The pipelines include 2 main groups, namely builds and releases. I set the build pipeline to use continuous integration, triggered by the completion of a commit. The build task copies our repo files to the website folder using the SSH service connection. The release pipeline could be configured for continuous deployment and have tasks applied to it, but we did not have need of this at that time."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "The last step involved all authorised users cloning the repo. To lessen the learning curve, we opted to use SourceTree, a graphical user interface for git."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Now that the team all had access to the repo they needed to install Gulp and its dependencies. Gulp automates tasks so we wouldn’t have to waste time doing them manually for every project. These tasks include decreasing the file size of CSS and JS files to help the website load as quickly as possible when viewed for the first time."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "I configured the CSS task to use Autoprefixer before minifying and the JS task concatenates all JS files into one, removes debugging code and minifies ( or uglifies as the JS community calls it ). Finally, both tasks include Browsersync which watches for any changes made and updates the site without having to refresh the page. In short, Gulp keeps everyone on the same page and saves a ton of dev time."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "We also needed to avoid any issues with conflicting databases. To ensure everyone was in sync, each of them had to be given rights on the server to use a SSH MySQL tunnel. The tunnel is used to connect their local WordPress installation to the remote development site database."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "With all the pieces in place, I replicated the DevOps process for another project that the rest of the team had been working on and then got to work on the awards site."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["WordPress"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "I was tasked with redesigning the site and building a custom responsive WordPress theme, the database, and the AJAX entry process. Users had to be able to easily find any information they needed about the awards, but most importantly they needed to be able to enter without any confusion what so ever."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "The entry process has 3 stages. The first is to register and we realised it would be easier to group all registration information into one form."
+        ]
       },
       {
         "type": "image",
-        "content": "IOTGARegisterForm"
+        "content": ["IOTGARegisterForm"]
       },
       {
         "type": "paragraph",
-        "content":
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "content": [
+          "As you can see, the groups are clearly separated making sure the forms weren’t overwhelming in any way. If errors did occur we displayed them immediately using AJAX in line with their corresponding labels in red for maximum visibility."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "The second stage is where the user enters all the details pertaining to their entry. They have the option to save their progress and come back later or submit their entry and continue to payment."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "The third and final stage is where they enter their billing details after which they will be taken to the WKM payment gateway to enter their card details. The payment gateway is the latest project I worked on for WKM and you can read about it next."
+        ]
+      },
+      {
+        "type": "website link",
+        "content": [
+          "https://iotglobalawards.com/"
+        ]
       }
     ],
     "wkmpg": [
       {
         "type": "heading",
-        "content":
-          "WKM Payment Gateway"
+        "content": ["WKM Payment Gateway"]
       },
       {
         "type": "paragraph",
-        "content":
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "content": [
+          "It’s all about options really. The ability to deliver improved payment services and a customised user experience, all from a single central location. Easy to manage. Easy to maintain. Consistent branding throughout."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Main Objectives"]
+      },
+      {
+        "type": "list",
+        "content": [
+          "Build and configure a web server on cloud hosting.",
+          "Design a simple UI that is easy to use on any device.",
+          "Expand services to include repeat payments using the Sage Pay REST API."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Server"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Just as I had done for the IoT Global Awards site, I installed a LAMP ( Linux, Apache, MySQL, PHP ) stack with NGINX as a reverse proxy on an Ubuntu OS and took many steps to secure the server."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Certbot was not used here however. I manually set up a paid SSL certificate and configured NGINX to use HTTPS. Data sent to and from the gateway would now be encrypted by the HTTPS protocol."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Front-End"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "When a user wants to make a purchase from one of WKM Global’s sites, they are required to fill out a billing details form. That information is encrypted using the OpenSSL library and sent to the gateway."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Upon arriving at the gateway, the user is presented with the various card options along with details of the purchase. A simple form with clearly marked labels is immediately available as well. Selecting a field will animate the label to the top of the input element. This is a recommended approach by many UX professionals as the user will always be able to see the heading of the field being entered, even on mobile devices."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Clicking “Secure Payment” will initiate an AJAX request and loading animation after which a clear response is displayed."
+        ]
       },
       {
         "type": "video",
-        "content": "wkm-payment-gateway.mp4"
+        "content": ["wkm-payment-gateway.mp4"]
+      },
+      {
+        "type": "heading",
+        "content": ["Back-End"]
       },
       {
         "type": "paragraph",
-        "content":
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "content": [
+          "The Sage Pay REST API is coded in JavaScript and performs a check on the credit card details before any other action is taken."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "If validation is successful a payment request is sent to Sage using cURL. We store all relevant data for use with future payments, but NEVER credit card details. This means that not only are we able to offer an improved experience by allowing future payments to be made without having to re-enter credit card details, but we can do so without reducing the security of payments as well. An invoice template is then dynamically populated and sent to the user."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "WKM went a step further to offer monthly payments for some of its sites. I had to create a new table in the database to hold these records, put together a PHP script that would make a cURL request to the gateway, and set up a cron job to run the script every hour. I created a function to collect all records whose next payment date was less than or equal to the current date. Payments are then made based on the details contained in these records, users receive an invoice and their accounts on whichever site they purchased from are updated."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Management of the database is extremely important so I chose to use Doctrine ORM 2. It allowed me to map the database to PHP classes and communicate using object oriented SQL, referred to as Doctrine Query Language ( DQL ). The result is much cleaner and easier to maintain code with improved data integrity."
+        ]
       }
     ],
     "about": [
       {
         "type": "heading",
-        "content":
-          "About forwebmotion"
+        "content": ["About forwebmotion"]
       },
       {
         "type": "paragraph",
-        "content":
-          "My name is Dave Green. I am a web developer based in Cape Town, South Africa. This is my journey."
+        "content": [
+          "Hi there! 👋 My name is Dave Green. I am a web developer based in Cape Town, South Africa. This is my journey."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Gatsby"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Would you like a starter template that comes with Server Side Rendering for improved SEO, image optimisation and lazy loading, GraphQL and offline support out-of-the-box? Just take a moment to think about all that and the amount of development time it would save."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "I am completely blown away by React and the Gatsby toolchain. Coming from a PHP background I feel like I’ve been hiking up Table Mountain with a boulder on my back and now I’m using the Cableway."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Front-End"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Every year we get closer to a time when we will no longer be limited by the dimensions of a screen, where we have achieved an unprecedented level of interactivity. Animation will play a huge role in the UI of the future and while I haven’t jumped on the WebGL bandwagon just yet, awesome as it is, React provided the perfect opportunity to up my game. Page transitions were built using the Anime.js animation library along with the Intersection Observer API for detecting when elements enter the viewport."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Next up on my list of firsts is the CSS-In-JS library, emotion. I especially like the styled package inspired by the styled-components library where you can manage the CSS of an element and its children in its own component. This method is far easier than having all styles in a single CSS file and cuts out the need for a naming convention for classes such as BEM. Don’t get me wrong, I think the Block, Element, Modifier methodology is brilliant, but it does add a very noticeable amount of time to development."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Amazon Web Services"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "On to hosting now and the first step, as always, is to register a domain name. Once registered AWS automatically creates a hosted zone on their Route 53 DNS web service. Next, I had to set up my mailbox. AWS has great options for sending and receiving mass emails, but for a portfolio site you really just need a free option which they don’t provide. Fortunately, I came across a post on Medium about using Zoho mail which has a perfect free starter plan and a very cheap upgrade option should I ever need it. All I had to do was configure a few DNS record sets and boom! Email is up and running. "
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "I then began researching various AWS services such as EC2, S3 and Elastic Beanstalk, but after consulting the Gatsby documentation I stumbled upon a tutorial for publishing to AWS using AWS Amplify, specifically the Amplify Console."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "AWS Amplify is used to build serverless cloud-powered apps. A breath of fresh air compared to the server installations I had become accustomed to. To ensure speedy performance around the globe it makes use of Amazon CloudFront, a fast content delivery network ( CDN ) service."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "The Amplify Console acts as a continuous delivery and hosting service. My site was live in just a few short steps:"
+        ]
+      },
+      {
+        "type": "list",
+        "content": [
+          "First, I created a new GitHub repo and pushed my project.",
+          "Second, I logged into the Amplify Console and selected my new repo.",
+          "Third, I reviewed the build settings and deployed."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "How easy is that? Now if I want to update my site all I have to do is a git commit and push the changes to the master branch which triggers a new build and updates the site."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "The final stage was to link my domain as Amplify uses an auto generated amplifyapp.com domain by default. When I switched over to forwebmotion.com a free HTTPS certificate was generated for me keeping my site secure and Google happy. What’s more, I can connect a \"dev\" branch for future development and a separate deployment will be created using an auto generated amplifyapp.com domain. I am officially in developer heaven."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Recent & Current Courses"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "So many courses, so little time. My primary focus has been on React, but also the latest CSS and JavaScript updates."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Completed courses:"
+        ]
+      },
+      {
+        "type": "link list",
+        "content": [
+          "Wes Bos,CSS Grid",
+          "https://cssgrid.io/",
+          "Coursera,Front-End Web Development with React",
+          "https://www.coursera.org/learn/front-end-react",
+          "Wes Bos,React for Beginners",
+          "https://reactforbeginners.com/"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "In progress courses:"
+        ]
+      },
+      {
+        "type": "link list",
+        "content": [
+          "Wes Bos,ES6 for Everyone",
+          "https://es6.io/",
+          "Wes Bos,Full Stack Advanced React & GraphQL",
+          "https://advancedreact.com/"
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["What’s Next?"]
+      },
+      {
+        "type": "link list",
+        "content": [
+          "Wes Bos,Learn Redux",
+          "https://learnredux.com/",
+          "Wes Bos,Learn Node",
+          "https://learnnode.com/"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "The Coursera React course I took covered Redux, but courses from Wes Bos are incredible and much more applicable to real-world development."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Cheers"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Well that’s my journey so far. The development community is all about collaboration so please reach out on LinkedIn or send me an email."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "I look forward to hearing from you, but till then thanks for taking the time to visit my site. 🙂"
+        ]
       }
     ]
   }

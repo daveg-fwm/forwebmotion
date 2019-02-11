@@ -5,7 +5,7 @@ const AmplifyIcon = () => (
     component="div"
     className="amplify-icon"
     classSuffix=""
-    accessibilityLabel="AWS Amplify CLI"
+    accessibilityLabel="AWS Amplify Console"
     fill="#121415"
     svg={`
       <svg x="0px" y="0px" viewBox="0 0 126 94" style="enable-background:new 0 0 126 94;" xml:space="preserve">
@@ -13,7 +13,7 @@ const AmplifyIcon = () => (
           H81.3L40.7,23.6z M54.2,0h17.5L126,94h-17.5L54.2,0z"/>
         <polygon points="0,94 72,94 62.9,78 27.3,78"/>
       </svg>
-      <span class="tooltip">AWS Amplify CLI</span>
+      <span class="tooltip">AWS Amplify Console</span>
     `}
   />
 );

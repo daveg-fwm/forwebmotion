@@ -3,16 +3,17 @@ import styled from '@emotion/styled';
 const ProjectMainStyled = styled.div`
   max-width: 530px;
   margin: 0 auto;
-  transform: translateY(10%);
-  opacity: 0;
 
   .heading {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
     margin: 60px 0 40px;
+    transform: translateY(100%);
+    opacity: 0;
 
-    h1 {
+    h1,
+    h2 {
       font-size: 14px;
       font-weight: 700;
       text-transform: uppercase;
@@ -25,13 +26,31 @@ const ProjectMainStyled = styled.div`
     }
   }
 
-  .gatsby-image-wrapper,
+  .image-container,
   .video-container {
     margin: 60px 0;
+    text-align: center;
   }
 
   .video-container {
     position: relative;
+  }
+
+  ul {
+    list-style-type: square;
+    padding-left: 25px;
+  }
+
+  li {
+    margin-bottom: 20px;
+  }
+
+  p,
+  ul,
+  .image-container,
+  .video-container {
+    transform: translateY(30%);
+    opacity: 0;
   }
 
   button {
@@ -77,8 +96,27 @@ const ProjectMainStyled = styled.div`
     cursor: pointer;
   }
 
-  @media (min-width: 400px) {
-    .gatsby-image-wrapper,
+  .fwm-logo {
+    width: 100%;
+    max-width: 400px;
+    max-height: 49.52px;
+  }
+
+  .fwm-icon {
+    width: 200px;
+    height: 121.31px;
+  }
+
+  .website-link,
+  .continue-journey {
+    display: flex;
+    border-top: 1px solid #ccc;
+    margin-top: 40px;
+    padding-top: 40px;
+  }
+
+  @media (min-width: 600px) {
+    .image-container,
     .video-container {
       margin: 100px 0;
     }

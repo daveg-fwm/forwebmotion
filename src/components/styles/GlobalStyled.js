@@ -173,12 +173,14 @@ const GlobalStyled = () => (
         margin-left: 10px;
       }
 
-      .right-arrow-link {
+      .right-arrow-link,
+      .left-arrow-link {
         display: inline-flex;
         align-items: center;
       }
 
-      .right-arrow-link .a-svg-txt {
+      .right-arrow-link .a-svg-txt,
+      .left-arrow-link .a-svg-txt {
         margin-left: 25px;
       }
 

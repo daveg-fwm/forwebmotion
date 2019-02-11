@@ -6,6 +6,10 @@ const ArrowStyled = styled.span`
   flex-direction: column;
   align-items: center;
 
+  &.left-arrow {
+    transform: rotate(-90deg) translateY(7px) scale(0.8, 0.8);
+  }
+
   &.right-arrow {
     transform: rotate(90deg) translateY(-7px) scale(0.8, 0.8);
   }

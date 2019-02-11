@@ -13,7 +13,7 @@ const Footer = ({ footerClass, scrollMenu, footerRef }) => (
       <div className="footer-panel">
         <a
           className="a-svg"
-          href="https://www.linkedin.com/in/dave-green-963270120/"
+          href="https://www.linkedin.com/in/daveg-fwm/"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -134,7 +134,7 @@ const HeaderPanelStyled = styled.header`
     }
 
     div.hide-panel {
-      max-width: auto;
+      max-width: initial;
       margin: 0 -25px;
     }
 

@@ -57,7 +57,7 @@ export const query = graphql`
                 ideVersionControl {
                   title
                   vscode
-                  git
+                  github
                 }
               }
             }

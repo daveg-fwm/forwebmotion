@@ -78,7 +78,7 @@ class Header extends React.Component {
           >
             <div className="hide-panel" ref={headerContentRef}>
               {/* Send data from layout to populate content for this component */}
-              <HeaderContent data={data} />
+              <HeaderContent data={data} animateExit={animateExit} />
             </div>
 
             <nav ref={navRef}>

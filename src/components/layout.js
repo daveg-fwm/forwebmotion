@@ -19,8 +19,8 @@ class Layout extends React.Component {
     showMenu: false,
     scrollMenu: false,
     scrollPos: 0,
-    windowWidth: window.innerWidth,
-    windowHeight: window.innerHeight,
+    windowWidth: 0,
+    windowHeight: 0,
     // Header and nav refs passed up from Header component via props
     headerContentContainerRef: React.createRef(),
     headerContentRef: React.createRef(),
@@ -33,11 +33,6 @@ class Layout extends React.Component {
     previewRef2: React.createRef(),
     previewRef3: React.createRef(),
     aboutPreviewRef: React.createRef(),
-    // Project preview banners zoom out when hovering over link, but only allow after project preview has animated in
-    allowHoverPreviewRef1: false,
-    allowHoverPreviewRef2: false,
-    allowHoverPreviewRef3: false,
-    allowHoverAboutPreviewRef: false,
     // Project component - single main panel
     mainRef: React.createRef(),
     // Footer component
@@ -47,10 +42,8 @@ class Layout extends React.Component {
   targets = [];
   targetsChildren = [];
 
-  menuLeft = !(window.innerWidth < 1200 || window.innerHeight < 620);
-  menuCenter = !(window.innerWidth >= 1200 && window.innerHeight >= 620);
-
-  hoverTimeoutId = () => {};
+  menuLeft = false;
+  menuCenter = false;
 
   // Enter animations
   componentDidMount = () => {
@@ -65,15 +58,33 @@ class Layout extends React.Component {
       footerRef,
     } = this.state;
 
-    const { location } = this.props;
+    const { headerData, location } = this.props;
 
-    // Homepage and project pages use different values for animation
-    const from =
-      homeRef.current !== null ? 'calc(102% + 12px)' : 'calc(100.6% + 12px)';
+    this.setState({
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight,
+    });
+
+    this.menuLeft = !(window.innerWidth < 1200 || window.innerHeight < 620);
+    this.menuCenter = !(window.innerWidth >= 1200 && window.innerHeight >= 620);
+
+    // Homepage and project pages use different values for animation - 404 page uses same values as homepage
+    let from = 'calc(102% + 12px)';
+
+    if (location.pathname === '/red-sofa-cafe') {
+      from = 'calc(100.35% + 12px)';
+    } else if (location.pathname === '/iot-global-awards') {
+      from = 'calc(100.2% + 12px)';
+    } else if (location.pathname === '/wkm-payment-gateway') {
+      from = 'calc(100.28% + 12px)';
+    } else if (location.pathname === '/about') {
+      from = 'calc(100.2% + 12px)';
+    }
 
     /*
       Homepage animates multiple preview panels.
       Project pages have a single main panel.
+      404 page has a single main panel and uses mainRef as well.
     */
     this.targets =
       homeRef.current !== null
@@ -129,7 +140,7 @@ class Layout extends React.Component {
       });
 
     // Animate project header with logo and app icon
-    if (homeRef.current === null) {
+    if (homeRef.current === null && headerData.page !== '404') {
       anime({
         targets: headerContentRef.current.children[0].children[0],
         translateX: () => ['-100%', '0%'],
@@ -151,14 +162,14 @@ class Layout extends React.Component {
         translateY: () => ['calc(129% + 12px)', '0%'],
       });
 
-    if (homeRef.current !== null) animation.finished.then(this.homeScroll());
+    if (homeRef.current !== null && headerData.page !== '404')
+      animation.finished.then(this.homeScroll());
 
     window.addEventListener('resize', this.updateSize);
   };
 
   // Prevent memory leaks
   componentWillUnmount = () => {
-    clearTimeout(this.hoverTimeoutId);
     window.removeEventListener('resize', this.updateSize);
   };
 
@@ -268,7 +279,7 @@ class Layout extends React.Component {
           targets: scrollElement,
           scrollTop: scrollPos,
           easing: 'easeInOutQuad',
-          duration: 10,
+          duration: 1,
         });
       }
 
@@ -420,172 +431,6 @@ class Layout extends React.Component {
       });
   };
 
-  // Intersection Observer animations for intro text on homepage
-  animateProjectIntro = ref => {
-    /*
-      Traversing object rather than creating a ref for each element:
-
-      div.hide-panel {
-        div.panel {
-          div.ProjectPreviewStyled {
-            p.intro
-          }
-        }
-      }
-    */
-    const intro = ref.current.children[0].children[0].children[0];
-
-    anime({
-      targets: intro,
-      translateY: () => ['-200%', '0%'],
-      easing: 'easeOutQuart',
-      duration: 500,
-    });
-  };
-
-  /*
-    Use timeout to ensure transitions don't conflict.
-    This function is called once animateProjectPreview animations complete.
-  */
-  hoverTimer = allowHover =>
-    setTimeout(() => {
-      this.setState({ [allowHover]: true });
-    }, 2500);
-
-  // Intersection Observer animations for preview banners on homepage
-  animateProjectPreview = ref => {
-    // Determine which project preview should be allowed to change hover state to true
-    let allowHover = '';
-
-    switch (ref.current.children[0].id) {
-      case 'rsc-project':
-        allowHover = 'allowHoverPreviewRef1';
-        break;
-      case 'iotga-project':
-        allowHover = 'allowHoverPreviewRef2';
-        break;
-      case 'wkmpg-project':
-        allowHover = 'allowHoverPreviewRef3';
-        break;
-      default:
-        allowHover = 'allowHoverAboutPreviewRef';
-    }
-
-    /*
-      Traversing object rather than creating a ref for each element:
-
-      div.hide-panel {
-        div.panel {
-          div.ProjectPreviewStyled {
-            p.intro
-            a.project {
-              div.project-arrow
-              div.project-bg
-              div.banner
-            }
-          }
-        }
-      }
-    */
-    const arrow = ref.current.children[0].children[0].children[1].children[0];
-    const bg = ref.current.children[0].children[0].children[1].children[1];
-    const banner = ref.current.children[0].children[0].children[1].children[2];
-
-    anime
-      .timeline({
-        easing: 'easeOutQuart',
-        duration: 500,
-      })
-      .add({
-        targets: bg,
-        translateX: () => ['-115%', '0%'],
-        easing: 'easeOutBack',
-      })
-      .add({
-        targets: arrow,
-        translateX: () => ['-100%', '0%'],
-        duration: 300,
-      })
-      .add({
-        targets: banner,
-        translateY: () => ['110%', '0%'],
-      })
-      .finished.then(
-        /*
-          Use timeout to ensure transitions don't conflict.
-          Cancel setTimeout using this.hoverTimeoutId in ComponentWillUnmount.
-        */
-        (this.hoverTimeoutId = this.hoverTimer(allowHover))
-      );
-  };
-
-  // Intersection Observer animations on project pages
-  animateProjectMain = () => {
-    /*
-      Traversing object rather than creating a ref for each element:
-
-      div.hide-panel {
-        div.panel {
-          div.ProjectPreviewStyled {
-            div.project {
-              a
-              div.project-bg
-              div.banner
-            }
-          }
-        }
-      }
-    */
-    const { mainRef } = this.state;
-
-    const closeLink =
-      mainRef.current.children[0].children[0].children[0].children[0];
-    const bg = mainRef.current.children[0].children[0].children[0].children[1];
-    const banner =
-      mainRef.current.children[0].children[0].children[0].children[2];
-    const mainContent = mainRef.current.children[0].children[1];
-
-    anime
-      .timeline({
-        easing: 'easeOutQuart',
-        duration: 500,
-      })
-      .add({
-        targets: bg,
-        translateX: () => ['-115%', '0%'],
-        easing: 'easeOutBack',
-        delay: 500,
-      })
-      .add({
-        targets: banner,
-        translateY: () => ['110%', '-4%'],
-        scale: 1.05455,
-      })
-      .add({
-        targets: mainContent,
-        translateY: () => ['10%', '0%'],
-        opacity: () => [0, 1],
-      })
-      .add({
-        targets: closeLink,
-        translateX: () => ['-100%', '0%'],
-        duration: 250,
-      })
-      .add({
-        targets: closeLink.children[0],
-        rotate: 45,
-        duration: 250,
-      })
-      .add(
-        {
-          targets: closeLink.children[1],
-          rotate: -45,
-          duration: 250,
-        },
-        '-=250'
-      );
-  };
-
   /*
     Scroll to first project preview after clicking down arrow in Home component.
     Scroll to project preview that matches hash on homepage.
@@ -612,7 +457,7 @@ class Layout extends React.Component {
       hashOnClick === '#rsc-project' ? '#rsc-project' : location.hash;
 
     // Smooth scroll if arrow was clicked and scroll immediately to project if hash exists in url
-    const duration = hashOnClick === '#rsc-project' ? 500 : 10;
+    const duration = hashOnClick === '#rsc-project' ? 500 : 1;
 
     let projectRef = {};
 
@@ -666,10 +511,6 @@ class Layout extends React.Component {
       previewRef2,
       previewRef3,
       aboutPreviewRef,
-      allowHoverPreviewRef1,
-      allowHoverPreviewRef2,
-      allowHoverPreviewRef3,
-      allowHoverAboutPreviewRef,
       mainRef,
       footerRef,
     } = this.state;
@@ -682,16 +523,9 @@ class Layout extends React.Component {
         previewRef2,
         previewRef3,
         aboutPreviewRef,
-        allowHoverPreviewRef1,
-        allowHoverPreviewRef2,
-        allowHoverPreviewRef3,
-        allowHoverAboutPreviewRef,
         mainRef,
         homeScroll: this.homeScroll,
         animateExit: this.animateExit,
-        animateProjectIntro: this.animateProjectIntro,
-        animateProjectPreview: this.animateProjectPreview,
-        animateProjectMain: this.animateProjectMain,
       })
     );
 

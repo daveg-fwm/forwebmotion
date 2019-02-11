@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import { HeaderContentStyled, ArrowStyled } from './styles/HeaderPanelStyled';
 import {
@@ -42,6 +42,7 @@ class HeaderContent extends React.Component {
       appIcon: PropTypes.string,
       techStack: PropTypes.object,
     }).isRequired,
+    animateExit: PropTypes.func.isRequired,
   };
 
   components = {
@@ -77,7 +78,7 @@ class HeaderContent extends React.Component {
   };
 
   render() {
-    const { data } = this.props;
+    const { data, animateExit } = this.props;
     // Create component to display logo dynamically
     const Logo = this.components[data.logo];
     // Create component to display app icon dynamically
@@ -93,7 +94,8 @@ class HeaderContent extends React.Component {
               learn tomorrow.
             </p>
             <p>
-              Check out the links below to find out what I'm learning today.
+              Follow the links below to find out what I've been working on
+              lately.
             </p>
             <a
               className="a-svg"
@@ -104,13 +106,21 @@ class HeaderContent extends React.Component {
               <GitHubIcon />
               <span className="a-svg-txt">Forwebmotion repo</span>
             </a>
-            <Link to="/about" className="right-arrow-link">
+            <a
+              href="/about"
+              className="right-arrow-link"
+              onClick={e => {
+                e.preventDefault();
+                animateExit();
+                setTimeout(() => navigate('/about'), 1000);
+              }}
+            >
               <ArrowStyled className="right-arrow">
                 <span />
                 <span />
               </ArrowStyled>
               <span className="a-svg-txt">More on forwebmotion</span>
-            </Link>
+            </a>
           </section>
         </HeaderContentStyled>
       );
