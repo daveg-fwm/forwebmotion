@@ -55,7 +55,7 @@ class Header extends React.Component {
                 // Only call functions if link does not match current page
                 if (locationPathname !== '/') {
                   animateExit();
-                  setTimeout(() => navigate('/'), 1000);
+                  setTimeout(() => navigate('/?cl=true'), 1000);
                 }
               }}
             >
@@ -63,6 +63,8 @@ class Header extends React.Component {
             </a>
             <NavButtonStyled
               type="button"
+              aria-label="Toggle navigation menu"
+              aria-labelledby="nav-menu"
               ref={navButtonRef}
               onClick={() => toggleNav()}
             >
@@ -81,7 +83,7 @@ class Header extends React.Component {
               <HeaderContent data={data} animateExit={animateExit} />
             </div>
 
-            <nav ref={navRef}>
+            <nav id="nav-menu" ref={navRef}>
               <ul>
                 {/* menuLinks contains page link data - received from Layout component */}
                 {menuLinks.map(item => (

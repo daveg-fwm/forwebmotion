@@ -92,7 +92,7 @@ const HeaderContentStyled = styled.div`
     visibility: hidden;
     width: 65px;
     background-color: #121415;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #fff;
     text-align: center;
     border-radius: 3px;
@@ -304,6 +304,10 @@ const HeaderContentStyled = styled.div`
   @media (min-width: 400px) {
     h2 {
       font-size: 1.6rem;
+    }
+
+    div.SVGInline .tooltip {
+      font-size: 1rem;
     }
   }
 

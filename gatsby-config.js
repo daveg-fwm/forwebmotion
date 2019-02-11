@@ -55,7 +55,7 @@ module.exports = {
         start_url: '/',
         background_color: '#40afe9',
         theme_color: '#40afe9',
-        display: 'browser',
+        display: 'fullscreen',
         icon: 'src/images/forwebmotion-icon.png', // This path is relative to the root of the site.
       },
     },

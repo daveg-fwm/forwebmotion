@@ -279,7 +279,7 @@ class Layout extends React.Component {
           targets: scrollElement,
           scrollTop: scrollPos,
           easing: 'easeInOutQuad',
-          duration: 1,
+          duration: 10,
         });
       }
 
@@ -437,8 +437,6 @@ class Layout extends React.Component {
   */
   homeScroll = hashOnClick => {
     const {
-      windowWidth,
-      windowHeight,
       previewRef1,
       previewRef2,
       previewRef3,
@@ -457,7 +455,7 @@ class Layout extends React.Component {
       hashOnClick === '#rsc-project' ? '#rsc-project' : location.hash;
 
     // Smooth scroll if arrow was clicked and scroll immediately to project if hash exists in url
-    const duration = hashOnClick === '#rsc-project' ? 500 : 1;
+    const duration = hashOnClick === '#rsc-project' ? 500 : 10;
 
     let projectRef = {};
 
@@ -483,9 +481,9 @@ class Layout extends React.Component {
       // Match scroll offset with main element padding-top
       let offset = 20;
 
-      if (windowWidth < 1200 || windowHeight < 620) {
+      if (window.innerWidth < 1200 || window.innerHeight < 620) {
         offset = 125;
-      } else if (windowHeight >= 660) {
+      } else if (window.innerHeight >= 660) {
         offset = 40;
       }
 
