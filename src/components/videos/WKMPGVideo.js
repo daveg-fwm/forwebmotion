@@ -6,7 +6,7 @@ const WKMPGVideo = ({ toggleVideo }) => (
   <video
     id="wkm-gateway-video"
     loop
-    playsinline
+    playsInline
     muted
     preload="auto"
     onClick={() => toggleVideo('pause')}

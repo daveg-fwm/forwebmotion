@@ -5,7 +5,7 @@ import Loading from './components/Loading';
 export default class HTML extends React.Component {
   render() {
     return (
-      <html {...this.props.htmlAttributes}>
+      <html {...this.props.htmlAttributes} style={{ fontSize: '10px' }}>
         <head>
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -34,10 +34,12 @@ export default class HTML extends React.Component {
               __html: `
                     if (window.location.pathname !== '/' || window.location.search !== '' || window.location.hash !== '') {
                       document.body.removeAttribute('style');
+                      document.documentElement.removeAttribute('style');
                       document.body.removeChild(document.getElementsByClassName('loading')[0]);
                     } else {
                       setTimeout(function() {
                         document.body.removeAttribute('style');
+                        document.documentElement.removeAttribute('style');
                       }, 11000);
                       setTimeout(function() {
                         document.body.removeChild(document.getElementsByClassName('loading')[0]);

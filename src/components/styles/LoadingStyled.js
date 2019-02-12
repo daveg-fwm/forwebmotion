@@ -1,18 +1,6 @@
 import styled from '@emotion/styled';
-import { OpenSansLightWoff, OpenSansLightWoff2 } from './fonts/fonts';
 
 const LoadingStyled = styled.div`
-  @font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 300;
-    src: local('Open Sans Light'), local('OpenSans-Light'),
-      /* Chrome 26+, Opera 23+, Firefox 39+ */ url(${OpenSansLightWoff2})
-        format('woff2'),
-      /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-        url(${OpenSansLightWoff}) format('woff');
-  }
-
   @-webkit-keyframes animate-out {
     0% {
       opacity: 1;
@@ -42,7 +30,8 @@ const LoadingStyled = styled.div`
   align-items: center;
   font-size: 2.2rem;
   line-height: 1.5;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-weight: 300;
   color: #121415;
   padding: 0 20px;
