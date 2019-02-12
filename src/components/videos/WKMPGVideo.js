@@ -8,6 +8,7 @@ const WKMPGVideo = ({ toggleVideo }) => (
     loop
     playsinline
     muted
+    preload="auto"
     onClick={() => toggleVideo('pause')}
   >
     <source src={video} type="video/mp4" />
