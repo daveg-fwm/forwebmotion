@@ -32,7 +32,7 @@ export default class HTML extends React.Component {
           <script
             dangerouslySetInnerHTML={{
               __html: `
-                    if (window.location.pathname === '/404' || window.location.search !== '' || window.location.hash !== '') {
+                    if (window.location.pathname !== '/' || window.location.search !== '' || window.location.hash !== '') {
                       document.body.removeAttribute('style');
                       document.body.removeChild(document.getElementsByClassName('loading')[0]);
                     } else {
