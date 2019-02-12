@@ -257,7 +257,7 @@ class Project extends React.Component {
 
     // Add video controls and start the video
     if (action === 'play') {
-      video.setAttribute('controls', 'controls');
+      video.setAttribute('controls', true);
       return video.play();
     }
 
