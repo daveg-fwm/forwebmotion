@@ -22,7 +22,7 @@ const IOTGARegisterForm = () => (
         ) {
           childImageSharp {
             fluid(maxWidth: 530, quality: 100) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }

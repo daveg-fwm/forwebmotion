@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 import NotFoundPanelStyled from './styles/NotFoundPanelStyled';
 
 const NotFound = ({ mainRef, animateExit }) => (
-  <div className="hide-panel" ref={mainRef}>
+  <div
+    className="hide-panel"
+    ref={mainRef}
+    style={{ transform: 'translateY(-100%)' }}
+  >
     <NotFoundPanelStyled className="panel">
       <p>
         You seem to have wandered

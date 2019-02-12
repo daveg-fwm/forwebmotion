@@ -20,7 +20,7 @@ const RSCOurStory = () => (
         placeholderImage: file(relativePath: { eq: "rsc-our-story.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 530, quality: 95) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }

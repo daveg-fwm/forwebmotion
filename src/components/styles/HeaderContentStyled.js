@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 const HeaderContentStyled = styled.div`
   width: 100%;
+  transform: translateY(100%);
 
   .project-header {
     height: 84px;

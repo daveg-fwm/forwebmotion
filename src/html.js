@@ -1,5 +1,9 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  OpenSansLightWoff,
+  OpenSansLightWoff2,
+} from './components/styles/fonts/fonts';
 
 export default class HTML extends React.Component {
   render() {
@@ -27,10 +31,10 @@ export default class HTML extends React.Component {
                       font-display: swap;
                       src: local('Open Sans Light'), local('OpenSans-Light'),
                         /* Chrome 26+, Opera 23+, Firefox 39+ */
-                          url('../../../static/fonts/open-sans-v15-latin-300.woff2')
+                          url(${OpenSansLightWoff2})
                           format('woff2'),
                         /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-                          url('../../../static/fonts/open-sans-v15-latin-300.woff')
+                          url(${OpenSansLightWoff})
                           format('woff');
                     }
 
@@ -136,10 +140,10 @@ export default class HTML extends React.Component {
           />
 
           <div
-            key={`loading`}
-            className={`loading`}
-            dangerouslySetInnerHTML={{ __html:
-              `<p>Everything we learn today is but a stepping stone to what we will learn tomorrow.</p>
+            key="loading"
+            className="loading"
+            dangerouslySetInnerHTML={{
+              __html: `<p>Everything we learn today is but a stepping stone to what we will learn tomorrow.</p>
               <svg x="0px" y="0px" viewBox="0 0 571.5 70.75" style="enable-background:new 0 0 571.5 70.75;" xml:space="preserve">
                 <path d="M59.16666,25.83331c-11.73334,0-21.33334,9.90938-21.33334,22.02084S47.43332,69.875,59.16666,69.875
                 S80.5,59.96562,80.5,47.85416S70.89999,25.83331,59.16666,25.83331z M69.15338,47.85416
@@ -179,7 +183,7 @@ export default class HTML extends React.Component {
                 c6.5,0,5.98956,6.85503,5.98956,6.85503V68.5h13.5c0,0,0-23.94817,0-27.04179
                 C570.54498,25.81567,552.79559,21.25201,543.53125,30.78087z"/>
               </svg>
-              <p>A Web Developer's journey.</p>`
+              <p>A Web Developer's journey.</p>`,
             }}
           />
 
@@ -202,14 +206,14 @@ export default class HTML extends React.Component {
           />
 
           <div
-            key={`body`}
+            key="body"
             id="___gatsby"
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
           {this.props.postBodyComponents}
         </body>
       </html>
-    )
+    );
   }
 }
 
@@ -220,4 +224,4 @@ HTML.propTypes = {
   preBodyComponents: PropTypes.array,
   body: PropTypes.string,
   postBodyComponents: PropTypes.array,
-}
+};

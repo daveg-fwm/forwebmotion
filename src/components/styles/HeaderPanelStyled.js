@@ -56,6 +56,7 @@ const HeaderPanelStyled = styled.header`
     overflow: hidden;
     margin: 0 -25px;
     padding: 0 25px;
+    transform: translateY(-100%);
   }
 
   nav {

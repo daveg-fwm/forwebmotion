@@ -21,6 +21,7 @@ const FooterPanelStyled = styled.footer`
     overflow: hidden;
     margin: -6px;
     padding: 6px;
+    transform: translateY(-100%);
   }
 
   .footer-panel {
@@ -32,6 +33,7 @@ const FooterPanelStyled = styled.footer`
     margin-bottom: 38px;
     background-color: #fff;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(calc(129% + 12px));
   }
 
   .linkedin-icon {

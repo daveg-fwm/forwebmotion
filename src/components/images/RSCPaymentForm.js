@@ -20,7 +20,7 @@ const RSCPaymentForm = () => (
         placeholderImage: file(relativePath: { eq: "rsc-payment-form.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 730, quality: 100) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }

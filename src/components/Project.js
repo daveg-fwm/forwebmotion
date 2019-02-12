@@ -6,6 +6,7 @@ import anime from 'animejs';
 import ProjectPreviewStyled from './styles/ProjectPreviewStyled';
 import ProjectMainStyled from './styles/ProjectMainStyled';
 import ArrowStyled from './styles/elements/ArrowStyled';
+import WKMPGVideo from './videos/WKMPGVideo';
 import {
   RSCBanner,
   IOTGABanner,
@@ -50,6 +51,7 @@ class Project extends React.Component {
     RSCOurStory,
     RSCPaymentForm,
     AboutBanner,
+    WKMPGVideo,
   };
 
   hoverTimeoutId = () => {};
@@ -558,6 +560,9 @@ class Project extends React.Component {
 
               // Videos
               if (item.type === 'video') {
+                // Create component to display video dynamically
+                const Video = this.components[item.content[0]];
+
                 return (
                   <InView
                     key={item.type + i}
@@ -580,17 +585,7 @@ class Project extends React.Component {
                         <span />
                       </span>
                     </button>
-                    <video
-                      id="wkm-gateway-video"
-                      loop
-                      muted
-                      onClick={() => this.toggleVideo('pause')}
-                    >
-                      <source
-                        src={`/static/video/${item.content[0]}`}
-                        type="video/mp4"
-                      />
-                    </video>
+                    <Video toggleVideo={this.toggleVideo} />
                   </InView>
                 );
               }

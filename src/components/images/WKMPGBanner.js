@@ -21,7 +21,7 @@ const WKMPGBanner = ({ mainBannerClass }) => (
         placeholderImage: file(relativePath: { eq: "wkmpg-banner.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 1000, quality: 100) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }

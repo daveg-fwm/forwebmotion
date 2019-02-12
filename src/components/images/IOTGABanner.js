@@ -21,7 +21,7 @@ const IOTGABanner = ({ mainBannerClass }) => (
         placeholderImage: file(relativePath: { eq: "iotga-banner.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 1000, quality: 90) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }
