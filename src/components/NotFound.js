@@ -24,7 +24,7 @@ const NotFound = ({ mainRef, animateExit }) => (
           onClick={e => {
             e.preventDefault();
             animateExit();
-            setTimeout(() => navigate('/'), 1000);
+            setTimeout(() => navigate('/?cl=true'), 1000);
           }}
         >
           link

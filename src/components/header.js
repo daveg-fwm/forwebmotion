@@ -99,7 +99,10 @@ class Header extends React.Component {
                         // Only call functions if link does not match current page
                         if (locationPathname !== item.link) {
                           animateExit();
-                          setTimeout(() => navigate(item.link), 1000);
+                          setTimeout(
+                            () => navigate(`${item.link}?cl=true`),
+                            1000
+                          );
                         }
                       }}
                     >

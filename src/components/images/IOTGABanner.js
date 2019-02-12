@@ -34,7 +34,6 @@ const IOTGABanner = ({ mainBannerClass }) => (
         className={`banner${
           mainBannerClass !== undefined ? ` ${mainBannerClass}` : ''
         }`}
-        backgroundColor="#fff"
       />
     )}
   />

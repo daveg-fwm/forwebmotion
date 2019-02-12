@@ -34,7 +34,6 @@ const AboutBanner = ({ mainBannerClass }) => (
         className={`banner${
           mainBannerClass !== undefined ? ` ${mainBannerClass}` : ''
         }`}
-        backgroundColor="#fff"
       />
     )}
   />

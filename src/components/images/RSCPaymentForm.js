@@ -30,7 +30,6 @@ const RSCPaymentForm = () => (
       <Img
         fluid={data.placeholderImage.childImageSharp.fluid}
         alt="Red Sofa Cafe payment form"
-        backgroundColor="#fff"
       />
     )}
   />

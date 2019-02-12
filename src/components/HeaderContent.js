@@ -112,7 +112,7 @@ class HeaderContent extends React.Component {
               onClick={e => {
                 e.preventDefault();
                 animateExit();
-                setTimeout(() => navigate('/about'), 1000);
+                setTimeout(() => navigate('/about?cl=true'), 1000);
               }}
             >
               <ArrowStyled className="right-arrow">

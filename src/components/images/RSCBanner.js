@@ -34,7 +34,6 @@ const RSCBanner = ({ mainBannerClass }) => (
         className={`banner${
           mainBannerClass !== undefined ? ` ${mainBannerClass}` : ''
         }`}
-        backgroundColor="#fff"
       />
     )}
   />

@@ -34,7 +34,6 @@ const WKMPGBanner = ({ mainBannerClass }) => (
         className={`banner${
           mainBannerClass !== undefined ? ` ${mainBannerClass}` : ''
         }`}
-        backgroundColor="#fff"
       />
     )}
   />

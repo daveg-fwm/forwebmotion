@@ -30,7 +30,6 @@ const RSCOurStory = () => (
       <Img
         fluid={data.placeholderImage.childImageSharp.fluid}
         alt="Red Sofa Cafe - our story"
-        backgroundColor="#fff"
       />
     )}
   />

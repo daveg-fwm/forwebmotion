@@ -331,7 +331,10 @@ class Project extends React.Component {
                       onClick={e => {
                         e.preventDefault();
                         animateExit();
-                        setTimeout(() => navigate(PreviewData[key].link), 1000);
+                        setTimeout(
+                          () => navigate(`${PreviewData[key].link}?cl=true`),
+                          1000
+                        );
                       }}
                       triggerOnce
                       threshold={0.8}
