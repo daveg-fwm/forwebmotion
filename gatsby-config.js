@@ -1,5 +1,6 @@
 module.exports = {
   siteMetadata: {
+    siteUrl: `https://www.forwebmotion.com`,
     title: 'forwebmotion',
     description: "A Web Developer's portfolio - Cape Town, South Africa.",
     author: '@forwebmotion',
@@ -68,5 +69,6 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App  Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     'gatsby-plugin-offline',
+    `gatsby-plugin-sitemap`,
   ],
 };
