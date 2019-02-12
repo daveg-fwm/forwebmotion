@@ -18,7 +18,7 @@ const GlobalStyled = () => (
         font-family: 'Open Sans';
         font-style: normal;
         font-weight: 300;
-        font-display: swap;
+        font-display: auto;
         src: local('Open Sans Light'), local('OpenSans-Light'),
           /* Chrome 26+, Opera 23+, Firefox 39+ */ url(${OpenSansLightWoff2})
             format('woff2'),
@@ -31,7 +31,7 @@ const GlobalStyled = () => (
         font-family: 'Open Sans';
         font-style: normal;
         font-weight: 400;
-        font-display: swap;
+        font-display: auto;
         src: local('Open Sans Regular'), local('OpenSans-Regular'),
           /* Chrome 26+, Opera 23+, Firefox 39+ */ url(${OpenSansRegularWoff2})
             format('woff2'),
@@ -44,7 +44,7 @@ const GlobalStyled = () => (
         font-family: 'Open Sans';
         font-style: normal;
         font-weight: 600;
-        font-display: swap;
+        font-display: auto;
         src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
           /* Chrome 26+, Opera 23+, Firefox 39+ */ url(${OpenSansSemiBoldWoff2})
             format('woff2'),
@@ -57,7 +57,7 @@ const GlobalStyled = () => (
         font-family: 'Open Sans';
         font-style: normal;
         font-weight: 700;
-        font-display: swap;
+        font-display: auto;
         src: local('Open Sans Bold'), local('OpenSans-Bold'),
           /* Chrome 26+, Opera 23+, Firefox 39+ */ url(${OpenSansBoldWoff2})
             format('woff2'),

@@ -36,10 +36,10 @@ export default class HTML extends React.Component {
                       document.body.removeAttribute('style');
                       document.body.removeChild(document.getElementsByClassName('loading')[0]);
                     } else {
-                      setTimeout(() => {
+                      setTimeout(function() {
                         document.body.removeAttribute('style');
                       }, 11000);
-                      setTimeout(() => {
+                      setTimeout(function() {
                         document.body.removeChild(document.getElementsByClassName('loading')[0]);
                       }, 13000);
                     }

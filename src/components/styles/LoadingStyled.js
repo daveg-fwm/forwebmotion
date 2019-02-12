@@ -6,7 +6,7 @@ const LoadingStyled = styled.div`
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 300;
-    font-display: swap;
+    font-display: auto;
     src: local('Open Sans Light'), local('OpenSans-Light'),
       /* Chrome 26+, Opera 23+, Firefox 39+ */ url(${OpenSansLightWoff2})
         format('woff2'),
