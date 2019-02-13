@@ -1,5 +1,5 @@
 import React from 'react';
-import { navigate } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import { HeaderContentStyled, ArrowStyled } from './styles/HeaderPanelStyled';
 import {
@@ -106,8 +106,8 @@ class HeaderContent extends React.Component {
               <GitHubIcon />
               <span className="a-svg-txt">Forwebmotion repo</span>
             </a>
-            <a
-              href="/about"
+            <Link
+              to="/about"
               className="right-arrow-link"
               onClick={e => {
                 e.preventDefault();
@@ -120,7 +120,7 @@ class HeaderContent extends React.Component {
                 <span />
               </ArrowStyled>
               <span className="a-svg-txt">More on forwebmotion</span>
-            </a>
+            </Link>
           </section>
         </HeaderContentStyled>
       );

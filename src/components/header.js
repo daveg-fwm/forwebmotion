@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { navigate } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import {
   HeaderPanelStyled,
   NavButtonStyled,
@@ -46,8 +46,8 @@ class Header extends React.Component {
       <HeaderPanelStyled className={scrollMenu ? 'scroll' : 'no-scroll'}>
         <div className="header-panel-inner">
           <div className="top-nav">
-            <a
-              href="/"
+            <Link
+              to="/"
               className="a-svg"
               onClick={e => {
                 e.preventDefault();
@@ -60,7 +60,7 @@ class Header extends React.Component {
               }}
             >
               <FWMIcon />
-            </a>
+            </Link>
             <NavButtonStyled
               type="button"
               aria-label="Toggle navigation menu"
@@ -88,8 +88,8 @@ class Header extends React.Component {
                 {/* menuLinks contains page link data - received from Layout component */}
                 {menuLinks.map(item => (
                   <li key={item.name}>
-                    <a
-                      href={item.link}
+                    <Link
+                      to={item.link}
                       className={`right-arrow-link ${
                         locationPathname === item.link ? 'active' : null
                       }`}
@@ -108,7 +108,7 @@ class Header extends React.Component {
                         <span />
                       </ArrowStyled>
                       <span className="a-svg-txt">{item.name}</span>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

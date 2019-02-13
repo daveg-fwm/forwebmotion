@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { navigate } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import { InView } from 'react-intersection-observer';
 import anime from 'animejs';
 import ProjectPreviewStyled from './styles/ProjectPreviewStyled';
@@ -382,9 +382,9 @@ class Project extends React.Component {
               }
             >
               {/* Link to project preview on index.js used for close button */}
-              <a
+              <Link
+                to={`/#${PreviewData.class}`}
                 className="close-project"
-                href={`/#${PreviewData.class}`}
                 onClick={e => {
                   e.preventDefault();
                   animateExit();
@@ -393,7 +393,7 @@ class Project extends React.Component {
               >
                 <span />
                 <span />
-              </a>
+              </Link>
               <div className="project-bg project-page-bg">
                 <p>{PreviewData.year}</p>
                 <p>{PreviewData.type}</p>
@@ -616,9 +616,9 @@ class Project extends React.Component {
 
             {/* Link to project preview on index.js */}
             {PreviewData.class !== 'forwebmotion-project' ? (
-              <a
+              <Link
+                to={`/#${PreviewData.class}`}
                 className="continue-journey left-arrow-link"
-                href={`/#${PreviewData.class}`}
                 onClick={e => {
                   e.preventDefault();
                   animateExit();
@@ -630,7 +630,7 @@ class Project extends React.Component {
                   <span />
                 </ArrowStyled>
                 <span className="a-svg-txt">Continue the journey</span>
-              </a>
+              </Link>
             ) : null}
           </ProjectMainStyled>
         </div>
