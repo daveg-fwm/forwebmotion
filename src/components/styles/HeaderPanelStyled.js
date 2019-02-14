@@ -41,8 +41,8 @@ const HeaderPanelStyled = styled.header`
   }
 
   .fwm-icon {
-    width: 46px;
-    height: 27.89px;
+    width: 68px;
+    height: 26.36px;
   }
 
   .header-content-container {

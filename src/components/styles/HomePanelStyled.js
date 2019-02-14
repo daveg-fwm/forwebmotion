@@ -7,12 +7,6 @@ const HomePanelStyled = styled.div`
   justify-content: center;
   align-items: center;
 
-  .fwm-icon {
-    width: 76px;
-    height: 46.09px;
-    display: block;
-  }
-
   .fwm-logo {
     width: 100%;
     height: auto;
@@ -28,6 +22,7 @@ const HomePanelStyled = styled.div`
     font-size: 2.6rem;
     font-weight: 300;
     margin: 0 0 30px;
+    text-align: center;
   }
 
   button {
