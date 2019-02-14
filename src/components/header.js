@@ -90,9 +90,8 @@ class Header extends React.Component {
                   <li key={item.name}>
                     <Link
                       to={item.link}
-                      className={`right-arrow-link ${
-                        locationPathname === item.link ? 'active' : null
-                      }`}
+                      className="right-arrow-link"
+                      activeClassName="active"
                       onClick={e => {
                         e.preventDefault();
 
