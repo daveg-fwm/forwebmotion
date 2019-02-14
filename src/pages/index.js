@@ -20,7 +20,7 @@ const IndexPage = ({ data, location }) => {
       footerClass={{ class: 'fixed' }}
       location={location}
     >
-      <SEO title="Home" />
+      <SEO title="forwebmotion" />
       <Home />
       {/* Pass projects' preview data to Project component */}
       <Project PreviewData={PreviewData} />
