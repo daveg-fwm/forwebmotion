@@ -86,7 +86,7 @@ const GlobalStyled = () => (
         font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-weight: 300;
         color: #121415;
-        background-color: #f9f9f9;
+        background-color: #f2f2f2;
       }
 
       article,

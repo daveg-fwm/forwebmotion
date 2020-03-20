@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Loading from './components/Loading';
 
 export default class HTML extends React.Component {
   render() {
@@ -16,39 +15,8 @@ export default class HTML extends React.Component {
 
           {this.props.headComponents}
         </head>
-        <body
-          {...this.props.bodyAttributes}
-          style={{
-            position: 'fixed',
-            margin: 0,
-            padding: 0,
-            boxSizing: 'border-box',
-          }}
-        >
+        <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
-
-          {/* Intro animation when user first comes to the site */}
-          <Loading />
-
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                    if (window.location.pathname !== '/' || window.location.search !== '' || window.location.hash !== '') {
-                      document.body.removeAttribute('style');
-                      document.documentElement.removeAttribute('style');
-                      document.body.removeChild(document.getElementsByClassName('loading')[0]);
-                    } else {
-                      setTimeout(function() {
-                        document.body.removeAttribute('style');
-                        document.documentElement.removeAttribute('style');
-                      }, 11000);
-                      setTimeout(function() {
-                        document.body.removeChild(document.getElementsByClassName('loading')[0]);
-                      }, 13000);
-                    }
-                  `,
-            }}
-          />
 
           <div
             key="body"

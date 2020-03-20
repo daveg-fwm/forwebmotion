@@ -408,18 +408,7 @@ class Project extends React.Component {
               // Headings
               if (item.type === 'heading') {
                 return (
-                  <InView
-                    key={item.type + i}
-                    tag="div"
-                    className="heading"
-                    triggerOnce
-                    threshold={1}
-                    onChange={inView =>
-                      inView
-                        ? this.animateProjectContentMain(item.type, i)
-                        : null
-                    }
-                  >
+                  <div key={item.type + i} className="heading">
                     {/* First heading gets h1 for project name - the rest are h2 */}
                     {i === 0 ? (
                       <h1>{item.content[0]}</h1>
@@ -427,64 +416,30 @@ class Project extends React.Component {
                       <h2>{item.content[0]}</h2>
                     )}
                     <span />
-                  </InView>
+                  </div>
                 );
               }
 
               // Paragraphs
               if (item.type === 'paragraph') {
-                return (
-                  <InView
-                    key={item.type + i}
-                    tag="p"
-                    triggerOnce
-                    threshold={0.1}
-                    onChange={inView =>
-                      inView
-                        ? this.animateProjectContentMain(item.type, i)
-                        : null
-                    }
-                  >
-                    {item.content[0]}
-                  </InView>
-                );
+                return <p key={item.type + i}>{item.content[0]}</p>;
               }
 
               // Lists
               if (item.type === 'list') {
                 return (
-                  <InView
-                    key={item.type + i}
-                    tag="ul"
-                    triggerOnce
-                    threshold={0.1}
-                    onChange={inView =>
-                      inView
-                        ? this.animateProjectContentMain(item.type, i)
-                        : null
-                    }
-                  >
+                  <ul key={item.type + i}>
                     {item.content.map((listItem, listIndex) => (
                       <li key={item.type + i + listIndex}>{listItem}</li>
                     ))}
-                  </InView>
+                  </ul>
                 );
               }
 
               // Lists of links
               if (item.type === 'link list') {
                 return (
-                  <InView
-                    key={item.type + i}
-                    tag="ul"
-                    triggerOnce
-                    threshold={0.1}
-                    onChange={inView =>
-                      inView
-                        ? this.animateProjectContentMain(item.type, i)
-                        : null
-                    }
-                  >
+                  <ul key={item.type + i}>
                     {item.content.map((listItem, listIndex) => {
                       /*
                         Don't display list item if the index is odd.
@@ -508,7 +463,7 @@ class Project extends React.Component {
                         </li>
                       );
                     })}
-                  </InView>
+                  </ul>
                 );
               }
 
@@ -518,20 +473,9 @@ class Project extends React.Component {
                 const Img = this.components[item.content[0]];
 
                 return (
-                  <InView
-                    key={item.type + i}
-                    tag="div"
-                    className="image-container"
-                    triggerOnce
-                    threshold={0.1}
-                    onChange={inView =>
-                      inView
-                        ? this.animateProjectContentMain(item.type, i)
-                        : null
-                    }
-                  >
+                  <div key={item.type + i} className="image-container">
                     <Img />
-                  </InView>
+                  </div>
                 );
               }
 
@@ -541,20 +485,9 @@ class Project extends React.Component {
                 const Svg = this.components[item.content[0]];
 
                 return (
-                  <InView
-                    key={item.type + i}
-                    tag="div"
-                    className="image-container"
-                    triggerOnce
-                    threshold={0.1}
-                    onChange={inView =>
-                      inView
-                        ? this.animateProjectContentMain(item.type, i)
-                        : null
-                    }
-                  >
+                  <div key={item.type + i} className="image-container">
                     <Svg />
-                  </InView>
+                  </div>
                 );
               }
 
@@ -564,18 +497,7 @@ class Project extends React.Component {
                 const Video = this.components[item.content[0]];
 
                 return (
-                  <InView
-                    key={item.type + i}
-                    tag="div"
-                    className="video-container"
-                    triggerOnce
-                    threshold={0.1}
-                    onChange={inView =>
-                      inView
-                        ? this.animateProjectContentMain(item.type, i)
-                        : null
-                    }
-                  >
+                  <div key={item.type + i} className="video-container">
                     <button
                       type="button"
                       className={playVideo ? 'hide' : null}
@@ -586,31 +508,25 @@ class Project extends React.Component {
                       </span>
                     </button>
                     <Video toggleVideo={this.toggleVideo} />
-                  </InView>
+                  </div>
                 );
               }
 
               // Website link
               return (
-                <InView
+                <a
                   key={item.type + i}
-                  tag="a"
                   className="website-link right-arrow-link"
                   href={item.content[0]}
                   target="_blank"
                   rel="noopener noreferrer"
-                  triggerOnce
-                  threshold={0.1}
-                  onChange={inView =>
-                    inView ? this.animateProjectContentMain(item.type, i) : null
-                  }
                 >
                   <ArrowStyled className="right-arrow">
                     <span />
                     <span />
                   </ArrowStyled>
                   <span className="a-svg-txt">{item.content[0]}</span>
-                </InView>
+                </a>
               );
             })}
 

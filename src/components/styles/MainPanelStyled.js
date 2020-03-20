@@ -17,8 +17,8 @@ const MainPanelStyled = styled.main`
 
   div.hide-panel {
     overflow: hidden;
-    margin: -6px;
-    padding: 6px;
+    margin: -10px -10px -15px;
+    padding: 10px 10px 15px;
     position: relative;
     z-index: 1;
   }
@@ -27,7 +27,8 @@ const MainPanelStyled = styled.main`
     overflow: hidden;
     padding: 50px 20px;
     background-color: #fff;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   }
 
   @media (min-width: 400px) {

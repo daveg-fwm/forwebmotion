@@ -9,8 +9,6 @@ const ProjectMainStyled = styled.div`
     grid-template-columns: auto 1fr;
     align-items: center;
     margin: 60px 0 40px;
-    transform: translateY(100%);
-    opacity: 0;
 
     h1,
     h2 {
@@ -43,14 +41,6 @@ const ProjectMainStyled = styled.div`
 
   li {
     margin-bottom: 20px;
-  }
-
-  p,
-  ul,
-  .image-container,
-  .video-container {
-    transform: translateY(30%);
-    opacity: 0;
   }
 
   button {

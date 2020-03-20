@@ -19,8 +19,8 @@ const FooterPanelStyled = styled.footer`
 
   .hide-panel {
     overflow: hidden;
-    margin: -6px;
-    padding: 6px;
+    margin: -10px -10px -15px;
+    padding: 10px 10px 15px;
     transform: translateY(-100%);
   }
 
@@ -32,7 +32,8 @@ const FooterPanelStyled = styled.footer`
     padding: 40px 25px;
     margin-bottom: 38px;
     background-color: #fff;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
     transform: translateY(calc(129% + 12px));
   }
 

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProjectMainStyled from './styles/ProjectMainStyled';
 import {
-  IOTGAEntryForm,
   IOTGARegisterForm,
   RSCOurStory,
   RSCPaymentForm,
@@ -19,7 +18,6 @@ class ProjectMain extends React.Component {
   };
 
   components = {
-    IOTGAEntryForm,
     IOTGARegisterForm,
     RSCOurStory,
     RSCPaymentForm,

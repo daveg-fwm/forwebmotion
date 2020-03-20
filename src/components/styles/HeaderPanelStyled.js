@@ -48,7 +48,7 @@ const HeaderPanelStyled = styled.header`
   .header-content-container {
     padding: 85px 25px 30px;
     background-color: #fff;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
     transform: translateY(-100%);
   }
 
@@ -124,7 +124,8 @@ const HeaderPanelStyled = styled.header`
       width: 300px;
       min-height: 360px;
       background-color: #fff;
-      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
       overflow: hidden;
     }
 

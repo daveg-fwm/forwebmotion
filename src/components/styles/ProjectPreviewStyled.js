@@ -46,6 +46,7 @@ const ProjectPreviewStyled = styled.div`
     max-height: 380px;
     padding: 9px 15px;
     transform: translateX(-115%);
+    border-radius: 3px;
 
     p {
       color: #fff;
@@ -142,10 +143,11 @@ const ProjectPreviewStyled = styled.div`
     max-width: 550px;
     max-height: 300px;
     position: absolute !important;
-    bottom: 6px;
+    bottom: 12px;
     right: 12px;
     background-color: #fff;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
     transform: translateY(110%);
   }
 

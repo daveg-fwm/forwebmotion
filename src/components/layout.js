@@ -69,16 +69,16 @@ class Layout extends React.Component {
     this.menuCenter = !(window.innerWidth >= 1200 && window.innerHeight >= 620);
 
     // Homepage and project pages use different values for animation - 404 page uses same values as homepage
-    let from = 'calc(102% + 12px)';
+    let from = 'calc(102% + 25px)';
 
     if (location.pathname === '/red-sofa-cafe') {
-      from = 'calc(100.35% + 12px)';
+      from = 'calc(100.35% + 25px)';
     } else if (location.pathname === '/iot-global-awards') {
-      from = 'calc(100.2% + 12px)';
+      from = 'calc(100.2% + 25px)';
     } else if (location.pathname === '/wkm-payment-gateway') {
-      from = 'calc(100.28% + 12px)';
+      from = 'calc(100.28% + 25px)';
     } else if (location.pathname === '/about') {
-      from = 'calc(100.2% + 12px)';
+      from = 'calc(100.2% + 25px)';
     }
 
     /*
@@ -159,7 +159,7 @@ class Layout extends React.Component {
       })
       .add({
         targets: footerRef.current.children,
-        translateY: () => ['calc(129% + 12px)', '0%'],
+        translateY: () => ['calc(129% + 25px)', '0%'],
       });
 
     if (homeRef.current !== null && headerData.page !== '404')
@@ -414,7 +414,7 @@ class Layout extends React.Component {
       })
       .add({
         targets: this.targetsChildren,
-        translateY: () => ['0%', 'calc(100% + 12px)'],
+        translateY: () => ['0%', 'calc(100% + 25px)'],
       });
 
     // Animate footer panel
@@ -427,7 +427,7 @@ class Layout extends React.Component {
       })
       .add({
         targets: footerRef.current.children,
-        translateY: () => ['0%', 'calc(122% + 12px)'],
+        translateY: () => ['0%', 'calc(122% + 25px)'],
       });
   };
 
@@ -475,8 +475,8 @@ class Layout extends React.Component {
           projectRef = aboutPreviewRef;
       }
 
-      // Get top position of first project preview (add 6 due to hide-panel padding)
-      const projectPos = projectRef.current.offsetTop + 6;
+      // Get top position of first project preview (add 10 due to hide-panel padding)
+      const projectPos = projectRef.current.offsetTop + 10;
 
       // Match scroll offset with main element padding-top
       let offset = 20;
