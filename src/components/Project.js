@@ -15,6 +15,7 @@ import {
   RSCOurStory,
   RSCPaymentForm,
   AboutBanner,
+  ExpatBanner,
 } from './images/images';
 
 class Project extends React.Component {
@@ -29,6 +30,7 @@ class Project extends React.Component {
     previewRef1: PropTypes.object,
     previewRef2: PropTypes.object,
     previewRef3: PropTypes.object,
+    previewRef4: PropTypes.object,
     aboutPreviewRef: PropTypes.object,
     mainRef: PropTypes.object,
     animateExit: PropTypes.func,
@@ -39,6 +41,7 @@ class Project extends React.Component {
     allowHoverPreviewRef1: false,
     allowHoverPreviewRef2: false,
     allowHoverPreviewRef3: false,
+    allowHoverPreviewRef4: false,
     allowHoverAboutPreviewRef: false,
     playVideo: false,
   };
@@ -52,6 +55,7 @@ class Project extends React.Component {
     RSCPaymentForm,
     AboutBanner,
     WKMPGVideo,
+    ExpatBanner,
   };
 
   hoverTimeoutId = () => {};
@@ -108,8 +112,11 @@ class Project extends React.Component {
       case 'wkmpg-project':
         allowHover = 'allowHoverPreviewRef3';
         break;
+      case 'expat-project':
+        allowHover = 'allowHoverPreviewRef4';
+        break;
       default:
-        allowHover = 'allowHoverAboutPreviewRef';
+        allowHover = '';
     }
 
     /*
@@ -149,7 +156,7 @@ class Project extends React.Component {
       })
       .add({
         targets: banner,
-        translateY: () => ['110%', '0%'],
+        translateY: () => ['120%', '0%'],
       })
       .finished.then(
         /*
@@ -198,7 +205,7 @@ class Project extends React.Component {
       })
       .add({
         targets: banner,
-        translateY: () => ['110%', '-4%'],
+        translateY: () => ['120%', '-4%'],
         scale: 1.05455,
       })
       .add({
@@ -273,6 +280,7 @@ class Project extends React.Component {
       previewRef1,
       previewRef2,
       previewRef3,
+      previewRef4,
       aboutPreviewRef,
       mainRef,
       animateExit,
@@ -282,16 +290,24 @@ class Project extends React.Component {
       allowHoverPreviewRef1,
       allowHoverPreviewRef2,
       allowHoverPreviewRef3,
+      allowHoverPreviewRef4,
       allowHoverAboutPreviewRef,
       playVideo,
     } = this.state;
 
     // Add previewRefs and allowHoverPreviewRefs to arrays - will cycle through in .map below
-    const previewRef = [previewRef1, previewRef2, previewRef3, aboutPreviewRef];
+    const previewRef = [
+      previewRef1,
+      previewRef2,
+      previewRef3,
+      previewRef4,
+      aboutPreviewRef,
+    ];
     const allowHoverPreviewRef = [
       allowHoverPreviewRef1,
       allowHoverPreviewRef2,
       allowHoverPreviewRef3,
+      allowHoverPreviewRef4,
       allowHoverAboutPreviewRef,
     ];
 
@@ -365,6 +381,11 @@ class Project extends React.Component {
 
     // Create component to display banner image dynamically
     const MainBanner = this.components[PreviewData.bannerImg];
+    // Close button on about section should just go to top of homepage
+    const projectHash =
+      PreviewData.class !== 'forwebmotion-project'
+        ? `#${PreviewData.class}`
+        : '';
 
     return (
       <div className="hide-panel" ref={mainRef}>
@@ -383,12 +404,12 @@ class Project extends React.Component {
             >
               {/* Link to project preview on index.js used for close button */}
               <Link
-                to={`/#${PreviewData.class}`}
+                to={`/${projectHash}`}
                 className="close-project"
                 onClick={e => {
                   e.preventDefault();
                   animateExit();
-                  setTimeout(() => navigate(`/#${PreviewData.class}`), 1000);
+                  setTimeout(() => navigate(`/${projectHash}`), 1000);
                 }}
               >
                 <span />

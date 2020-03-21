@@ -31,6 +31,7 @@ import AnimeJSIcon from './AnimeJSIcon';
 import GatsbyIcon from './GatsbyIcon';
 import AmplifyIcon from './AmplifyIcon';
 import EmotionIcon from './EmotionIcon';
+import ExpatExploreLogo from './ExpatExploreLogo';
 
 export {
   FWMIcon,
@@ -65,4 +66,5 @@ export {
   GatsbyIcon,
   AmplifyIcon,
   EmotionIcon,
+  ExpatExploreLogo,
 };

@@ -5,6 +5,7 @@ import {
   IOTGARegisterForm,
   RSCOurStory,
   RSCPaymentForm,
+  ExpatBanner,
 } from './images/images';
 
 class ProjectMain extends React.Component {
@@ -21,6 +22,7 @@ class ProjectMain extends React.Component {
     IOTGARegisterForm,
     RSCOurStory,
     RSCPaymentForm,
+    ExpatBanner,
   };
 
   render() {

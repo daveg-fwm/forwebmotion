@@ -78,6 +78,33 @@
         }
       }
     },
+    "expat": {
+      "class": "expat-header",
+      "logo": "ExpatExploreLogo",
+      "appIcon": "ZendIcon",
+      "techStack": {
+        "frontEnd": {
+          "title": "Front-end",
+          "html": "HTMLIcon",
+          "css": "CSSIcon",
+          "js": "JSIcon",
+          "jquery": "JQueryIcon"
+        },
+        "backEnd": {
+          "title": "Back-end",
+          "php": "PHPIcon",
+          "mysql": "MySQLIcon",
+          "doctrine": "DoctrineIcon",
+          "sagePay": "SagePayIcon"
+        },
+        "server": {
+          "title": "Server",
+          "ubuntu": "UbuntuIcon",
+          "apache": "ApacheIcon",
+          "nginx": "NginxIcon"
+        }
+      }
+    },
     "about": {
       "class": "about-header",
       "logo": "FWMLogo",
@@ -160,11 +187,29 @@
         }
       ]
     },
+    "expat": {
+      "name": "Expat Explore Travel",
+      "class": "expat-project",
+      "year": "2019",
+      "type": "Vue.js",
+      "link": "/expat-explore-travel",
+      "bannerImg": "ExpatBanner",
+      "intro": [
+        {
+          "paragraph":
+            "By mid 2018 I had a solid understanding of WordPress. Apart from IoT Global Awards I had also built a couple news portals expanding my knowledge to include posts, categories and tags along with commonly used plugins such as Yoast SEO."
+        },
+        {
+          "paragraph":
+            "WKM was now in need of a more customisable payment system for users of its various websites. Having prior knowledge of Zend Framework 2, I was excited to dive into the latest version and build my first web application. This was also an opportunity to work with the Sage Pay REST API, something I'm sure will come in handy down the road."
+        }
+      ]
+    },
     "about": {
       "name": "About Forwebmotion",
       "class": "forwebmotion-project",
       "year": "2019",
-      "type": "React",
+      "type": "React.js",
       "link": "/about",
       "bannerImg": "AboutBanner",
       "intro": [
@@ -418,6 +463,100 @@
       }
     ],
     "wkmpg": [
+      {
+        "type": "heading",
+        "content": ["WKM Payment Gateway"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "It’s all about options really. The ability to deliver improved payment services and a customised user experience, all from a single central location. Easy to manage. Easy to maintain. Consistent branding throughout."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Main Objectives"]
+      },
+      {
+        "type": "list",
+        "content": [
+          "Build and configure a web server on cloud hosting.",
+          "Design a simple UI that is easy to use on any device.",
+          "Expand services to include repeat payments using the Sage Pay REST API."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Server"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Just as I had done for the IoT Global Awards site, I installed a LAMP ( Linux, Apache, MySQL, PHP ) stack with NGINX as a reverse proxy on an Ubuntu OS and took many steps to secure the server."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Certbot was not used here however. I manually set up a paid SSL certificate and configured NGINX to use HTTPS. Data sent to and from the gateway would now be encrypted by the HTTPS protocol."
+        ]
+      },
+      {
+        "type": "heading",
+        "content": ["Front-End"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "When a user wants to make a purchase from one of WKM Global’s sites, they are required to fill out a billing details form. That information is encrypted using the OpenSSL library and sent to the gateway."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Upon arriving at the gateway, the user is presented with the various card options along with details of the purchase. A simple form with clearly marked labels is immediately available as well. Selecting a field will animate the label to the top of the input element. This is a recommended approach by many UX professionals as the user will always be able to see the heading of the field being entered, even on mobile devices."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Clicking “Secure Payment” will initiate an AJAX request and loading animation after which a clear response is displayed."
+        ]
+      },
+      {
+        "type": "video",
+        "content": ["WKMPGVideo"]
+      },
+      {
+        "type": "heading",
+        "content": ["Back-End"]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "The Sage Pay REST API is coded in JavaScript and performs a check on the credit card details before any other action is taken."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "If validation is successful a payment request is sent to Sage using cURL. We store all relevant data for use with future payments, but NEVER credit card details. This means that not only are we able to offer an improved experience by allowing future payments to be made without having to re-enter credit card details, but we can do so without reducing the security of payments as well. An invoice template is then dynamically populated and sent to the user."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "WKM went a step further to offer monthly payments for some of its sites. I had to create a new table in the database to hold these records, put together a PHP script that would make a cURL request to the gateway, and set up a cron job to run the script every hour. I created a function to collect all records whose next payment date was less than or equal to the current date. Payments are then made based on the details contained in these records, users receive an invoice and their accounts on whichever site they purchased from are updated."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "Management of the database is extremely important so I chose to use Doctrine ORM 2. It allowed me to map the database to PHP classes and communicate using object oriented SQL, referred to as Doctrine Query Language ( DQL ). The result is much cleaner and easier to maintain code with improved data integrity."
+        ]
+      }
+    ],
+    "expat": [
       {
         "type": "heading",
         "content": ["WKM Payment Gateway"]

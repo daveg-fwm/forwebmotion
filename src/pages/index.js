@@ -68,7 +68,7 @@ export const query = graphql`
                 paragraph
               }
             }
-            about {
+            expat {
               name
               class
               year

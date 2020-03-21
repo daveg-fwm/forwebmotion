@@ -6,6 +6,7 @@ import IOTGARegisterForm from './IOTGARegisterForm';
 import RSCOurStory from './RSCOurStory';
 import RSCPaymentForm from './RSCPaymentForm';
 import AboutBanner from './AboutBanner';
+import ExpatBanner from './ExpatBanner';
 
 export {
   RSCBanner,
@@ -15,4 +16,5 @@ export {
   RSCOurStory,
   RSCPaymentForm,
   AboutBanner,
+  ExpatBanner,
 };

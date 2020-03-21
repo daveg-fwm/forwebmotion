@@ -120,6 +120,8 @@ SEO.defaultProps = {
     'javascript developer',
     'react developer',
     'reactjs developer',
+    'vue developer',
+    'vuejs developer',
     'php',
     'php developer',
     'zend developer',

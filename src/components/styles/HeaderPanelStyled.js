@@ -12,7 +12,7 @@ const HeaderPanelStyled = styled.header`
   left: 0;
   right: 0;
   margin: 0 auto;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 400;
   z-index: 2;
 
@@ -81,7 +81,7 @@ const HeaderPanelStyled = styled.header`
     align-items: center;
 
     a {
-      padding: 15px 0;
+      padding: 10px 0;
 
       &.active {
         text-decoration: line-through;
@@ -101,10 +101,6 @@ const HeaderPanelStyled = styled.header`
 
   div.SVGInline {
     display: inline-table;
-  }
-
-  @media (min-width: 400px) {
-    font-size: 1.6rem;
   }
 
   @media (min-width: 930px) {

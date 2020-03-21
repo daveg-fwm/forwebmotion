@@ -9,7 +9,7 @@ const FooterPanelStyled = styled.footer`
   right: 0;
   padding: 0 10px;
   margin: 0 auto;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 400;
 
   &.scroll {
@@ -49,10 +49,6 @@ const FooterPanelStyled = styled.footer`
 
   p {
     margin-bottom: 0;
-  }
-
-  @media (min-width: 400px) {
-    font-size: 1.6rem;
   }
 
   @media (min-width: 600px) {

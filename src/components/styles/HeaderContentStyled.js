@@ -43,6 +43,16 @@ const HeaderContentStyled = styled.div`
     margin-top: 1px;
   }
 
+  .expat-header {
+    background-color: #bc2224;
+  }
+
+  .expat-logo {
+    width: 68px;
+    height: 35.94px;
+    margin-top: 1px;
+  }
+
   .about-header {
     background-color: #40afe9;
   }
@@ -81,7 +91,7 @@ const HeaderContentStyled = styled.div`
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     margin: 0 0 15px;
   }
 
@@ -303,10 +313,6 @@ const HeaderContentStyled = styled.div`
   }
 
   @media (min-width: 400px) {
-    h2 {
-      font-size: 1.6rem;
-    }
-
     div.SVGInline .tooltip {
       font-size: 1rem;
     }

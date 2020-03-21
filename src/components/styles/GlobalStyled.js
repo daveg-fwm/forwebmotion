@@ -87,6 +87,10 @@ const GlobalStyled = () => (
         font-weight: 300;
         color: #121415;
         background-color: #f2f2f2;
+
+        @media (max-width: 600px) {
+          font-size: 1.8rem;
+        }
       }
 
       article,
@@ -188,12 +192,6 @@ const GlobalStyled = () => (
       .right-arrow-link .a-svg-txt,
       .left-arrow-link .a-svg-txt {
         margin-left: 25px;
-      }
-
-      @media (min-width: 400px) {
-        html {
-          font-size: 10px;
-        }
       }
     `}
   />

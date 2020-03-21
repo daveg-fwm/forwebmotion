@@ -32,7 +32,7 @@ class Layout extends React.Component {
     previewRef1: React.createRef(),
     previewRef2: React.createRef(),
     previewRef3: React.createRef(),
-    aboutPreviewRef: React.createRef(),
+    previewRef4: React.createRef(),
     // Project component - single main panel
     mainRef: React.createRef(),
     // Footer component
@@ -53,7 +53,7 @@ class Layout extends React.Component {
       previewRef1,
       previewRef2,
       previewRef3,
-      aboutPreviewRef,
+      previewRef4,
       mainRef,
       footerRef,
     } = this.state;
@@ -77,6 +77,8 @@ class Layout extends React.Component {
       from = 'calc(100.2% + 25px)';
     } else if (location.pathname === '/wkm-payment-gateway') {
       from = 'calc(100.28% + 25px)';
+    } else if (location.pathname === '/expat-explore-travel') {
+      from = 'calc(100.28% + 25px)';
     } else if (location.pathname === '/about') {
       from = 'calc(100.2% + 25px)';
     }
@@ -93,7 +95,7 @@ class Layout extends React.Component {
             previewRef1.current,
             previewRef2.current,
             previewRef3.current,
-            aboutPreviewRef.current,
+            previewRef4.current,
           ]
         : mainRef.current;
 
@@ -104,7 +106,7 @@ class Layout extends React.Component {
             previewRef1.current.children,
             previewRef2.current.children,
             previewRef3.current.children,
-            aboutPreviewRef.current.children,
+            previewRef4.current.children,
           ]
         : mainRef.current.children;
 
@@ -370,7 +372,7 @@ class Layout extends React.Component {
       previewRef1,
       previewRef2,
       previewRef3,
-      aboutPreviewRef,
+      previewRef4,
       mainRef,
       footerRef,
     } = this.state;
@@ -389,7 +391,7 @@ class Layout extends React.Component {
             previewRef1.current,
             previewRef2.current,
             previewRef3.current,
-            aboutPreviewRef.current,
+            previewRef4.current,
           ]
         : mainRef.current;
 
@@ -400,7 +402,7 @@ class Layout extends React.Component {
             previewRef1.current.children,
             previewRef2.current.children,
             previewRef3.current.children,
-            aboutPreviewRef.current.children,
+            previewRef4.current.children,
           ]
         : mainRef.current.children;
 
@@ -436,12 +438,7 @@ class Layout extends React.Component {
     Scroll to project preview that matches hash on homepage.
   */
   homeScroll = hashOnClick => {
-    const {
-      previewRef1,
-      previewRef2,
-      previewRef3,
-      aboutPreviewRef,
-    } = this.state;
+    const { previewRef1, previewRef2, previewRef3, previewRef4 } = this.state;
 
     const scrollElement =
       window.document.scrollingElement ||
@@ -471,8 +468,11 @@ class Layout extends React.Component {
         case '#wkmpg-project':
           projectRef = previewRef3;
           break;
+        case '#expat-project':
+          projectRef = previewRef4;
+          break;
         default:
-          projectRef = aboutPreviewRef;
+          projectRef = {};
       }
 
       // Get top position of first project preview (add 10 due to hide-panel padding)
@@ -508,7 +508,7 @@ class Layout extends React.Component {
       previewRef1,
       previewRef2,
       previewRef3,
-      aboutPreviewRef,
+      previewRef4,
       mainRef,
       footerRef,
     } = this.state;
@@ -520,7 +520,7 @@ class Layout extends React.Component {
         previewRef1,
         previewRef2,
         previewRef3,
-        aboutPreviewRef,
+        previewRef4,
         mainRef,
         homeScroll: this.homeScroll,
         animateExit: this.animateExit,

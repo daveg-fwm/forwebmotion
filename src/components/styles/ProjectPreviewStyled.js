@@ -8,7 +8,7 @@ const ProjectPreviewStyled = styled.div`
   .project {
     display: grid;
     grid-template-columns: 25px 1fr;
-    height: 74vw;
+    height: 80vw;
     max-height: 460px;
     text-decoration: none;
     font-size: 1.6rem;
@@ -35,7 +35,7 @@ const ProjectPreviewStyled = styled.div`
   h1 {
     font-size: inherit;
     transform: rotate(-90deg);
-    height: 249px;
+    height: 255px;
     width: 240px;
     text-align: right;
     text-transform: uppercase;
@@ -117,6 +117,26 @@ const ProjectPreviewStyled = styled.div`
     }
   }
 
+  .expat-project {
+    h1 {
+      color: #bc2224;
+    }
+
+    .project-arrow {
+      color: #bc2224;
+
+      .arrow {
+        span:nth-of-type(2) {
+          background-color: #bc2224;
+        }
+      }
+    }
+
+    .project-bg {
+      background-color: #bc2224;
+    }
+  }
+
   .forwebmotion-project {
     h1 {
       color: #40afe9;
@@ -148,7 +168,7 @@ const ProjectPreviewStyled = styled.div`
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 3px;
-    transform: translateY(110%);
+    transform: translateY(120%);
   }
 
   a.project.allow-hover .banner {
@@ -195,10 +215,6 @@ const ProjectPreviewStyled = styled.div`
   @media (min-width: 400px) {
     a.project {
       margin-top: 60px;
-    }
-
-    h1 {
-      height: 255px;
     }
 
     .banner {

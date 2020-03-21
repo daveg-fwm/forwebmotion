@@ -2,7 +2,8 @@ module.exports = {
   siteMetadata: {
     siteUrl: `https://www.forwebmotion.com`,
     title: 'forwebmotion',
-    description: "A Web Developer's portfolio - Cape Town, South Africa.",
+    description:
+      "A Web Developer's portfolio by Dave Green - Cape Town, South Africa.",
     author: '@forwebmotion',
     menuLinks: [
       {
@@ -16,6 +17,10 @@ module.exports = {
       {
         name: 'WKM Payment Gateway',
         link: '/wkm-payment-gateway',
+      },
+      {
+        name: 'Expat Explore Travel',
+        link: '/expat-explore-travel',
       },
       {
         name: 'About forwebmotion',
