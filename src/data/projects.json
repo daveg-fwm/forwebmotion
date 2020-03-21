@@ -6,14 +6,14 @@
       "appIcon": "static",
       "techStack": {
         "frontEnd": {
-          "title": "Front-end",
+          "title": "Frontend",
           "html": "HTMLIcon",
           "css": "CSSIcon",
           "js": "JSIcon",
           "jquery": "JQueryIcon"
         },
         "backEnd": {
-          "title": "Back-end",
+          "title": "Backend",
           "php": "PHPIcon",
           "mysql": "MySQLIcon"
         }
@@ -25,14 +25,14 @@
       "appIcon": "WordPressIcon",
       "techStack": {
         "frontEnd": {
-          "title": "Front-end",
+          "title": "Frontend",
           "html": "HTMLIcon",
           "css": "CSSIcon",
           "js": "JSIcon",
           "jquery": "JQueryIcon"
         },
         "backEnd": {
-          "title": "Back-end",
+          "title": "Backend",
           "php": "PHPIcon",
           "mysql": "MySQLIcon"
         },
@@ -57,14 +57,14 @@
       "appIcon": "ZendIcon",
       "techStack": {
         "frontEnd": {
-          "title": "Front-end",
+          "title": "Frontend",
           "html": "HTMLIcon",
           "css": "CSSIcon",
           "js": "JSIcon",
           "jquery": "JQueryIcon"
         },
         "backEnd": {
-          "title": "Back-end",
+          "title": "Backend",
           "php": "PHPIcon",
           "mysql": "MySQLIcon",
           "doctrine": "DoctrineIcon",
@@ -81,27 +81,30 @@
     "expat": {
       "class": "expat-header",
       "logo": "ExpatExploreLogo",
-      "appIcon": "ZendIcon",
+      "appIcon": "VueIcon",
       "techStack": {
         "frontEnd": {
-          "title": "Front-end",
+          "title": "Frontend",
           "html": "HTMLIcon",
           "css": "CSSIcon",
           "js": "JSIcon",
-          "jquery": "JQueryIcon"
+          "npm": "NPMIcon",
+          "gulp": "GulpIcon"
         },
-        "backEnd": {
-          "title": "Back-end",
-          "php": "PHPIcon",
-          "mysql": "MySQLIcon",
-          "doctrine": "DoctrineIcon",
-          "sagePay": "SagePayIcon"
+        "cloudServicesCms": {
+          "title": "Cloud Services and CMS",
+          "aws": "AWSIcon",
+          "contentful": "ContentfulIcon"
         },
-        "server": {
-          "title": "Server",
-          "ubuntu": "UbuntuIcon",
-          "apache": "ApacheIcon",
-          "nginx": "NginxIcon"
+        "analyticsSplitTesting": {
+          "title": "Analytics and Split Testing",
+          "tagManager": "TagManagerIcon",
+          "vwo": "VWOIcon"
+        },
+        "agileTools": {
+          "title": "Agile Environment Tools",
+          "asana": "AsanaIcon",
+          "slack": "SlackIcon"
         }
       }
     },
@@ -111,7 +114,7 @@
       "appIcon": "ReactIcon",
       "techStack": {
         "frontEnd": {
-          "title": "Front-end",
+          "title": "Frontend",
           "html": "HTMLIcon",
           "css": "CSSIcon",
           "js": "JSIcon",
@@ -165,7 +168,7 @@
         },
         {
           "paragraph":
-            "As our requirements grew more complex, it became clear we needed to improve our workflow and website performance so the decision was made to move from shared to cloud hosting. I gained further experience and skills, this time on the back-end, by learning to install and configure web servers and setting up Git version control via Microsoft Azure DevOps. The IoT Global Awards site was the first to benefit from our new infrastructure."
+            "As our requirements grew more complex, it became clear we needed to improve our workflow and website performance so the decision was made to move from shared to cloud hosting. I gained further experience and skills, this time on the Backend, by learning to install and configure web servers and setting up Git version control via Microsoft Azure DevOps. The IoT Global Awards site was the first to benefit from our new infrastructure."
         }
       ]
     },
@@ -253,7 +256,7 @@
       },
       {
         "type": "heading",
-        "content": ["Front-End"]
+        "content": ["Frontend"]
       },
       {
         "type": "paragraph",
@@ -275,7 +278,7 @@
       },
       {
         "type": "heading",
-        "content": ["Back-End"]
+        "content": ["Backend"]
       },
       {
         "type": "paragraph",
@@ -503,7 +506,7 @@
       },
       {
         "type": "heading",
-        "content": ["Front-End"]
+        "content": ["Frontend"]
       },
       {
         "type": "paragraph",
@@ -529,7 +532,7 @@
       },
       {
         "type": "heading",
-        "content": ["Back-End"]
+        "content": ["Backend"]
       },
       {
         "type": "paragraph",
@@ -597,7 +600,7 @@
       },
       {
         "type": "heading",
-        "content": ["Front-End"]
+        "content": ["Frontend"]
       },
       {
         "type": "paragraph",
@@ -623,7 +626,7 @@
       },
       {
         "type": "heading",
-        "content": ["Back-End"]
+        "content": ["Backend"]
       },
       {
         "type": "paragraph",
@@ -679,7 +682,7 @@
       },
       {
         "type": "heading",
-        "content": ["Front-End"]
+        "content": ["Frontend"]
       },
       {
         "type": "paragraph",
@@ -762,8 +765,8 @@
         "content": [
           "Wes Bos,CSS Grid",
           "https://cssgrid.io/",
-          "Coursera,Front-End Web Development with React",
-          "https://www.coursera.org/learn/front-end-react",
+          "Coursera,Frontend Web Development with React",
+          "https://www.coursera.org/learn/Frontend-react",
           "Wes Bos,React for Beginners",
           "https://reactforbeginners.com/"
         ]

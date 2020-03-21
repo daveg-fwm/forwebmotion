@@ -32,6 +32,15 @@ import GatsbyIcon from './GatsbyIcon';
 import AmplifyIcon from './AmplifyIcon';
 import EmotionIcon from './EmotionIcon';
 import ExpatExploreLogo from './ExpatExploreLogo';
+import VueIcon from './VueIcon';
+import ContentfulIcon from './ContentfulIcon';
+import BitbucketIcon from './BitbucketIcon';
+import SassIcon from './SassIcon';
+import PaniniIcon from './PaniniIcon';
+import TagManagerIcon from './TagManagerIcon';
+import VWOIcon from './VWOIcon';
+import AsanaIcon from './AsanaIcon';
+import SlackIcon from './SlackIcon';
 
 export {
   FWMIcon,
@@ -67,4 +76,13 @@ export {
   AmplifyIcon,
   EmotionIcon,
   ExpatExploreLogo,
+  VueIcon,
+  ContentfulIcon,
+  BitbucketIcon,
+  SassIcon,
+  PaniniIcon,
+  TagManagerIcon,
+  VWOIcon,
+  AsanaIcon,
+  SlackIcon,
 };

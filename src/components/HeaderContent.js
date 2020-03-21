@@ -33,6 +33,13 @@ import {
   VSCodeIcon,
   ReactIcon,
   FWMLogo,
+  VueIcon,
+  ContentfulIcon,
+  VWOIcon,
+  TagManagerIcon,
+  AsanaIcon,
+  SlackIcon,
+  NPMIcon,
 } from './svg/InlineSVG';
 
 class HeaderContent extends React.Component {
@@ -77,6 +84,13 @@ class HeaderContent extends React.Component {
     VSCodeIcon,
     ReactIcon,
     FWMLogo,
+    VueIcon,
+    ContentfulIcon,
+    VWOIcon,
+    TagManagerIcon,
+    AsanaIcon,
+    SlackIcon,
+    NPMIcon,
   };
 
   render() {

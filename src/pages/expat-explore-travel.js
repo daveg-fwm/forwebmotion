@@ -45,20 +45,23 @@ export const query = graphql`
                   html
                   css
                   js
-                  jquery
+                  npm
+                  gulp
                 }
-                backEnd {
+                cloudServicesCms {
                   title
-                  php
-                  mysql
-                  doctrine
-                  sagePay
+                  aws
+                  contentful
                 }
-                server {
+                analyticsSplitTesting {
                   title
-                  ubuntu
-                  apache
-                  nginx
+                  tagManager
+                  vwo
+                }
+                agileTools {
+                  title
+                  asana
+                  slack
                 }
               }
             }
