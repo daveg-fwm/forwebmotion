@@ -8,10 +8,12 @@ const VueIcon = () => (
     accessibilityLabel="Vue.js"
     fill="#fff"
     svg={`
-      <svg x="0px" y="0px" viewBox="0 0 256 221.3" style="enable-background:new 0 0 256 221.3;" xml:space="preserve">
-        <path class="st0" d="M204.8,0.5H256L128,221.3L0,0.5h50.6h47.4L128,51.7l29.4-51.2H204.8z M0,0.5l128,220.8L256,0.5h-51.2L128,133
-          L50.6,0.5H0z"/>
-        <path stroke="#BC2326" stroke-miterlimit="10" d="M50.6,0.5L128,133.6L204.8,0.5h-47.4L128,51.7L97.9,0.5H50.6z"/>
+      <svg x="0px" y="0px" viewBox="0 0 256 221" style="enable-background:new 0 0 256 221;" xml:space="preserve">
+        <g>
+          <path d="M204.8,0H256L128,220.8L0,0h50.56h47.36L128,51.2L157.44,0H204.8z"/>
+          <path d="M0,0l128,220.8L256,0h-51.2L128,132.48L50.56,0H0z"/>
+          <path stroke="#BC2224" stroke-miterlimit="10" stroke-width="4px" d="M50.56,0L128,133.12L204.8,0h-47.36L128,51.2L97.92,0H50.56z"/>
+        </g>
       </svg>
       <span class="tooltip">Vue.js</span>
     `}

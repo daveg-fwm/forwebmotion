@@ -49,8 +49,7 @@ const HeaderContentStyled = styled.div`
 
   .expat-logo {
     width: 68px;
-    height: 35.94px;
-    margin-top: 1px;
+    height: 38.67px;
   }
 
   .about-header {
@@ -65,6 +64,7 @@ const HeaderContentStyled = styled.div`
 
   .wordpress-icon,
   .zend-icon,
+  .vue-icon,
   .react-icon {
     width: 30px;
     height: 30px;
@@ -103,7 +103,7 @@ const HeaderContentStyled = styled.div`
     visibility: hidden;
     width: 65px;
     background-color: #121415;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #fff;
     text-align: center;
     border-radius: 3px;
@@ -135,6 +135,10 @@ const HeaderContentStyled = styled.div`
   .project-header div.SVGInline.react-icon .tooltip {
     bottom: 10px;
     margin-left: -75px;
+  }
+
+  .project-header div.SVGInline.vue-icon .tooltip {
+    bottom: 8px;
   }
 
   .project-header div.SVGInline .tooltip::after {
@@ -183,6 +187,22 @@ const HeaderContentStyled = styled.div`
     margin-left: 0px;
   }
 
+  div.contentful-icon .tooltip {
+    margin-left: 20px;
+  }
+
+  div.vwo-icon .tooltip {
+    margin-left: -10px;
+  }
+
+  div.asana-icon .tooltip {
+    margin-left: 5px;
+  }
+
+  div.slack-icon .tooltip {
+    margin-left: 0;
+  }
+
   .html-icon,
   .css-icon,
   .js-icon,
@@ -195,6 +215,7 @@ const HeaderContentStyled = styled.div`
   .doctrine-icon,
   .gatsby-icon,
   .vscode-icon,
+  .tag-manager-icon,
   .git-icon {
     width: 30px;
     height: 30px;
@@ -233,6 +254,17 @@ const HeaderContentStyled = styled.div`
   .nginx-icon {
     width: 40px;
     height: 40px;
+  }
+
+  .npm-icon {
+    width: 40px;
+    height: 40px;
+    top: 7px;
+    margin-top: -7px;
+
+    svg {
+      margin-right: 20px;
+    }
   }
 
   .mysql-icon {
@@ -312,9 +344,39 @@ const HeaderContentStyled = styled.div`
     }
   }
 
-  @media (min-width: 400px) {
-    div.SVGInline .tooltip {
-      font-size: 1rem;
+  .contentful-icon {
+    width: 100px;
+    height: 24px;
+
+    svg {
+      margin-right: 20px;
+    }
+  }
+
+  .vwo-icon {
+    width: 45px;
+    height: 30px;
+
+    svg {
+      margin-right: 20px;
+    }
+  }
+
+  .asana-icon {
+    width: 70px;
+    height: 24px;
+
+    svg {
+      margin-right: 20px;
+    }
+  }
+
+  .slack-icon {
+    width: 60px;
+    height: 24px;
+
+    svg {
+      margin-right: 20px;
     }
   }
 
