@@ -21,7 +21,7 @@ const WkmPaymentGateway = ({ data, location }) => {
       footerClass={{ class: 'relative' }}
       location={location}
     >
-      <SEO title="WKM Payment Gateway" />
+      <SEO title="WKM Payment Gateway" keywords={['WKM Global']} />
       {/* Pass wkmpg preview and main data to Project component */}
       <Project PreviewData={PreviewData} MainData={MainData} />
     </Layout>

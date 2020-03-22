@@ -214,7 +214,7 @@ const ProjectPreviewStyled = styled.div`
 
   @media (min-width: 400px) {
     a.project {
-      margin-top: 60px;
+      margin-top: 50px;
     }
 
     .banner {

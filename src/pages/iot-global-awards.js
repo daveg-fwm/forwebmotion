@@ -21,7 +21,7 @@ const IotGlobalAwards = ({ data, location }) => {
       footerClass={{ class: 'relative' }}
       location={location}
     >
-      <SEO title="IoT Global Awards" />
+      <SEO title="IoT Global Awards" keywords={['IoT Global Awards']} />
       {/* Pass iotga preview and main data to Project component */}
       <Project PreviewData={PreviewData} MainData={MainData} />
     </Layout>

@@ -21,7 +21,7 @@ const RedSofaCafe = ({ data, location }) => {
       footerClass={{ class: 'relative' }}
       location={location}
     >
-      <SEO title="Red Sofa Cafe" />
+      <SEO title="Red Sofa Cafe" keywords={['Red Sofa Cafe']} />
       {/* Pass rsc preview and main data to Project component */}
       <Project PreviewData={PreviewData} MainData={MainData} />
     </Layout>

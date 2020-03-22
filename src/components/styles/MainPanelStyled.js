@@ -40,7 +40,7 @@ const MainPanelStyled = styled.main`
 
   @media (min-width: 600px) {
     div.panel {
-      padding: 85px 50px;
+      padding: 50px;
     }
   }
 

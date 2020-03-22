@@ -10,12 +10,14 @@ import WKMPGVideo from './videos/WKMPGVideo';
 import {
   RSCBanner,
   IOTGABanner,
+  IOTGABannerFull,
   WKMPGBanner,
   IOTGARegisterForm,
   RSCOurStory,
   RSCPaymentForm,
   AboutBanner,
   ExpatBanner,
+  ExpatElasticSearch,
 } from './images/images';
 
 class Project extends React.Component {
@@ -49,6 +51,7 @@ class Project extends React.Component {
   components = {
     RSCBanner,
     IOTGABanner,
+    IOTGABannerFull,
     WKMPGBanner,
     IOTGARegisterForm,
     RSCOurStory,
@@ -56,6 +59,7 @@ class Project extends React.Component {
     AboutBanner,
     WKMPGVideo,
     ExpatBanner,
+    ExpatElasticSearch,
   };
 
   hoverTimeoutId = () => {};
@@ -273,6 +277,63 @@ class Project extends React.Component {
     return video.pause();
   };
 
+  // Show full image popup
+  imgPopup = imgComponent => {
+    let imgName = imgComponent;
+    const camelCaseMatches = imgComponent.match(/.[A-Z][a-z]/g);
+    const div = document.createElement('div');
+
+    const closeFullImgPopup = event => {
+      if (
+        event.target.classList.contains('full-img-popup') ||
+        event.target.classList.contains('full-img-popup-close-btn')
+      ) {
+        div.style.opacity = 0;
+
+        div.addEventListener('transitionend', () => {
+          div.removeEventListener('click', closeFullImgPopup);
+          div
+            .querySelector('.full-img-popup-close-btn')
+            .removeEventListener('click', closeFullImgPopup);
+
+          div.remove();
+        });
+      }
+    };
+
+    camelCaseMatches.forEach(match => {
+      imgName = imgName.replace(match.substr(1), `-${match.substr(1)}`);
+    });
+
+    div.classList.add('full-img-popup');
+    div.innerHTML = `
+      <div>
+        <button class='full-img-popup-close-btn'>
+          <span></span>
+          <span></span>
+        </button>
+        <img src='/${imgName}.jpg'>
+      </div>
+    `;
+    document.body.appendChild(div);
+
+    setTimeout(() => {
+      div.style.opacity = 1;
+    }, 50);
+
+    if (
+      div.querySelector('img').clientHeight + 80 >
+      div.querySelector('div').clientHeight
+    ) {
+      div.querySelector('div').style.overflowY = 'scroll';
+    }
+
+    div.addEventListener('click', closeFullImgPopup);
+    div
+      .querySelector('.full-img-popup-close-btn')
+      .addEventListener('click', closeFullImgPopup);
+  };
+
   render() {
     const {
       PreviewData,
@@ -419,6 +480,7 @@ class Project extends React.Component {
                 <p>{PreviewData.year}</p>
                 <p>{PreviewData.type}</p>
               </div>
+
               <MainBanner mainBannerClass="project-page-banner" />
             </InView>
           </ProjectPreviewStyled>
@@ -495,7 +557,12 @@ class Project extends React.Component {
 
                 return (
                   <div key={item.type + i} className="image-container">
-                    <Img />
+                    <button
+                      type="button"
+                      onClick={() => this.imgPopup(item.content[0])}
+                    >
+                      <Img />
+                    </button>
                   </div>
                 );
               }

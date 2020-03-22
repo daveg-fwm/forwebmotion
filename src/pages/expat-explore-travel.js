@@ -21,7 +21,7 @@ const ExpatExploreTravel = ({ data, location }) => {
       footerClass={{ class: 'relative' }}
       location={location}
     >
-      <SEO title="Expat Explore Travel" />
+      <SEO title="Expat Explore Travel" keywords={['Expat Explore Travel']} />
       {/* Pass expat preview and main data to Project component */}
       <Project PreviewData={PreviewData} MainData={MainData} />
     </Layout>

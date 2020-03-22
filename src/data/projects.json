@@ -200,11 +200,11 @@
       "intro": [
         {
           "paragraph":
-            "By mid 2018 I had a solid understanding of WordPress. Apart from IoT Global Awards I had also built a couple news portals expanding my knowledge to include posts, categories and tags along with commonly used plugins such as Yoast SEO."
+            "Fast forward to March 2019 and I find myself starting a new job for an exciting company called Expat Explore Travel. What I loved most about the move was that they use the JAMstack development architecture and my role would be purely frontend."
         },
         {
           "paragraph":
-            "WKM was now in need of a more customisable payment system for users of its various websites. Having prior knowledge of Zend Framework 2, I was excited to dive into the latest version and build my first web application. This was also an opportunity to work with the Sage Pay REST API, something I'm sure will come in handy down the road."
+            "My primary project was the search page. At the time, Expat was still using WordPress for this page and part of the migration to Contentful included rebuilding search with Vue which I had never used before, but was keen on learning. A few months, a redesign and many improvements later, search has now become an NPM package to be used on any page that features a list of tours. At the time of writing this, search is being split tested using the VWO platform and the new and improved version is featured below."
         }
       ]
     },
@@ -562,12 +562,18 @@
     "expat": [
       {
         "type": "heading",
-        "content": ["WKM Payment Gateway"]
+        "content": ["Expat Explore Travel"]
       },
       {
         "type": "paragraph",
         "content": [
-          "It’s all about options really. The ability to deliver improved payment services and a customised user experience, all from a single central location. Easy to manage. Easy to maintain. Consistent branding throughout."
+          "Good teams will always outperform individuals. At Expat, I found a group with total dedication to their craft which allowed me to grow significantly in my role."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          "More on that later, but for now let’s focus on the project that became like my baby, search."
         ]
       },
       {
@@ -577,9 +583,10 @@
       {
         "type": "list",
         "content": [
-          "Build and configure a web server on cloud hosting.",
-          "Design a simple UI that is easy to use on any device.",
-          "Expand services to include repeat payments using the Sage Pay REST API."
+          "Rebuild using Vue according to design spec.",
+          "Make search an NPM package to reuse on any page that lists tours.",
+          "Improve load time by employing a lazy load strategy.",
+          "Use a backend API service in order to integrate AWS Elasticsearch with a keyword search field."
         ]
       },
       {
@@ -621,8 +628,8 @@
         ]
       },
       {
-        "type": "video",
-        "content": ["WKMPGVideo"]
+        "type": "image",
+        "content": ["ExpatElasticSearch"]
       },
       {
         "type": "heading",

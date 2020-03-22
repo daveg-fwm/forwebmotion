@@ -34,6 +34,14 @@ const ProjectMainStyled = styled.div`
     position: relative;
   }
 
+  .image-container {
+    button {
+      position: static;
+      background-color: transparent;
+      padding: 0;
+    }
+  }
+
   ul {
     list-style-type: square;
     padding-left: 25px;
@@ -103,17 +111,6 @@ const ProjectMainStyled = styled.div`
     border-top: 1px solid #ccc;
     margin-top: 40px;
     padding-top: 40px;
-  }
-
-  @media (min-width: 600px) {
-    .image-container,
-    .video-container {
-      margin: 100px 0;
-    }
-
-    .heading {
-      margin-top: 100px;
-    }
   }
 
   @media (min-width: 1200px) and (min-height: 620px) {

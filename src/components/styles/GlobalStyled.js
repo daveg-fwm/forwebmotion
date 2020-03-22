@@ -193,6 +193,74 @@ const GlobalStyled = () => (
       .left-arrow-link .a-svg-txt {
         margin-left: 25px;
       }
+
+      .full-img-popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        opacity: 0;
+        transition: opacity 0.3s;
+
+        div {
+          width: calc(100% - 20px);
+          max-width: 1000px;
+          max-height: 90%;
+          padding: 40px;
+          background-color: #fff;
+          border-radius: 3px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+          @media (max-width: 1024px) {
+            padding: 40px 20px;
+          }
+
+          .full-img-popup-close-btn {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+            border: 0;
+
+            &:focus {
+              outline: 0;
+            }
+
+            span {
+              display: block;
+              width: 16px;
+              height: 2px;
+              background-color: #40afe9;
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              margin: auto;
+
+              &:first-of-type {
+                transform: rotate(45deg);
+              }
+
+              &:last-of-type {
+                transform: rotate(-45deg);
+              }
+            }
+          }
+
+          img {
+            width: 100%;
+          }
+        }
+      }
     `}
   />
 );

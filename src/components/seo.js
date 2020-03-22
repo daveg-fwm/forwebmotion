@@ -32,6 +32,10 @@ function SEO({ description, lang, meta, keywords, title }) {
             titleTemplate={`%s | ${data.site.siteMetadata.title}`}
             meta={[
               {
+                name: 'robots',
+                content: 'index, follow',
+              },
+              {
                 name: 'description',
                 content: metaDescription,
               },
@@ -112,8 +116,8 @@ SEO.defaultProps = {
     'fwm',
     'forward motion',
     'web developer',
-    'front end',
-    'front end developer',
+    'frontend',
+    'frontend developer',
     'front-end',
     'front-end developer',
     'javascript',
