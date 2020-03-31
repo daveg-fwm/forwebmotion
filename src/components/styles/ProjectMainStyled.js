@@ -111,6 +111,7 @@ const ProjectMainStyled = styled.div`
     border-top: 1px solid #ccc;
     margin-top: 40px;
     padding-top: 40px;
+    word-break: break-all;
   }
 
   @media (min-width: 1200px) and (min-height: 620px) {

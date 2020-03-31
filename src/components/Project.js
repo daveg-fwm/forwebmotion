@@ -341,7 +341,7 @@ class Project extends React.Component {
           .querySelector('.full-img-popup-close-btn')
           .addEventListener('click', closeFullImgPopup);
       }
-    }, 100);
+    }, 300);
   };
 
   render() {
