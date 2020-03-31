@@ -78,6 +78,15 @@ const GlobalStyled = () => (
         box-sizing: inherit;
       }
 
+      @keyframes showContent {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
       body {
         padding: 0;
         margin: 0;
@@ -88,7 +97,7 @@ const GlobalStyled = () => (
         color: #121415;
         background-color: #f2f2f2;
         opacity: 0;
-        transition: opacity 0.5s;
+        animation: showContent 0.5s forwards;
 
         @media (max-width: 600px) {
           font-size: 1.8rem;

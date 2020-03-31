@@ -318,21 +318,24 @@ class Project extends React.Component {
     `;
     document.body.appendChild(div);
 
-    setTimeout(() => {
-      div.style.opacity = 1;
+    const lookImg = setInterval(() => {
+      if (div.querySelector('img').complete) {
+        clearInterval(lookImg);
+        div.style.opacity = 1;
 
-      if (
-        div.querySelector('img').clientHeight + 80 >
-        div.querySelector('div').clientHeight
-      ) {
-        div.querySelector('div').style.overflowY = 'scroll';
+        if (
+          div.querySelector('img').clientHeight + 80 >
+          div.querySelector('div').clientHeight
+        ) {
+          div.querySelector('div').style.overflowY = 'scroll';
+        }
+
+        div.addEventListener('click', closeFullImgPopup);
+        div
+          .querySelector('.full-img-popup-close-btn')
+          .addEventListener('click', closeFullImgPopup);
       }
-
-      div.addEventListener('click', closeFullImgPopup);
-      div
-        .querySelector('.full-img-popup-close-btn')
-        .addEventListener('click', closeFullImgPopup);
-    }, 50);
+    }, 100);
   };
 
   render() {
