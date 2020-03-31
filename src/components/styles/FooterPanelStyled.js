@@ -34,7 +34,7 @@ const FooterPanelStyled = styled.footer`
     background-color: #fff;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     border-radius: 3px;
-    transform: translateY(calc(129% + 25px));
+    transform: translateY(calc(135% + 25px));
   }
 
   .linkedin-icon {
