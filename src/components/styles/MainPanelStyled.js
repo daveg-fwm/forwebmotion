@@ -29,7 +29,6 @@ const MainPanelStyled = styled.main`
     background-color: #fff;
     border-radius: 3px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(calc(104.5% + 25px));
   }
 
   @media (min-width: 400px) {

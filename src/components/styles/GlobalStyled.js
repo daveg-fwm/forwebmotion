@@ -87,6 +87,8 @@ const GlobalStyled = () => (
         font-weight: 300;
         color: #121415;
         background-color: #f2f2f2;
+        opacity: 0;
+        transition: opacity 0.5s;
 
         @media (max-width: 600px) {
           font-size: 1.8rem;

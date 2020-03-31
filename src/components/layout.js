@@ -438,6 +438,8 @@ class Layout extends React.Component {
     Scroll to project preview that matches hash on homepage.
   */
   homeScroll = hashOnClick => {
+    document.body.style.opacity = 1;
+
     const { previewRef1, previewRef2, previewRef3, previewRef4 } = this.state;
 
     const scrollElement =
