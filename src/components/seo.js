@@ -33,7 +33,7 @@ function SEO({ description, lang, meta, keywords, title }) {
             meta={[
               {
                 name: 'robots',
-                content: 'noindex, nofollow',
+                content: 'index, follow',
               },
               {
                 name: 'description',
