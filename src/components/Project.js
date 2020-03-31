@@ -313,7 +313,7 @@ class Project extends React.Component {
           <span></span>
           <span></span>
         </button>
-        <img src='/${imgName}.jpg'>
+        <img src='/${imgName.toLowerCase()}.jpg'>
       </div>
     `;
     document.body.appendChild(div);
