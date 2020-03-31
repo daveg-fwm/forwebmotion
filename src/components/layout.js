@@ -83,6 +83,10 @@ class Layout extends React.Component {
       from = 'calc(100.45% + 25px)';
     }
 
+    if (location.pathname !== '/') {
+      document.body.style.opacity = 1;
+    }
+
     /*
       Homepage animates multiple preview panels.
       Project pages have a single main panel.
@@ -438,6 +442,8 @@ class Layout extends React.Component {
     Scroll to project preview that matches hash on homepage.
   */
   homeScroll = hashOnClick => {
+    document.body.style.opacity = 1;
+
     const { previewRef1, previewRef2, previewRef3, previewRef4 } = this.state;
 
     const scrollElement =

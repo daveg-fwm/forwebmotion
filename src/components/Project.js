@@ -308,7 +308,10 @@ class Project extends React.Component {
 
     div.classList.add('full-img-popup');
     div.innerHTML = `
-      <div>
+      <div class="lds-spinner">
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+      </div>
+      <div class="inner">
         <button class='full-img-popup-close-btn'>
           <span></span>
           <span></span>
@@ -317,17 +320,20 @@ class Project extends React.Component {
       </div>
     `;
     document.body.appendChild(div);
+    div.style.opacity = 1;
 
     const lookImg = setInterval(() => {
       if (div.querySelector('img').complete) {
         clearInterval(lookImg);
-        div.style.opacity = 1;
+
+        div.querySelector('.lds-spinner').style.display = 'none';
+        div.querySelector('.inner').style.opacity = 1;
 
         if (
           div.querySelector('img').clientHeight + 80 >
-          div.querySelector('div').clientHeight
+          div.querySelector('.inner').clientHeight
         ) {
-          div.querySelector('div').style.overflowY = 'scroll';
+          div.querySelector('.inner').style.overflowY = 'scroll';
         }
 
         div.addEventListener('click', closeFullImgPopup);

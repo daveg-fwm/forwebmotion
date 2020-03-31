@@ -78,15 +78,6 @@ const GlobalStyled = () => (
         box-sizing: inherit;
       }
 
-      @keyframes showContent {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-
       body {
         padding: 0;
         margin: 0;
@@ -97,7 +88,6 @@ const GlobalStyled = () => (
         color: #121415;
         background-color: #f2f2f2;
         opacity: 0;
-        animation: showContent 0.5s forwards;
 
         @media (max-width: 600px) {
           font-size: 1.8rem;
@@ -205,6 +195,15 @@ const GlobalStyled = () => (
         margin-left: 25px;
       }
 
+      @keyframes lds-spinner {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
       .full-img-popup {
         position: fixed;
         top: 0;
@@ -216,7 +215,7 @@ const GlobalStyled = () => (
         opacity: 0;
         transition: opacity 0.3s;
 
-        div {
+        .inner {
           width: calc(100% - 20px);
           max-width: 1000px;
           max-height: 90%;
@@ -227,6 +226,8 @@ const GlobalStyled = () => (
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
+          opacity: 0;
+          transition: opacity 0.3s;
 
           @media (max-width: 1024px) {
             padding: 40px 20px;
@@ -270,6 +271,82 @@ const GlobalStyled = () => (
           img {
             width: 100%;
           }
+        }
+
+        .lds-spinner {
+          color: #40afe9;
+          display: inline-block;
+          position: absolute;
+          width: 80px;
+          height: 80px;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+        .lds-spinner div {
+          transform-origin: 40px 40px;
+          animation: lds-spinner 1.2s linear infinite;
+        }
+        .lds-spinner div:after {
+          content: ' ';
+          display: block;
+          position: absolute;
+          top: 3px;
+          left: 37px;
+          width: 6px;
+          height: 18px;
+          border-radius: 20%;
+          background: #fff;
+        }
+        .lds-spinner div:nth-of-type(1) {
+          transform: rotate(0deg);
+          animation-delay: -1.1s;
+        }
+        .lds-spinner div:nth-of-type(2) {
+          transform: rotate(30deg);
+          animation-delay: -1s;
+        }
+        .lds-spinner div:nth-of-type(3) {
+          transform: rotate(60deg);
+          animation-delay: -0.9s;
+        }
+        .lds-spinner div:nth-of-type(4) {
+          transform: rotate(90deg);
+          animation-delay: -0.8s;
+        }
+        .lds-spinner div:nth-of-type(5) {
+          transform: rotate(120deg);
+          animation-delay: -0.7s;
+        }
+        .lds-spinner div:nth-of-type(6) {
+          transform: rotate(150deg);
+          animation-delay: -0.6s;
+        }
+        .lds-spinner div:nth-of-type(7) {
+          transform: rotate(180deg);
+          animation-delay: -0.5s;
+        }
+        .lds-spinner div:nth-of-type(8) {
+          transform: rotate(210deg);
+          animation-delay: -0.4s;
+        }
+        .lds-spinner div:nth-of-type(9) {
+          transform: rotate(240deg);
+          animation-delay: -0.3s;
+        }
+        .lds-spinner div:nth-of-type(10) {
+          transform: rotate(270deg);
+          animation-delay: -0.2s;
+        }
+        .lds-spinner div:nth-of-type(11) {
+          transform: rotate(300deg);
+          animation-delay: -0.1s;
+        }
+        .lds-spinner div:nth-of-type(12) {
+          transform: rotate(330deg);
+          animation-delay: 0s;
         }
       }
     `}
