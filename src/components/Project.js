@@ -10,7 +10,6 @@ import WKMPGVideo from './videos/WKMPGVideo';
 import {
   RSCBanner,
   IOTGABanner,
-  IOTGABannerFull,
   WKMPGBanner,
   IOTGARegisterForm,
   RSCOurStory,
@@ -51,7 +50,6 @@ class Project extends React.Component {
   components = {
     RSCBanner,
     IOTGABanner,
-    IOTGABannerFull,
     WKMPGBanner,
     IOTGARegisterForm,
     RSCOurStory,
@@ -286,7 +284,10 @@ class Project extends React.Component {
     const closeFullImgPopup = event => {
       if (
         event.target.classList.contains('full-img-popup') ||
-        event.target.classList.contains('full-img-popup-close-btn')
+        event.target.classList.contains('full-img-popup-close-btn') ||
+        event.target.parentElement.classList.contains(
+          'full-img-popup-close-btn'
+        )
       ) {
         div.style.opacity = 0;
 
@@ -319,19 +320,19 @@ class Project extends React.Component {
 
     setTimeout(() => {
       div.style.opacity = 1;
+
+      if (
+        div.querySelector('img').clientHeight + 80 >
+        div.querySelector('div').clientHeight
+      ) {
+        div.querySelector('div').style.overflowY = 'scroll';
+      }
+
+      div.addEventListener('click', closeFullImgPopup);
+      div
+        .querySelector('.full-img-popup-close-btn')
+        .addEventListener('click', closeFullImgPopup);
     }, 50);
-
-    if (
-      div.querySelector('img').clientHeight + 80 >
-      div.querySelector('div').clientHeight
-    ) {
-      div.querySelector('div').style.overflowY = 'scroll';
-    }
-
-    div.addEventListener('click', closeFullImgPopup);
-    div
-      .querySelector('.full-img-popup-close-btn')
-      .addEventListener('click', closeFullImgPopup);
   };
 
   render() {
@@ -619,7 +620,8 @@ class Project extends React.Component {
             })}
 
             {/* Link to project preview on index.js */}
-            {PreviewData.class !== 'forwebmotion-project' ? (
+            {PreviewData.class !== 'forwebmotion-project' &&
+            PreviewData.class !== 'expat-project' ? (
               <Link
                 to={`/#${PreviewData.class}`}
                 className="continue-journey left-arrow-link"

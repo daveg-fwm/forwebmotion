@@ -573,7 +573,7 @@
       {
         "type": "paragraph",
         "content": [
-          "More on that later, but for now let’s focus on the project that became like my baby, search."
+          "More on that later, but for now let’s focus on the project that challenged me the most, search."
         ]
       },
       {
@@ -584,47 +584,47 @@
         "type": "list",
         "content": [
           "Rebuild using Vue according to design spec.",
-          "Make search an NPM package to reuse on any page that lists tours.",
           "Improve load time by employing a lazy load strategy.",
+          "Make search an NPM package to reuse on any page that lists tours.",
           "Use a backend API service in order to integrate AWS Elasticsearch with a keyword search field."
         ]
       },
       {
         "type": "heading",
-        "content": ["Server"]
+        "content": ["Control"]
       },
       {
         "type": "paragraph",
         "content": [
-          "Just as I had done for the IoT Global Awards site, I installed a LAMP ( Linux, Apache, MySQL, PHP ) stack with NGINX as a reverse proxy on an Ubuntu OS and took many steps to secure the server."
+          "Search was the very first project assigned to me when joining up with Expat. I had never used Vue so before I could get started I had to complete enough of Udemy’s course, Vue JS 2 - The Complete Guide (incl. Vue Router & Vuex), to have a foundational understanding of the framework. Fortunately, I have some experience with React so I was able to learn quickly. It didn’t hurt that Vue is without a doubt the easiest of the three main JS frameworks to learn and the code is incredibly clean."
         ]
       },
       {
         "type": "paragraph",
         "content": [
-          "Certbot was not used here however. I manually set up a paid SSL certificate and configured NGINX to use HTTPS. Data sent to and from the gateway would now be encrypted by the HTTPS protocol."
+          "Expat's tech stack also includes a custom JS framework and Foundation’s Panini, powered by Handlebars, to create static pages. Combining these three technologies, I rebuilt search to be hosted on AWS S3 and served using AWS CloudFront. This is the control version of the split test currently being run using the VWO platform."
         ]
       },
       {
         "type": "heading",
-        "content": ["Frontend"]
+        "content": ["Variant"]
       },
       {
         "type": "paragraph",
         "content": [
-          "When a user wants to make a purchase from one of WKM Global’s sites, they are required to fill out a billing details form. That information is encrypted using the OpenSSL library and sent to the gateway."
+          "The variant is the result of the evolution of search. A crisp new design with enhanced functionality and usability."
         ]
       },
       {
         "type": "paragraph",
         "content": [
-          "Upon arriving at the gateway, the user is presented with the various card options along with details of the purchase. A simple form with clearly marked labels is immediately available as well. Selecting a field will animate the label to the top of the input element. This is a recommended approach by many UX professionals as the user will always be able to see the heading of the field being entered, even on mobile devices."
+          "The website features a number of other pages that contain a list of tours so this version of search was to become a NPM package ensuring consistency throughout the website and dramatically reducing dev time for updates. It also meant that we could allow for additional features to be added to these other listing pages, like filters, without extending the project deadline."
         ]
       },
       {
         "type": "paragraph",
         "content": [
-          "Clicking “Secure Payment” will initiate an AJAX request and loading animation after which a clear response is displayed."
+          "One such feature is a keyword search field which provides a list of suggestions that are fetched from AWS Elasticsearch using a backend API service. This required a custom dropdown menu making sure to adhere to best UX practices including allowing users to navigate and select options with the keyboard."
         ]
       },
       {
@@ -633,30 +633,30 @@
       },
       {
         "type": "heading",
-        "content": ["Backend"]
+        "content": ["Beyond search"]
       },
       {
         "type": "paragraph",
         "content": [
-          "The Sage Pay REST API is coded in JavaScript and performs a check on the credit card details before any other action is taken."
+          "This past year has been a real learning experience for me and I feel fortunate to have been exposed to so many new tools and technologies."
         ]
       },
       {
         "type": "paragraph",
         "content": [
-          "If validation is successful a payment request is sent to Sage using cURL. We store all relevant data for use with future payments, but NEVER credit card details. This means that not only are we able to offer an improved experience by allowing future payments to be made without having to re-enter credit card details, but we can do so without reducing the security of payments as well. An invoice template is then dynamically populated and sent to the user."
+          "From complex Gulp builds to analytics tracking to data management using headless CMS Contentful to using Serverless middleware to map said data, I have grown as a developer in many ways. While my focus has turned to the frontend I have always been interested in all aspects of development and enjoyed the opportunity to extend my CI/CD knowledge to include Bitbucket and I also got to learn a bit more about AWS CloudFront, setting up behaviours and running the odd invalidation."
         ]
       },
       {
         "type": "paragraph",
         "content": [
-          "WKM went a step further to offer monthly payments for some of its sites. I had to create a new table in the database to hold these records, put together a PHP script that would make a cURL request to the gateway, and set up a cron job to run the script every hour. I created a function to collect all records whose next payment date was less than or equal to the current date. Payments are then made based on the details contained in these records, users receive an invoice and their accounts on whichever site they purchased from are updated."
+          "Finally, having the opportunity to work in an Agile environment was the cherry on top. Tools like Asana and Slack can really increase productivity tremendously and myself and the team certainly benefited in a big way and continue to go from strength to strength as we embrace remote working."
         ]
       },
       {
-        "type": "paragraph",
+        "type": "website link",
         "content": [
-          "Management of the database is extremely important so I chose to use Doctrine ORM 2. It allowed me to map the database to PHP classes and communicate using object oriented SQL, referred to as Doctrine Query Language ( DQL ). The result is much cleaner and easier to maintain code with improved data integrity."
+          "https://expatexplore.com/search/"
         ]
       }
     ],
@@ -753,44 +753,27 @@
       },
       {
         "type": "heading",
-        "content": ["Recent & Current Courses"]
+        "content": ["Recent Courses"]
       },
       {
         "type": "paragraph",
         "content": [
-          "So many courses, so little time. My primary focus has been on React, but also the latest CSS and JavaScript updates."
-        ]
-      },
-      {
-        "type": "paragraph",
-        "content": [
-          "Completed courses:"
+          "So many courses, so little time. My primary focus is JavaScript, most recently the Vue.js framework which really blew my mind."
         ]
       },
       {
         "type": "link list",
         "content": [
-          "Wes Bos,CSS Grid",
-          "https://cssgrid.io/",
-          "Coursera,Frontend Web Development with React",
-          "https://www.coursera.org/learn/Frontend-react",
+          "Udemy,Vue JS 2 - The Complete Guide (incl. Vue Router & Vuex)",
+          "https://www.udemy.com/share/101WzMA0QSc1pbTXo=/",
+          "Udemy,Mastering Regular Expressions in JavaScript",
+          "https://www.udemy.com/share/101FOaA0QSc1pbTXo=/",
           "Wes Bos,React for Beginners",
-          "https://reactforbeginners.com/"
-        ]
-      },
-      {
-        "type": "paragraph",
-        "content": [
-          "In progress courses:"
-        ]
-      },
-      {
-        "type": "link list",
-        "content": [
+          "https://reactforbeginners.com/",
           "Wes Bos,ES6 for Everyone",
           "https://es6.io/",
-          "Wes Bos,Full Stack Advanced React & GraphQL",
-          "https://advancedreact.com/"
+          "Coursera,Frontend Web Development with React",
+          "https://www.coursera.org/learn/Frontend-react"
         ]
       },
       {
@@ -798,18 +781,20 @@
         "content": ["What’s Next?"]
       },
       {
+        "type": "paragraph",
+        "content": [
+          "The Coursera React course I took covered Redux, but courses from Wes Bos are incredible and much more applicable to real-world development. I have also always wanted to dive into Node.js and I am totally hooked on AWS. Their services are next level!"
+        ]
+      },
+      {
         "type": "link list",
         "content": [
           "Wes Bos,Learn Redux",
           "https://learnredux.com/",
           "Wes Bos,Learn Node",
-          "https://learnnode.com/"
-        ]
-      },
-      {
-        "type": "paragraph",
-        "content": [
-          "The Coursera React course I took covered Redux, but courses from Wes Bos are incredible and much more applicable to real-world development."
+          "https://learnnode.com/",
+          "Udemy,AWS Serverless APIs & Apps - A Complete Introduction",
+          "https://www.udemy.com/share/101WGIA0QSc1pbTXo=/"
         ]
       },
       {
@@ -819,7 +804,7 @@
       {
         "type": "paragraph",
         "content": [
-          "Well that’s my journey so far. The developer community is all about collaboration so please reach out on LinkedIn or send me an email."
+          "The developer community is all about collaboration so please reach out on LinkedIn or send me an email."
         ]
       },
       {

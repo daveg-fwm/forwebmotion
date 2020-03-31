@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
-import socialImage from '../images/fwm-social-14022019.jpg';
+import socialImage from '../images/fwm-social-31032020.jpg';
 
 function SEO({ description, lang, meta, keywords, title }) {
   const detailsQuery = graphql`
@@ -33,7 +33,7 @@ function SEO({ description, lang, meta, keywords, title }) {
             meta={[
               {
                 name: 'robots',
-                content: 'index, follow',
+                content: 'noindex, nofollow',
               },
               {
                 name: 'description',

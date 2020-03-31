@@ -110,8 +110,8 @@ class HeaderContent extends React.Component {
               learn tomorrow.
             </p>
             <p>
-              Follow the links below to find out what I've been working on
-              lately.
+              Follow the links below to find out what I learnt building this
+              site.
             </p>
             <a
               className="a-svg"

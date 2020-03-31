@@ -69,18 +69,18 @@ class Layout extends React.Component {
     this.menuCenter = !(window.innerWidth >= 1200 && window.innerHeight >= 620);
 
     // Homepage and project pages use different values for animation - 404 page uses same values as homepage
-    let from = 'calc(102% + 25px)';
+    let from = 'calc(104.5% + 25px)';
 
     if (location.pathname === '/red-sofa-cafe') {
-      from = 'calc(100.35% + 25px)';
+      from = 'calc(100.75% + 25px)';
     } else if (location.pathname === '/iot-global-awards') {
-      from = 'calc(100.2% + 25px)';
+      from = 'calc(100.4% + 25px)';
     } else if (location.pathname === '/wkm-payment-gateway') {
-      from = 'calc(100.28% + 25px)';
+      from = 'calc(100.6% + 25px)';
     } else if (location.pathname === '/expat-explore-travel') {
-      from = 'calc(100.28% + 25px)';
+      from = 'calc(100.6% + 25px)';
     } else if (location.pathname === '/about') {
-      from = 'calc(100.2% + 25px)';
+      from = 'calc(100.45% + 25px)';
     }
 
     /*
@@ -161,7 +161,7 @@ class Layout extends React.Component {
       })
       .add({
         targets: footerRef.current.children,
-        translateY: () => ['calc(129% + 25px)', '0%'],
+        translateY: () => ['calc(135% + 25px)', '0%'],
       });
 
     if (homeRef.current !== null && headerData.page !== '404')
