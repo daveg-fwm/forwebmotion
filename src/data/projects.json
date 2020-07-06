@@ -783,14 +783,14 @@
       {
         "type": "paragraph",
         "content": [
-          "The Coursera React course I took covered Redux, but courses from Wes Bos are incredible and much more applicable to real-world development. I have also always wanted to dive into Node.js and I am totally hooked on AWS. Their services are next level!"
+          "The Coursera React course set a solid foundation, but courses from Wes Bos are incredible and much more applicable to real-world development. I have also always wanted to dive into Node.js and I am totally hooked on AWS. Their services are next level!"
         ]
       },
       {
         "type": "link list",
         "content": [
-          "Wes Bos,Learn Redux",
-          "https://learnredux.com/",
+          "Wes Bos,Fullstack Advanced React & GraphQL",
+          "https://advancedreact.com/",
           "Wes Bos,Learn Node",
           "https://learnnode.com/",
           "Udemy,AWS Serverless APIs & Apps - A Complete Introduction",
